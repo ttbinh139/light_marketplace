@@ -42,4 +42,6 @@ The following steps are only for _one_ of the group members to perform.
 - NPM 5.x or above
 - PG 6.x
 
-Binh
+## Test to see if loaded on my machine - Kevin
+## Test to see if loaded on my machine - Sang
+## Test to commit in branch: planning - Binh. 
