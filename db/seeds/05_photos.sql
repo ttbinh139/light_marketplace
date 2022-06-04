@@ -13,4 +13,4 @@ INSERT INTO photos (id, photo_1, listing_id)
 VALUES (4,'https://i.ebayimg.com/images/g/5BgAAOSweh9ijq5I/s-l1600.jpg',4);
 
 INSERT INTO photos (id, photo_1, photo_2, photo_3, photo_4, listing_id)
-VALUES (5,'https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',5);
+VALUES (5,'https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',5);

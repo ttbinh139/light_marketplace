@@ -1,8 +1,8 @@
 -- Drop and recreate message table
 
-DROP TABLE IF EXISTS message CASCADE;
+DROP TABLE IF EXISTS messages CASCADE;
 
-CREATE TABLE message (
+CREATE TABLE messages (
   id SERIAL PRIMARY KEY NOT NULL,
   created_time TIMESTAMP,
   receiver_id INTEGER REFERENCES users(id) ON DELETE CASCADE,

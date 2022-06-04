@@ -4,12 +4,11 @@ INSERT INTO users (id, name, email, address, type) VALUES (1, 'Armand Hilll', 'l
 
 INSERT INTO users (id, name, email, address, type) VALUES (2, 'Stephanie Wolff', 'darius.homenick@to.com', '34 Williams Ave. Bath, NB E7J 5K7', TRUE);
 
-INSERT INTO users (id, name, email, address, type)
-VALUES (3, 'Stan Miller', 'mcdermott.maxie@schoen', '7920 Miles Ave. Blackville, NB E9B 4T4', FALSE);
+INSERT INTO users (id, name, email, address, type) VALUES (3, 'Stan Miller', 'mcdermott.maxie@schoen', '7920 Miles Ave. Blackville, NB E9B 4T4', FALSE);
 
 INSERT INTO users (id, name, email, address, type) VALUES (4, 'Elliot Dickinson','derrick_pollich@gmail.com','20 Buttonwood Street Saint-Leonard, NB E7E 3H8' , FALSE);
 
-INSERT INTO users (id, name, email, address, type) VALUES (5, 'Lloyd Boehm', 'ebba.deckow@yahoo.com', '83 Beacon Ave. Corner Brook, LB A2H 4E4' TRUE);
+INSERT INTO users (id, name, email, address, type) VALUES (5, 'Lloyd Boehm', 'ebba.deckow@yahoo.com', '83 Beacon Ave. Corner Brook, LB A2H 4E4', TRUE);
 
 INSERT INTO users (id, name, email, address, type) VALUES (6, 'Erna Cassin', 'miguel.barrows@yahoo.com', '12 Tunnel Court La Prairie, QC J5R 9S9', TRUE);
 
