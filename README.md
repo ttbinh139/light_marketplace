@@ -44,3 +44,4 @@ The following steps are only for _one_ of the group members to perform.
 
 ## Test to see if loaded on my machine - Kevin
 ## Test to see if loaded on my machine - Sang
+## Test to commit in branch: planning - Binh. 
