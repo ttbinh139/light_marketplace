@@ -1,17 +1,58 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+#coverimg {
+  width: 85%;
+  margin: 50px auto 0 auto;
+  border-radius: 25px;
+}
+
+img {
+  max-width: 100%;
+  min-width: 100%;
+  border-radius: 25px;
+}
+
+.grid-container {
+  width: 85%;
+  margin: 50px auto 50px auto;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-row a {
+  margin: 0 10px;
+}
+
+.item-column {
+  text-align: center;
+  padding: 5px;
+  margin: 5PX;
+  height: auto;
+  float: left;
+  width: auto;
+  border-style: solid;
+  border-color: #3D405B;
+  border-width: 2px;
+  border-radius: 25px;
+}
+
+.item-column img {
+  width: auto;
+  height: auto;
+}
+
+.item-row .button {
+  color: black;
+}
+
+/* Clear floats after the columns */
+.item-row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
