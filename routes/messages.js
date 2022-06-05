@@ -7,21 +7,19 @@
 
 const express = require('express');
 const router  = express.Router();
+const messageHelper = require('../lib/messageHelper')
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM messages`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        const messages = data.rows;
-        res.json({ messages });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    messageHelper.testHelper(db).then((messages) => {
+      console.log("Return from helper", messages);
+      return res.json({ messages })
+    }).catch((err) => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
   });
   return router;
 };
