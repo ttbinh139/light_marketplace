@@ -73,10 +73,11 @@ app.get("/newmessage", (req, res) => {
 });
 app.get("/listings", (req, res) => {
   res.render("listings");
-});
+});*/
+
 app.get("/newad", (req, res) => {
   res.render("newad");
-}); */
+});
 
 // app.get("/account", (req, res) => {
 //   res.render("account");

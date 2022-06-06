@@ -1,0 +1,60 @@
+h2 {
+  text-align: center;
+  color: #e07a5f;
+  font-size: xx-large;
+}
+div#forms {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em;
+}
+
+form.user-posting {
+  display: flex;
+  width: 80%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em;
+  border: solid;
+  border-radius: 25px;
+}
+
+#picUpload {
+  margin: 1.5em;
+}
+
+div.upload-image {
+  padding: 1.5em;
+  display: flex;
+  flex-direction: row;
+}
+
+div.image-box {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div.image-box img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+button.btn {
+  margin-top: 1.5em;
+  border-radius: 25px;
+  background-color: transparent;
+  size: 2em;
+}
+
+label {
+  padding: 0.5em;
+}

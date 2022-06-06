@@ -25,5 +25,6 @@ module.exports = (db) => {
   router.get("/newad", (reg, res) => {
     return res.render("newad");
   });
+
   return router;
 };
