@@ -45,9 +45,9 @@ const messagesRoutes = require("./routes/messages");
 /**
  * ROUTING for API
  */
-app.use("/api/users", usersRoutes(db));
+/* app.use("/api/users", usersRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
-app.use("/api/messages", messagesRoutes(db));
+app.use("/api/messages", messagesRoutes(db)); */
 
 /**
  * ROUTING for normal requests
@@ -61,7 +61,7 @@ app.use("/messages", messagesRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
   res.render("index");
 });
 
@@ -80,7 +80,7 @@ app.get("/listings", (req, res) => {
 
 app.get("/newad", (req, res) => {
   res.render("newad");
-});
+}); */
 
 
 
