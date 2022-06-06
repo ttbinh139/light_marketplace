@@ -12,7 +12,7 @@ module.exports = (db) => {
 
 
 
-  router.get("/listings", (req, res) => {
+  router.get("/", (req, res) => {
     let query = `SELECT * FROM listings`;
     console.log(query);
     db.query(query)
@@ -25,6 +25,7 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+      return res.render("listings");
   });
   return router;
 };

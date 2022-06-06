@@ -180,3 +180,34 @@ img {
   display: table;
   clear: both;
 }
+
+//listings
+
+.listings {
+  color: #e07a5f;
+  text-align: center;
+}
+
+.show-listings {
+  width: 80%;
+  height: 800px;
+  border: #3D405B;
+  border-width: 4px;
+  border-style: solid;
+  float: right;
+}
+.filters {
+  width: 20%;
+  height: 800px;
+  background-color: #FBEEDA;
+  border: #3D405B;
+  border-width: 4px;
+  border-style: solid;
+  float: left;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+}
+
