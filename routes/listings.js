@@ -9,7 +9,10 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+
+
+
+  router.get("/listings", (req, res) => {
     let query = `SELECT * FROM listings`;
     console.log(query);
     db.query(query)
@@ -25,3 +28,5 @@ module.exports = (db) => {
   });
   return router;
 };
+
+

@@ -1,0 +1,69 @@
+.message-container {
+  width: 85%;
+  height: 500px;
+  margin: 0 auto;
+  background-color: #FBEEDA;
+  border-radius: 25px;
+}
+
+#message-title {
+  text-align: center;
+  color: #e07a5f;
+}
+
+.message-forms {
+  margin: 0 auto;
+  padding: 50px 0 0 75px;
+  width: 500px;
+  color: #e07a5f;
+}
+
+.forms {
+  display: flex;
+  align-content: center;
+  padding-bottom: 10px;
+}
+
+.forms label {
+  padding-right: 15px;
+}
+
+.forms .body-form {
+  width: 320px;
+  height: 200px;
+}
+
+.forms .reply-form {
+  width: 320px;
+}
+.message-container .button {
+  padding-right: 15px;
+}
+
+input {
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea {
+  border-radius: 10px;
+  resize: none;
+  border-color: black;
+  border-width: 2px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.message-forms .button {
+  color: #e07a5f;
+  border-color: #3D405B;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  padding-right: 5px;
+}

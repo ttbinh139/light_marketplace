@@ -10,7 +10,10 @@ const router  = express.Router();
 const messageHelper = require('../lib/messageHelper')
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+
+
+
+  router.get("/messages", (req, res) => {
     messageHelper.testHelper(db).then((messages) => {
       console.log("Return from helper", messages);
       return res.json({ messages })
