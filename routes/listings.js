@@ -27,6 +27,9 @@ module.exports = (db) => {
       });
       return res.render("listings");
   });
+  router.get("/id", (reg, res) => {
+    return res.render("listingid");
+  })
   return router;
 };
 
