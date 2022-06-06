@@ -39,8 +39,8 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const listingsRoutes = require("./routes/listings");
 const messagesRoutes = require("./routes/messages");
+const newadRoutes = require("./routes/newad");
 //const widgetsRoutes = require("./routes/widgets");
-
 
 /**
  * ROUTING for API
@@ -55,7 +55,7 @@ app.use("/api/messages", messagesRoutes(db)); */
 app.use("/users", usersRoutes(db));
 app.use("/listings", listingsRoutes(db));
 app.use("/messages", messagesRoutes(db));
-
+app.use("/newad", newadRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -68,21 +68,15 @@ app.get("/", (req, res) => {
 app.get("/messages", (req, res) => {
   res.render("messages");
 });
-
 app.get("/newmessage", (req, res) => {
   res.render("newmessage");
 });
-
-
 app.get("/listings", (req, res) => {
   res.render("listings");
 });
-
 app.get("/newad", (req, res) => {
   res.render("newad");
 }); */
-
-
 
 // app.get("/account", (req, res) => {
 //   res.render("account");

@@ -5,24 +5,25 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
-const messageHelper = require('../lib/messageHelper')
+const express = require("express");
+const router = express.Router();
+const messageHelper = require("../lib/messageHelper");
 
 module.exports = (db) => {
+  router.get("/", (req, res) => {
+    messageHelper
+      .testHelper(db)
+      .then((messages) => {
+        console.log("Return from helper", messages);
+        return res.render("newad", { messages });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
-
-
-  router.get("/newad", (req, res) => {
-    messageHelper.testHelper(db).then((messages) => {
-      console.log("Return from helper", messages);
-      return res.json({ messages })
-    }).catch((err) => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-
+  router.get("/newad", (reg, res) => {
+    return res.render("newad");
   });
   return router;
 };
