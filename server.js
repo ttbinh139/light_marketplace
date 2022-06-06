@@ -72,9 +72,10 @@ app.get("/messages", (req, res) => {
 app.get("/listings", (req, res) => {
   res.render("listings");
 });
-// app.get("/newad", (req, res) => {
-//   res.render("newad");
-// });
+
+app.get("/newad", (req, res) => {
+  res.render("newad");
+});
 
 
 

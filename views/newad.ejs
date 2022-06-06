@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>New Ad</title>
+  <title>Messages</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="../styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="../styles/footer.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/forms.css" type="text/css" />
+
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -21,7 +23,40 @@
   <%- include("partials/_nav") %>
 </header>
 <body>
-  <h1>Hello World</h1>
+  <h2 id="message-title">Create New Ad</h2>
+  <div class="message-container">
+    <div class="message-forms">
+    <form id="message-form">
+      <div class="forms">
+      <label class="title">Title&emsp;&emsp;&emsp;&ensp;</label>
+      <input class="form-area" type="text" id="fname" name="fname">
+      </div>
+      <div class="forms">
+      <label class="price">Price&emsp;&emsp;&emsp;</label>
+      <input class="price-form" type="text" id="fname" name="fname">
+      </div>
+      <div class="forms">
+        <label class="condition">Condition&emsp;</label>
+        <select class="condition-form" name="condition">
+          <option value="New">New</option>
+          <option value="Like New">Like New</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+          <option value="Salvage">Salvage</option>
+        </select>
+        </div>
+        <div class="forms">
+          <label class="image">Images&emsp;&emsp;</label>
+          <input class="image-form" type="file" id="myFile" name="filename">
+          </div>
+      <div class="forms">
+      <label class="body">Description</label>
+      <textarea class="body-form" type="text" id="fname" name="fname"></textarea>
+      </div>
+      <a class="button" name="send" value="Send" type="submit">&nbsp;Post</a>
+    </form>
+  </div>
+  </div>
 </body>
 <footer>
   <%- include("partials/_footer") %>
