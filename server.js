@@ -69,6 +69,11 @@ app.get("/messages", (req, res) => {
   res.render("messages");
 });
 
+app.get("/newmessage", (req, res) => {
+  res.render("newmessage");
+});
+
+
 app.get("/listings", (req, res) => {
   res.render("listings");
 });
