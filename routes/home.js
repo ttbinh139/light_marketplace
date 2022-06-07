@@ -1,5 +1,5 @@
 /*
- * All routes for Listings are defined here
+ * All routes for Index are defined here
  * Since this file is loaded in server.js into api/listings,
  *   these routes are mounted onto /widgets
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
@@ -18,7 +18,7 @@ module.exports = (db) => {
         };
         const listings = data.rows;
         //res.json({ listings });
-        res.render("listings", templateVars)
+        res.render("home", templateVars)
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });

@@ -42,8 +42,8 @@ img {
 }
 
 .item-column img {
-  width: auto;
-  height: auto;
+  max-width: 200px;
+  max-height: 100px;
 }
 
 .item-row .button {
@@ -219,6 +219,7 @@ img {
   display: flex;
   flex-direction: column;
 }
+
 
 //listingid
 
