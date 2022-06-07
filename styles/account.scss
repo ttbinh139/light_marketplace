@@ -1,0 +1,63 @@
+h2 {
+  text-align: center;
+  color: #e07a5f;
+  font-size: xx-large;
+}
+
+div.accountbox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.account-summary {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em;
+  border: solid;
+  border-radius: 25px;
+}
+
+div.account-information {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1.5em;
+}
+
+div.my-listings {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  width: 300px;
+  border: solid;
+  border-radius: 25px;
+}
+div.my-favorites {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em;
+  border: solid;
+  height: 500px;
+  width: 300px;
+  border-radius: 25px;
+}
+div.my-messages {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  height: 500px;
+  width: 300px;
+  border-radius: 25px;
+}
