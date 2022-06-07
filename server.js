@@ -48,6 +48,7 @@ const newadRoutes = require("./routes/newad");
 /* app.use("/api/users", usersRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db)); */
+app.use("/api/newad", newadRoutes(db));
 
 /**
  * ROUTING for normal requests

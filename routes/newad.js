@@ -6,6 +6,7 @@
  */
 
 const express = require("express");
+const { renderSync } = require("sass");
 const router = express.Router();
 const messageHelper = require("../lib/messageHelper");
 
@@ -19,6 +20,22 @@ module.exports = (db) => {
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.post("/new", (req, res) => {
+    const { title, description, price, imageUrl } = req.body;
+    messageHelper
+      .testHelper(db)
+
+      .then((result) => {
+        console.log("Return from helper", result);
+        return res.redirect("/newad");
+      })
+      .catch((e) => {
+        console.error(e);
+        res.send(e);
+        return res.redirect("/newad");
       });
   });
 
