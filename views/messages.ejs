@@ -24,31 +24,40 @@
 <body>
   <div class="chats">
     <h2>Chats</h2>
-    <div class="chats-name">
-      <h3>Fname Lname</h3>
-    </div>
-    <div class="chats-name">
-      <h3>Fname Lname</h3>
-    </div>
+    <% if (messages) { %>
+      <% for(let i = 0; i < messages.length; i++) { %>
+        <div class="chats-name">
+          <% if (messages[i].sender_id === userId) { %>
+            <h4 class="chat-sender">To: <%= messages[i].sender %></h4>
+          <% } else if(messages[i].receiver_id === userId) { %>
+            <h4 class="chat-receiver">From: <%= messages[i].sender %></h4>
+          <% } %>
+        </div>
+      <% } %>
+    <% } %>
   </div>
   <div class="head-title">
     <div class="row">
-      <div class="column left"><span>Fname Lname</span></div>
-      <div class="column right"><h1>Messages</h1></div>
+      <% if (listing) { %>
+        <div class="column right"><h2>Listing Info: <a href="/listings/:<%=listing.id%>"><%= listing.title%></a></h2></div>
+      <% } %>
     </div>
   </div>
   <div class="chat-content">
 
     <div class="content">
       <div class="row">
+
+        <% if (conversation) { %>
+          <% for (let i = 0; i < conversation.length; i++) { %>
+            <div class="column">
+              <div class="received"><%= conversation[i].message %></div>
+            <% } %>
+            </div>
+        <% } %>
+
         <div class="column">
-          <div class="received">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum massa nec ligula dictum bibendum. Vivamus nec enim turpis. Vivamus blandit congue odio quis tincidunt. Nullam eu maximus massa. Fusce suscipit sit amet ipsum ut sodales. Nullam imperdiet ante odio, id interdum tortor semper nec. Duis laoreet velit non metus efficitur aliquet. Curabitur rhoncus, quam vel vulputate faucibus, ligula purus interdum dolor, id bibendum orci justo tristique massa. Praesent eu erat a orci rhoncus hendrerit. In hac habitasse platea dictumst. Integer sapien lectus, condimentum nec eros id, ullamcorper blandit lacus.</div>
-          <div class="received">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum massa nec ligula dictum bibendum. Vivamus nec enim turpis. Vivamus blandit congue odio quis tincidunt. Nullam eu maximus massa. Fusce suscipit sit amet ipsum ut sodales. Nullam imperdiet ante odio, id interdum tortor semper nec. Duis laoreet velit non metus efficitur aliquet. Curabitur rhoncus, quam vel vulputate faucibus, ligula purus interdum dolor, id bibendum orci justo tristique massa. Praesent eu erat a orci rhoncus hendrerit. In hac habitasse platea dictumst. Integer sapien lectus, condimentum nec eros id, ullamcorper blandit lacus.</div>
-          <div class="received">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum massa nec ligula dictum bibendum. Vivamus nec enim turpis. Vivamus blandit congue odio quis tincidunt. Nullam eu maximus massa. Fusce suscipit sit amet ipsum ut sodales. Nullam imperdiet ante odio, id interdum tortor semper nec. Duis laoreet velit non metus efficitur aliquet. Curabitur rhoncus, quam vel vulputate faucibus, ligula purus interdum dolor, id bibendum orci justo tristique massa. Praesent eu erat a orci rhoncus hendrerit. In hac habitasse platea dictumst. Integer sapien lectus, condimentum nec eros id, ullamcorper blandit lacus.</div>
-          <div class="received">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum massa nec ligula dictum bibendum. Vivamus nec enim turpis. Vivamus blandit congue odio quis tincidunt. Nullam eu maximus massa. Fusce suscipit sit amet ipsum ut sodales. Nullam imperdiet ante odio, id interdum tortor semper nec. Duis laoreet velit non metus efficitur aliquet. Curabitur rhoncus, quam vel vulputate faucibus, ligula purus interdum dolor, id bibendum orci justo tristique massa. Praesent eu erat a orci rhoncus hendrerit. In hac habitasse platea dictumst. Integer sapien lectus, condimentum nec eros id, ullamcorper blandit lacus.</div>
-        </div>
-        <div class="column">
-          <div class="sent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum massa nec ligula dictum bibendum. Vivamus nec enim turpis. Vivamus blandit congue odio quis tincidunt. Nullam eu maximus massa. Fusce suscipit sit amet ipsum ut sodales. Nullam imperdiet ante odio, id interdum tortor semper nec. Duis laoreet velit non metus efficitur aliquet. Curabitur rhoncus, quam vel vulputate faucibus, ligula purus interdum dolor, id bibendum orci justo tristique massa. Praesent eu erat a orci rhoncus hendrerit. In hac habitasse platea dictumst. Integer sapien lectus, condimentum nec eros id, ullamcorper blandit lacus.</div>
+          <div class="sent">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </div>
     </div>

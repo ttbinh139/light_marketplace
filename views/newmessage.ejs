@@ -21,29 +21,31 @@
 <header>
   <%- include("partials/_nav") %>
 </header>
+
 <body>
   <h2 id="message-title">Send New Message</h2>
   <div class="message-container">
     <div class="message-forms">
-    <form id="message-form">
-      <div class="forms">
-      <label class="title">Subject&emsp;&nbsp;</label>
-      <input class="form-area" type="text" id="fname" name="fname">
-      </div>
-      <div class="forms">
-      <label class="reply">Reply Info</label>
-      <input class="reply-form" type="text" id="fname" name="fname">
-      </div>
-      <div class="forms">
-      <label class="body">Body&emsp;&emsp;&nbsp;</label>
-      <textarea class="body-form" type="text" id="fname" name="fname"></textarea>
-      </div>
-      <a class="button" name="send" value="Send" type="submit">&nbsp;Send</a>
-    </form>
-  </div>
+      <form id="message-form">
+        <div class="forms">
+          <label class="title">Subject&emsp;&nbsp;</label>
+          <input class="form-area" type="text" id="fname" name="fname">
+        </div>
+        <div class="forms">
+          <label class="reply">Reply Info</label>
+          <input class="reply-form" type="text" id="fname" name="fname">
+        </div>
+        <div class="forms">
+          <label class="body">Body&emsp;&emsp;&nbsp;</label>
+          <textarea class="body-form" type="text" id="fname" name="fname"></textarea>
+        </div>
+        <a class="button" name="send" value="Send" type="submit">&nbsp;Send</a>
+      </form>
+    </div>
   </div>
 </body>
 <footer>
   <%- include("partials/_footer") %>
 </footer>
+
 </html>
