@@ -79,9 +79,9 @@ app.get("/newad", (req, res) => {
   res.render("newad");
 });
 
-// app.get("/account", (req, res) => {
-//   res.render("account");
-// });
+app.get("/account", (req, res) => {
+  res.render("account");
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
