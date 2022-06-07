@@ -6,25 +6,39 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const messageHelper = require('../lib/messageHelper')
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    messageHelper.testHelper(db).then((messages) => {
-      console.log("Return from helper", messages);
-      return res.render('messages', {messages});
-      //return res.json({ messages })
-    }).catch((err) => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-
+    // Get logged in user
+    let userId = 1;
+    // Get all messsages from user
+    messageHelper.getAllMessagesByUserId(userId, db)
+      .then(async function(data) {
+        let firstRow = data[0];
+        //console.log(firstRow);
+        let listingDetail = await messageHelper.getListingFromId(firstRow.listing_id, db);
+        let conversation = await messageHelper.getConversationByMessageId(firstRow.id, db);
+        //console.log('message id: ', firstRow.id);
+        //console.log("listing detail: ", listingDetail);
+        //console.log("conversation:", conversation);
+        return res.render('messages', { userId: userId, messages: data, listing:listingDetail, conversation: conversation });
+      }).catch((err) => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
-  router.get("/new", (reg, res) => {
-    return res.render("newmessage");
-  })
+  router.get("/new/:listingId", (req, res) => {
+    let listingId = req.params.listingId;
+    console.log("Listing ID: ",listingId);
+    return res.render("newmessage", {listingId:listingId});
+  });
+
+  router.post("/new", (reg, res) => {
+
+  });
   return router;
 };
