@@ -26,23 +26,26 @@
   <div class="filters">
     <h2>Filter</h2>
   </div>
-  <% for (let listing in listings) { %>
+
   <div class="show-listings">
+
     <div class="grid-container">
+      <% for (let listing in listings) { %>
       <div class="item-row">
         <a class="button" href="/listings/<%- listings[listing]['id']%>">
         <div class="item-column">
           <img src="https://cars.usnews.com/pics/size/776x517/images/Auto/izmo/i159614768/2022_honda_civic_sedan_angularfront.jpg">
           <div class="listing-info">
-            <span><%= listings[listing]['price'] %></span>
+            <span>$<%= listings[listing]['price'] %></span>
             <span><%= listings[listing]['description'] %></span>
           </div>
         </div>
         </a>
       </div>
+      <% } %>
     </div>
+
   </div>
-  <% } %>
 </body>
 <footer>
   <%- include("partials/_footer") %>
