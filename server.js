@@ -40,6 +40,7 @@ const usersRoutes = require("./routes/users");
 const listingsRoutes = require("./routes/listings");
 const messagesRoutes = require("./routes/messages");
 const newadRoutes = require("./routes/newad");
+const loginRoutes = require("./routes/login");
 //const widgetsRoutes = require("./routes/widgets");
 
 /**
@@ -48,7 +49,7 @@ const newadRoutes = require("./routes/newad");
 /* app.use("/api/users", usersRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/messages", messagesRoutes(db)); */
-app.use("/api/newad", newadRoutes(db));
+//app.use("/api/newad", newadRoutes(db));
 
 /**
  * ROUTING for normal requests
@@ -57,6 +58,7 @@ app.use("/users", usersRoutes(db));
 app.use("/listings", listingsRoutes(db));
 app.use("/messages", messagesRoutes(db));
 app.use("/newad", newadRoutes(db));
+app.use("/", loginRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -75,14 +77,6 @@ app.get("/newmessage", (req, res) => {
 app.get("/listings", (req, res) => {
   res.render("listings");
 });*/
-
-app.get("/newad", (req, res) => {
-  res.render("newad");
-});
-
-app.get("/account", (req, res) => {
-  res.render("account");
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
