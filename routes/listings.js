@@ -9,24 +9,24 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-
-
-
-  router.get("/listings", (req, res) => {
-    let query = `SELECT * FROM listings`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM listings;`)
+      .then((data) => {
+        const templateVars = {
+          "listings": data.rows,
+          "price": "100",
+          "description": data.rows[3],
+        };
         const listings = data.rows;
-        res.json({ listings });
+        //res.json( listings );
+        res.render("listings", templateVars)
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
   });
-  return router;
-};
 
 
+
+  return router
+}

@@ -4,6 +4,7 @@
 <head>
   <title>Listings</title>
 
+
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +21,28 @@
 <header>
   <%- include("partials/_nav") %>
 </header>
-<body>
-  <h1>Hello World</h1>
+<body class="listings">
+  <h2>Listings</h2>
+  <div class="filters">
+    <h2>Filter</h2>
+  </div>
+  <% for (let listing in listings) { %>
+  <div class="show-listings">
+    <div class="grid-container">
+      <div class="item-row">
+        <a class="button" href="/listings/<%- listings[listing]['id']%>">
+        <div class="item-column">
+          <img src="https://cars.usnews.com/pics/size/776x517/images/Auto/izmo/i159614768/2022_honda_civic_sedan_angularfront.jpg">
+          <div class="listing-info">
+            <span><%= listings[listing]['price'] %></span>
+            <span><%= listings[listing]['description'] %></span>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <% } %>
 </body>
 <footer>
   <%- include("partials/_footer") %>
