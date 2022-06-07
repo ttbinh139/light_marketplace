@@ -59,5 +59,5 @@ CREATE TABLE conversations (
   message TEXT NOT NULL,
   created_time TIMESTAMP,
   message_id INTEGER REFERENCES messages(id) ON DELETE CASCADE,
-  owner_id INTEGER REFERENCES messages(sender_id)
+  owner_id INTEGER REFERENCES messages(sender_id) ON DELETE CASCADE
 );
