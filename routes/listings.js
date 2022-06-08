@@ -7,10 +7,9 @@
 
 const express = require('express');
 const router  = express.Router();
+const listingHelper = require('../lib/sellerHelper');
 
 module.exports = (db) => {
-
-
 
   router.get("/listings", (req, res) => {
     let query = `SELECT * FROM listings`;

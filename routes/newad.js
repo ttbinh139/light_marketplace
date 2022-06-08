@@ -8,39 +8,34 @@
 const express = require("express");
 const { renderSync } = require("sass");
 const router = express.Router();
-const messageHelper = require("../lib/messageHelper");
+const sellerHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    messageHelper
-      .testHelper(db)
-      .then((messages) => {
-        console.log("Return from helper", messages);
-        return res.render("newad", { messages });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-
   router.post("/new", (req, res) => {
-    const { title, description, price, imageUrl } = req.body;
-    messageHelper
-      .testHelper(db)
-
+    const listing = req.body;
+    sellerHelper
+      .addNewListing(req.session.user_id, listing, db)
+      .then(async function (data) {
+        let listing_id = await sellerHelper.getAddedListingId(db);
+        sellerHelper.addNewUsers_listing(listing_id, db);
+      })
+      .then(async function (data) {
+        sellerHelper.testHelper(db);
+      })
       .then((result) => {
-        console.log("Return from helper", result);
-        return res.redirect("/newad");
+        return res.redirect("/");
       })
       .catch((e) => {
-        console.error(e);
         res.send(e);
-        return res.redirect("/newad");
+        return res.redirect("/");
       });
   });
 
-  router.get("/newad", (reg, res) => {
-    return res.render("newad");
+  router.get("/", (req, res) => {
+    const templateVars = {
+      user_id: req.session.user_id,
+    };
+    return res.render("newad", templateVars);
   });
 
   return router;

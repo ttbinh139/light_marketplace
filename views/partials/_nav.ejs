@@ -10,12 +10,20 @@
     <div class="column-mid">
       <a class="button" href="/"><h1>Light Market</h1></a>
     </div>
-    <div class="column-right">
-      <a class="button" href="/messages">Messages</a>
-      <form id="form" class="user-posting" action="/login" method="POST">
-        <button class="button" type="submit">Login</button><br />
-        <input class="form-area" type="text" id="email" name="email" /><br />
-      </form>
-    </div>
+
+    <% if (!user_id) {%>
+      <div class="column-right">
+        <a class="button" href="/messages">Messages</a>
+        <form id="form" class="user-posting" action="/login" method="POST">
+          <button class="button" type="submit">Login</button><br />
+          <input class="form-area" type="text" id="email" name="email" /><br />
+        </form>
+      </div>
+    <%}else{%>
+      <div class="column-right">
+        <a class="button" href="/messages">Messages</a>
+      <a class="navbar nav-item navbar-light">Logged in as : <%=user_id.email%></a>
+          <%}%>
+
   </div>
 </nav>

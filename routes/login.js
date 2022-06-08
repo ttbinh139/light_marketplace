@@ -4,17 +4,15 @@ const router = express.Router();
 const { login } = require("../lib/sellerHelper");
 
 module.exports = (db) => {
-  router.post("/login", (req, res) => {
+  router.post("/", (req, res) => {
     const { email } = req.body;
     login(email, db)
       .then((user) => {
         if (!user) {
-          res.send({ error: "error" });
-          return;
+          return res.status(400).send("Email address does not exist."); // error if email dosent exist
         }
-        req.session.userId = user.id;
-        res.send({ user: { name: user.name, email: user.email, id: user.id } });
-        res.redirect("");
+        req.session.user_id = user;
+        return res.redirect("/");
       })
       .catch((e) => res.send(e));
   });
