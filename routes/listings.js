@@ -14,13 +14,6 @@ module.exports = (db) => {
     const queryParams = []
     let queryString = `SELECT * FROM listings JOIN photos ON listings.id = listing_id `
 
-<<<<<<< HEAD
-  router.get("/listings", (req, res) => {
-    let query = `SELECT * FROM listings`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-=======
 
     if (req.query.buying) {
       queryParams.push(`%${req.query.buying}%`);
@@ -45,7 +38,6 @@ module.exports = (db) => {
         const templateVars = {
           "listings": data.rows,
         };
->>>>>>> master
         const listings = data.rows;
         //res.json({ listings });
         res.render("listings", templateVars)
