@@ -25,14 +25,16 @@
     <img src="https://images.pexels.com/photos/1087727/pexels-photo-1087727.jpeg?cs=srgb&dl=pexels-min-an-1087727.jpg&fm=jpg" alt="Italian Trulli">
   </div>
   <div class="grid-container">
+    <% for (let listing in listings) { %>
     <div class="item-row">
-      <a class="button" href="/listings/id">
+      <a class="button" href="/listings/<%- listings[listing]['id']%>">
       <div class="item-column">
-        <img src="https://cars.usnews.com/pics/size/776x517/images/Auto/izmo/i159614768/2022_honda_civic_sedan_angularfront.jpg">
-        <span>$30222</span>
+        <img src="<%= listings[listing]['photo_1'] %>">
+        <span>$<%= listings[listing]['price'] %></span>
       </div>
       </a>
     </div>
+    <% } %>
   </div>
 
   </div>

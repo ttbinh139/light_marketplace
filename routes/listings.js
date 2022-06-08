@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const { route } = require('express/lib/application');
 const router  = express.Router();
 
 module.exports = (db) => {
@@ -25,7 +26,19 @@ module.exports = (db) => {
       });
   });
 
-
+  router.get("/:id", (req,res) => {
+    db.query(`SELECT *
+      FROM listings JOIN photos ON listings.id = listing_id
+      WHERE listings.id = 1;`)
+      .then((data) => {
+        const templateVars = {
+          "listings": data.rows,
+        };
+        const listings = data.rows;
+        //res.json({ listings})
+        res.render("listingid", templateVars)
+      })
+  })
 
   return router
 }
