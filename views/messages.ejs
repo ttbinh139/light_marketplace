@@ -28,46 +28,50 @@
       <% for(let i = 0; i < messages.length; i++) { %>
         <div class="chats-name">
           <% if (messages[i].sender_id === userId) { %>
-            <h4 class="chat-sender">To: <%= messages[i].sender %></h4>
+            <h4 class="chat-sender"><a href="/messages/<%=messages[i].id%>">To: <%= messages[i].sender %></a></h4>
           <% } else if(messages[i].receiver_id === userId) { %>
-            <h4 class="chat-receiver">From: <%= messages[i].sender %></h4>
+            <h4 class="chat-receiver" ><a href="/messages/<%=messages[i].id%>">From: <%= messages[i].sender %></a></h4>
           <% } %>
         </div>
       <% } %>
     <% } %>
   </div>
+  <% if (messageDetail) { %>
   <div class="head-title">
     <div class="row">
-      <% if (listing) { %>
-        <div class="column right"><h2>Listing Info: <a href="/listings/:<%=listing.id%>"><%= listing.title%></a></h2></div>
-      <% } %>
+        <div class="column right">
+          <h2>Listing Title: <a href="/listings/:<%=messageDetail.listing_id%>"><%= messageDetail.title%></a></h2>
+          <span>Listing price: <%=messageDetail.price %></span>
+          <span>Posted: <%=messageDetail.created %></span>
+        </div>
     </div>
   </div>
   <div class="chat-content">
-
     <div class="content">
-      <div class="row">
-
-        <% if (conversation) { %>
-          <% for (let i = 0; i < conversation.length; i++) { %>
-            <div class="column">
-              <div class="received"><%= conversation[i].message %></div>
+      <div class="row" id="main-chat">
+          <% if (conversation) { %>
+            <% for (let i = 0; i < conversation.length; i++) { %>
+              <% if (conversation[i].owner_id === userId) { %>
+                <div class="column">
+                  <div class="sent"><%= conversation[i].message%></div>
+                </div>
+              <% } else { %>
+                <div class="column">
+                  <div class="received"><%= conversation[i].message%></div>
+                </div>
+              <% } %>
             <% } %>
-            </div>
-        <% } %>
-
-        <div class="column">
-          <div class="sent">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
+          <% } %>
       </div>
     </div>
-    <form id="message-form">
+    <form id="reply-message-form" method="/messages/<%=conversation.message_id%>">
       <div class="forms chat-send">
-        <input class="form-area" type="text" id="fname" name="fname">
-        <button class="title button">Send&emsp;&nbsp;</label>
+        <input class="form-area" type="text" id="txt-reply-message" name="txtMessage">
+        <button type="submit" class="title button">Send&emsp;&nbsp;</label>
       </div>
     </form>
   </div>
+  <% } %>
 </body>
 <footer>
   <%- include("partials/_footer") %>

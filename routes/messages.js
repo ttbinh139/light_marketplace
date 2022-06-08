@@ -13,32 +13,114 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     // Get logged in user
     let userId = 1;
-    // Get all messsages from user
-    messageHelper.getAllMessagesByUserId(userId, db)
-      .then(async function(data) {
-        let firstRow = data[0];
-        //console.log(firstRow);
-        let listingDetail = await messageHelper.getListingFromId(firstRow.listing_id, db);
-        let conversation = await messageHelper.getConversationByMessageId(firstRow.id, db);
-        //console.log('message id: ', firstRow.id);
-        //console.log("listing detail: ", listingDetail);
-        //console.log("conversation:", conversation);
-        return res.render('messages', { userId: userId, messages: data, listing:listingDetail, conversation: conversation });
-      }).catch((err) => {
+    messageHelper.getLastestMessageByUserId(userId, db)
+      .then(data => {
+        console.log(data.id);
+        res.redirect(`/messages/${Number(data.id)}`);
+        //res.json(data);
+      })
+      .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
   });
 
+  router.get("/:message_id", (req, res) => {
+    // Get logged in user
+    let userId = 2;
+    let message_id = req.params.message_id;
+    // Get all messsages from user
+    messageHelper.getAllMessagesByUserId(userId, db)
+      .then(async function(data) {
+        let messageDetail = await messageHelper.getMessageById(message_id, db);
+        let conversation = await messageHelper.getConversationByMessageId(message_id, db);
+        //console.log("line 38:", messageDetail);
+        //console.log("line 39: ",conversation);
+        return res.render('messages', { userId: userId, messages: data, messageDetail: messageDetail, conversation:conversation });
+      }).catch((err) => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
   router.get("/new/:listingId", (req, res) => {
     let listingId = req.params.listingId;
-    console.log("Listing ID: ",listingId);
-    return res.render("newmessage", {listingId:listingId});
+    //console.log("Listing ID: ",listingId);
+    let userId = 1;
+    // Get all messsages from user
+    messageHelper.getAllMessagesByUserId(userId, db)
+      .then(async function(data) {
+        let listing = await messageHelper.getListingFromId(listingId, db);
+        console.log(listing);
+        return res.render("newmessage", {userId: userId, messages: data, listing:listing});
+        //return res.render('messages', { userId: userId, messages: data, conversation: messageDetail });
+      }).catch((err) => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+
   });
 
-  router.post("/new", (reg, res) => {
+  router.post("/new/:listingId", (req, res) => {
+    let user_id = 1;
+    let listing_id = req.params.listingId;
+    let message = {
+      sender_id: user_id,
+      listing_id: listing_id,
+      created_time: new Date()
+    };
+    //console.log(req.body);
+    let text = req.body.txtMessage;
 
+    //console.log(message);
+    //console.log(text);
+    messageHelper.saveMessage(message, listing_id, text, db)
+      .then(data => {
+        res.status(201).send(data);
+        //res.json(data);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      })
+  });
+
+  router.post("/:message_id", (req, res) => {
+    let user_id = 2;
+    let message_id = req.params.message_id;
+    let conversation = {
+      message_id: message_id,
+      message: req.body.txtMessage,
+      owner_id: user_id,
+      created_time: new Date()
+    };
+
+    messageHelper.insertNewConversation(conversation, db)
+      .then(data => {
+        res.status(201).send(data);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      })
+  });
+
+  router.get("/conversation/:message_id", (req, res) => {
+    let message_id = req.params.message_id;
+    messageHelper.getConversationByMessageId(message_id, db)
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      res
+          .status(500)
+          .json({ error: err.message });
+    });
   });
   return router;
 };
