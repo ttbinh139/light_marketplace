@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>View Listing</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -26,6 +26,13 @@
       <div class="id-body">
         <div class="image-large">
           <img src="<%= listings[listing]['photo_1'] %>">
+        </div>
+        <div class="user-features">
+          <a class="button">Message</a>
+          <form method="POST" action="/favorites">
+            <button type="submit" class="button">Favorite</button>
+          </form>
+          <span>Posted: <%= listings[listing]['created'] %></span>
         </div>
         <div class="listing-description">
           <span><%= listings[listing]['description'] %></span>

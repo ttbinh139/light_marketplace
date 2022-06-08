@@ -26,6 +26,8 @@ module.exports = (db) => {
 
     if (req.query.max) {
       queryParams.push(req.query.max);
+      console.log('params', typeof queryParams)
+      console.log('params', queryParams)
       queryString += `AND price <= $${queryParams.length} `;
     }
 
@@ -45,15 +47,12 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req,res) => {
+    let id = Object.values(req.params)
     const queryParams = []
     let queryString = `SELECT *
     FROM listings JOIN photos ON listings.id = listing_id
-    WHERE listings.id = 2;`
+    WHERE listings.id = ${id};`
 
-    // if(req.query.id) {
-    //   queryParams.push(req.query.id);
-    //   queryString += `WHERE listings.id = $${queryParams.length} LIMIT 1;`;
-    //   }
 
 
     db.query(queryString, queryParams)
@@ -67,5 +66,28 @@ module.exports = (db) => {
       })
   })
 
+  router.post("/:id", (req, res) => {
+
+  })
   return router
 }
+
+
+
+// router.get("/:id", (req,res) => {
+
+//   db.query(`SELECT *
+//   FROM listings JOIN photos ON listings.id = listing_id
+//   WHERE id = ${req.params.id}`)
+//     .then((data) => {
+//       const templateVars = {
+//         "listings": data.rows,
+//       };
+//       const listings = data.rows;
+//       //res.json({ listings})
+//       res.render("listingid", templateVars)
+//     })
+// })
+
+// return router
+// }

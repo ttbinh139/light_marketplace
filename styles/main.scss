@@ -231,8 +231,8 @@ img {
 
 .id-body {
   width: 85%;
-  height: 800px;
-  margin: 0 auto;
+  height: auto;
+  margin: 0 auto 100px auto;
   border-radius: 25px;
 }
 
@@ -270,5 +270,9 @@ img {
   margin-bottom: 10px;
 }
 .filters .button {
+  color: #e07a5f;
+}
+
+.user-features .button {
   color: #e07a5f;
 }
