@@ -17,6 +17,7 @@ img {
   height: auto;
   display: flex;
   justify-content: space-around;
+
 }
 
 .item-row {
@@ -42,8 +43,8 @@ img {
 }
 
 .item-column img {
-  width: auto;
-  height: auto;
+  max-width: 200px;
+  max-height: 100px;
 }
 
 .item-row .button {
@@ -237,4 +238,99 @@ span.padding {
   content: "";
   display: table;
   clear: both;
+}
+
+//listings
+
+.listings {
+  color: #e07a5f;
+  text-align: center;
+}
+
+.show-listings {
+  width: 80%;
+  height: 800px;
+  border: #3D405B;
+  border-width: 4px;
+  border-style: solid;
+  float: right;
+}
+.filters {
+  width: 20%;
+  height: 800px;
+  background-color: #FBEEDA;
+  border: #3D405B;
+  border-width: 4px;
+  border-style: solid;
+  float: left;
+
+}
+
+.filters h2 {
+  border: #3D405B;
+  border-width: 0 0 4px 0;
+  border-style: solid;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+//listingid
+
+.listing-id h2 {
+  color: #e07a5f;
+  text-align: center;
+}
+
+.id-body {
+  width: 85%;
+  height: auto;
+  margin: 0 auto 100px auto;
+  border-radius: 25px;
+}
+
+.image-large {
+  width: 750px;
+  margin: 0 auto;
+}
+
+.listing-description {
+  background-color: #FBEEDA;
+  border: #3D405B;
+  border-style: solid;
+  border-radius: 15px;
+  width: 750px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 15px;
+  overflow: scroll;
+}
+
+.listing-description::-webkit-scrollbar {
+  display: none;
+}
+
+.listing-description {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.filters form {
+  padding-top: 10px;
+}
+
+.filters .form-area {
+  margin-bottom: 10px;
+}
+.filters .button {
+  color: #e07a5f;
+}
+
+.user-features .button {
+  color: #e07a5f;
 }

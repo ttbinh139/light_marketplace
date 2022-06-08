@@ -47,6 +47,7 @@ const usersRoutes = require("./routes/users");
 const listingsRoutes = require("./routes/listings");
 const messagesRoutes = require("./routes/messages");
 const newadRoutes = require("./routes/newad");
+const homeRoutes = require("./routes/home");
 //const widgetsRoutes = require("./routes/widgets");
 
 /**
@@ -63,13 +64,15 @@ app.use("/users", usersRoutes(db));
 app.use("/listings", listingsRoutes(db));
 app.use("/messages", messagesRoutes(db));
 app.use("/newad", newadRoutes(db));
+app.use("/home", homeRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+
+  res.redirect("/home");
 });
 /*
 app.get("/messages", (req, res) => {

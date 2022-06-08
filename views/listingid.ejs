@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Listings</title>
-
+  <title>View Listing</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -17,44 +16,31 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
-<header>
-  <%- include("partials/_nav") %>
-</header>
-<body class="listings">
-  <h2>Listings</h2>
-  <div class="filters">
-    <h2>Filter</h2>
-    <form>
-      <label class="filter-label">Min Price</a><br>
-      <input class="form-area" type="text" name="min"><br>
-      <label class="filter-label">Max Price</a><br>
-      <input class="form-area" type="text" name="max"><br>
-      <button type="submit" class="button">Apply</button>
-    </form>
-  </div>
-
-  <div class="show-listings">
-
-    <div class="grid-container">
+  </head>
+  <header>
+    <%- include("partials/_nav") %>
+  </header>
+    <body class="listing-id">
       <% for (let listing in listings) { %>
-      <div class="item-row">
-        <a class="button" href="/listings/<%- listings[listing]['id']%>">
-        <div class="item-column">
+      <h2>$<%= listings[listing]['price'] %> - <%= listings[listing]['title'] %></h2>
+      <div class="id-body">
+        <div class="image-large">
           <img src="<%= listings[listing]['photo_1'] %>">
-          <div class="listing-info">
-            <span>$<%= listings[listing]['price'] %></span>
-            <span><%= listings[listing]['title'] %></span>
-          </div>
         </div>
-        </a>
+        <div class="user-features">
+          <a class="button">Message</a>
+          <form method="POST" action="/favorites">
+            <button type="submit" class="button">Favorite</button>
+          </form>
+          <span>Posted: <%= listings[listing]['created'] %></span>
+        </div>
+        <div class="listing-description">
+          <span><%= listings[listing]['description'] %></span>
+        </div>
       </div>
-      <% } %>
-    </div>
-
-  </div>
-</body>
-<footer>
-  <%- include("partials/_footer") %>
-</footer>
+    </body>
+    <% } %>
+  <footer>
+    <%- include("partials/_footer") %>
+  </footer>
 </html>
