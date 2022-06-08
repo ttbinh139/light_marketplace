@@ -22,7 +22,7 @@
   </header>
     <body class="listing-id">
       <% for (let listing in listings) { %>
-      <h2><%= listings[listing]['title'] %> - <%= listings[listing]['price'] %></h2>
+      <h2>$<%= listings[listing]['price'] %> - <%= listings[listing]['title'] %></h2>
       <div class="id-body">
         <div class="image-large">
           <img src="<%= listings[listing]['photo_1'] %>">

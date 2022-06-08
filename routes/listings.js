@@ -16,7 +16,7 @@ module.exports = (db) => {
 
     if (req.query.buying) {
       queryParams.push(`%${req.query.buying}%`);
-      queryString += `WHERE title LIKE $${queryParams.length};`;
+      queryString += `WHERE title LIKE $${queryParams.length} `;
     }
 
     if (req.query.min) {
@@ -45,9 +45,18 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req,res) => {
-    db.query(`SELECT *
-      FROM listings JOIN photos ON listings.id = listing_id
-      WHERE listings.id = 1;`)
+    const queryParams = []
+    let queryString = `SELECT *
+    FROM listings JOIN photos ON listings.id = listing_id
+    WHERE listings.id = 2;`
+
+    // if(req.query.id) {
+    //   queryParams.push(req.query.id);
+    //   queryString += `WHERE listings.id = $${queryParams.length} LIMIT 1;`;
+    //   }
+
+
+    db.query(queryString, queryParams)
       .then((data) => {
         const templateVars = {
           "listings": data.rows,
