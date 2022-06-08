@@ -1,7 +1,7 @@
 // Client facing scripts here
 
 
-const loadConversation = function (message_id) {
+/* const loadConversation = function (message_id) {
   console.log(message_id);
   //Render listing detail
 
@@ -14,9 +14,9 @@ const loadConversation = function (message_id) {
       renderConversation(data);
     }
   });
-};
+}; */
 
-const renderConversation = function (data) {
+/* const renderConversation = function (data) {
   console.log(data);
   // Render Listing Info
   let htmlOutput = `
@@ -30,7 +30,7 @@ const renderConversation = function (data) {
   // Render Message Section
 
   // Render Form
-};
+}; */
 
 $(document).ready(function () {
   $("#new-message-form").submit(function (event) {
@@ -72,7 +72,6 @@ $(document).ready(function () {
         //appendNewMessage(response);
         let htmlOutput = `<div class="chat-row">
                         <div class="sent">${response.message}</div>
-                        /* <div class="posted-time">${timeago.format(response.created_at)}</div> */
                       </div>`;
         $("#main-chat").append(htmlOutput);
         $("#txt-reply-message").val('');

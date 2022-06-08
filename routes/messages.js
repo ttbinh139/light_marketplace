@@ -35,6 +35,9 @@ module.exports = (db) => {
     let userId = req.session.userId;
     //console.log(userId);
     let message_id = req.params.message_id;
+
+    // Check message exist
+
     // Get all messsages from user
 
     messageHelper.getAllMessagesByUserId(userId, db)
@@ -70,6 +73,8 @@ module.exports = (db) => {
     //console.log("Listing ID: ",listingId);
     let userId = req.session.userId;
 
+    // Check listing exist
+
     // Check if the logged in user already sent message to this seller -> redirect to view message page.
     messageHelper.checkUserSentMessageToListing(userId, listingId, db)
       .then(data => {
@@ -86,8 +91,13 @@ module.exports = (db) => {
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
         let listing = await messageHelper.getListingFromId(listingId, db);
-        console.log(listing);
-        return res.render("newmessage", {userId: userId, messages: data, listing:listing});
+        if (listing) {
+          return res.render("newmessage", {userId: userId, messages: data, listing:listing});
+        } else {
+          let error = "Listing does not exist";
+          return res.render("newmessage", {userId: userId, messages: data, listing:null, error: error});
+        }
+
         //return res.render('messages', { userId: userId, messages: data, conversation: messageDetail });
       }).catch((err) => {
         res

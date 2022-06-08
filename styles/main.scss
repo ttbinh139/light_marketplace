@@ -127,6 +127,10 @@ span.padding {
   margin: 0;
 }
 
+.chats h4 {
+  margin: 10px;
+}
+
 .chats .chats-name {
   text-align: center;
   border: #3D405B;
@@ -159,6 +163,17 @@ span.padding {
   margin-top: 10px;
 }
 
+.chat-content #new-message-form {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 15px 0;
+  border-top: #3D405B;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  margin-top: 10px;
+}
+
 .chat-content {
   overflow: scroll;
 }
@@ -168,6 +183,10 @@ span.padding {
 }
 
 #reply-message-form .form-area {
+  width: 800px;
+}
+
+#new-message-form .form-area {
   width: 800px;
 }
 
@@ -188,7 +207,7 @@ span.padding {
 }
 
 .received {
-  padding: 0 15px;
+  padding: 5px 15px;
   border: #3D405B;
   border-style: solid;
   border-radius: 15px;
@@ -197,7 +216,7 @@ span.padding {
 }
 
 .sent {
-  padding: 0 15px;
+  padding: 5px 15px;
   border: #3D405B;
   border-style: solid;
   border-radius: 15px;

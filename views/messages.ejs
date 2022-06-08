@@ -60,13 +60,13 @@
       <div class="row" id="main-chat">
           <% if (conversation) { %>
             <% for (let i = 0; i < conversation.length; i++) { %>
-              <% if (conversation[i].owner_id === conversation[i].sender_id) { %>
+              <% if (conversation[i].owner_id === Number(userId)) { %>
                 <div class="chat-row">
-                  <div class="received"><%= conversation[i].message%></div>
+                  <div class="sent"><%= conversation[i].message%></div>
                 </div>
               <% } else { %>
                 <div class="chat-row">
-                  <div class="sent"><%= conversation[i].message%></div>
+                  <div class="received"><%= conversation[i].message%></div>
                 </div>
               <% } %>
             <% } %>
