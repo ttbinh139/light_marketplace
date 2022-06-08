@@ -45,13 +45,6 @@ app.use(
 app.use(express.static("public"));
 app.use(fileUpload());
 
-// Init cookie session
-const cookieSession = require('cookie-session');
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
-
 /**
  * Define routing
  */
