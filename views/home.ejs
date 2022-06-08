@@ -21,7 +21,23 @@
   <%- include("partials/_nav") %>
 </header>
 <body>
-  <h1>How did you find me here?</h1>
+  <div id="coverimg">
+    <img src="https://images.pexels.com/photos/1087727/pexels-photo-1087727.jpeg?cs=srgb&dl=pexels-min-an-1087727.jpg&fm=jpg" alt="Italian Trulli">
+  </div>
+  <div class="grid-container">
+    <% for (let listing in listings) { %>
+    <div class="item-row">
+      <a class="button" href="/listings/<%- listings[listing]['id']%>">
+      <div class="item-column">
+        <img src="<%= listings[listing]['photo_1'] %>">
+        <span>$<%= listings[listing]['price'] %></span>
+      </div>
+      </a>
+    </div>
+    <% } %>
+  </div>
+
+  </div>
 </body>
 <footer>
   <%- include("partials/_footer") %>

@@ -3,7 +3,7 @@
 
 <head>
   <title>Messages</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,39 +11,69 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/nav.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/footer.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/forms.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/forms.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 <header>
   <%- include("partials/_nav") %>
 </header>
+
 <body>
-  <h2 id="message-title">Send New Message</h2>
-  <div class="message-container">
-    <div class="message-forms">
-    <form id="message-form">
-      <div class="forms">
-      <label class="title">Subject&emsp;&nbsp;</label>
-      <input class="form-area" type="text" id="fname" name="fname">
+  <div class="msg-container">
+    <% if (error) { %>
+      <div id="message-error">
+        <span><%= error %>. Click <a href="/">here</a> to go to homepage.</span>
       </div>
-      <div class="forms">
-      <label class="reply">Reply Info</label>
-      <input class="reply-form" type="text" id="fname" name="fname">
+    <% } %>
+    <div class="chats">
+      <h2>Chats</h2>
+      <% if (messages) { %>
+        <% for(let i = 0; i < messages.length; i++) { %>
+          <div class="chats-name">
+            <% if (messages[i].sender_id === Number(userId)) { %>
+              <h4 class="chat-sender"><a href="/messages/<%=messages[i].id%>">To: <%= messages[i].receiver %></a></h4>
+            <% } %>
+            <% if(messages[i].receiver_id === Number(userId)) { %>
+              <h4 class="chat-receiver" ><a href="/messages/<%=messages[i].id%>">From: <%= messages[i].sender %></a></h4>
+            <% } %>
+          </div>
+        <% } %>
+      <% } %>
+    </div>
+    <% if (listing !== null) { %>
+    <h2 id="message-title">Send New Message</h2>
+
+      <span>To receipient : <%=listing.name %></span>
+      <span> About item: <a href="/listings/:<%=listing.id%>"><%=listing.title%></a></span>
+
+    <div class="chat-content">
+      <div class="content">
+        <div class="row" style="height: 300px;">
+              <div class="column">
+                <div class="received">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              </div>
+              <div class="column">
+                <div class="sent">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+              </div>
+        </div>
       </div>
-      <div class="forms">
-      <label class="body">Body&emsp;&emsp;&nbsp;</label>
-      <textarea class="body-form" type="text" id="fname" name="fname"></textarea>
-      </div>
-      <a class="button" name="send" value="Send" type="submit">&nbsp;Send</a>
-    </form>
-  </div>
+      <form id="new-message-form" method="/messages/new/<%=listing.id%>">
+        <div class="forms chat-send">
+          <input class="form-area" type="text" id="txt-new-message" name="txtMessage">
+          <button type="submit" id="btn-create-new-message" class="title button">Send&emsp;&nbsp;</label>
+        </div>
+      </form>
+    </div>
+    <% } %>
   </div>
 </body>
 <footer>
   <%- include("partials/_footer") %>
 </footer>
+
 </html>

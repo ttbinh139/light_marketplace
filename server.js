@@ -44,6 +44,14 @@ app.use(
 
 app.use(express.static("public"));
 app.use(fileUpload());
+
+// Init cookie session
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+
 /**
  * Define routing
  */
@@ -54,6 +62,7 @@ const newadRoutes = require("./routes/newad");
 const loginRoutes = require("./routes/login");
 const accountRoutes = require("./routes/account");
 
+const homeRoutes = require("./routes/home");
 //const widgetsRoutes = require("./routes/widgets");
 
 /**
@@ -78,16 +87,15 @@ app.use(
     createParentPath: true,
   })
 );
+app.use("/home", homeRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  const templateVars = {
-    userId: req.session.userId,
-  };
-  res.render("index", templateVars);
+
+  res.redirect("/home");
 });
 
 /*

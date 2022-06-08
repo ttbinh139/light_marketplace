@@ -17,6 +17,7 @@ img {
   height: auto;
   display: flex;
   justify-content: space-around;
+
 }
 
 .item-row {
@@ -42,8 +43,8 @@ img {
 }
 
 .item-column img {
-  width: auto;
-  height: auto;
+  max-width: 200px;
+  max-height: 100px;
 }
 
 .item-row .button {
@@ -57,13 +58,24 @@ img {
 }
 
 //messages
+
+.msg-container {
+  /* height: calc(100vh - 150px); */
+}
+
 .head-title {
   width: 80%;
   height: 100px;
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
+  border-width: 1px;
   float: right;
+}
+
+#message-error {
+  text-align: center;
+  padding: 10px;
 }
 
 .head-title{
@@ -96,11 +108,18 @@ img {
 
 .chats {
   width: 20%;
-  height: 1000px;
+  height: calc(100vh - 150px);
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
+  border-width: thin;
   float: left;
+  padding: 10px;
+}
+
+span.padding {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .chats h2 {
@@ -110,7 +129,12 @@ img {
   border: #3D405B;
   border-style: solid;
   border-width: 0 0 4px 0;
+  border-width: thin;
   margin: 0;
+}
+
+.chats h4 {
+  margin: 10px;
 }
 
 .chats .chats-name {
@@ -118,27 +142,41 @@ img {
   border: #3D405B;
   border-radius: 10px;
   border-style: solid;
+  border-width: thin;
   margin: 15px 0;
 }
 
 .chat-content {
   width: 80%;
-  height: 900px;
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
+  border-width: thin;
   float: left;
   position: relative;
+  padding: 20px;
 }
 
-#message-form {
+.chat-content #reply-message-form {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   padding: 15px 0;
   border-top: #3D405B;
   border-style: solid;
-  border-width: 4px 0 0 0;
+  border-width: 1px 0 0 0;
+  margin-top: 10px;
+}
+
+.chat-content #new-message-form {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 15px 0;
+  border-top: #3D405B;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  margin-top: 10px;
 }
 
 .chat-content {
@@ -149,8 +187,14 @@ img {
   padding-left: 15px;
 }
 
-#message-form .form-area {
-  width: 500px;
+#reply-message-form .form-area {
+  width: 60vw;
+  padding: 6px 0px 6px 12px;
+}
+
+#new-message-form .form-area {
+  width: 60vw;
+  padding: 6px 0px 6px 12px;
 }
 
 .content .column {
@@ -160,18 +204,33 @@ img {
 
 }
 
-.content .received {
-  padding: 0 15px;
-  border: #3D405B;
-  border-style: solid;
-  border-radius: 15px;
+#main-chat {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  overflow-y: scroll;
 }
 
-.content .sent {
-  padding: 0 15px;
+.chat-row {
+  margin-top:5px;
+}
+
+.received {
+  padding: 5px 15px;
   border: #3D405B;
   border-style: solid;
   border-radius: 15px;
+  border-width: thin;
+  float:left;
+}
+
+.sent {
+  padding: 5px 15px;
+  border: #3D405B;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: thin;
+  float:right;
 }
 
 /* Clear floats after the columns */
@@ -179,4 +238,99 @@ img {
   content: "";
   display: table;
   clear: both;
+}
+
+//listings
+
+.listings {
+  color: #e07a5f;
+  text-align: center;
+}
+
+.show-listings {
+  width: 80%;
+  height: 800px;
+  border: #3D405B;
+  border-width: 4px;
+  border-style: solid;
+  float: right;
+}
+.filters {
+  width: 20%;
+  height: 800px;
+  background-color: #FBEEDA;
+  border: #3D405B;
+  border-width: 4px;
+  border-style: solid;
+  float: left;
+
+}
+
+.filters h2 {
+  border: #3D405B;
+  border-width: 0 0 4px 0;
+  border-style: solid;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+//listingid
+
+.listing-id h2 {
+  color: #e07a5f;
+  text-align: center;
+}
+
+.id-body {
+  width: 85%;
+  height: auto;
+  margin: 0 auto 100px auto;
+  border-radius: 25px;
+}
+
+.image-large {
+  width: 750px;
+  margin: 0 auto;
+}
+
+.listing-description {
+  background-color: #FBEEDA;
+  border: #3D405B;
+  border-style: solid;
+  border-radius: 15px;
+  width: 750px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 15px;
+  overflow: scroll;
+}
+
+.listing-description::-webkit-scrollbar {
+  display: none;
+}
+
+.listing-description {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.filters form {
+  padding-top: 10px;
+}
+
+.filters .form-area {
+  margin-bottom: 10px;
+}
+.filters .button {
+  color: #e07a5f;
+}
+
+.user-features .button {
+  color: #e07a5f;
 }
