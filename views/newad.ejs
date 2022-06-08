@@ -38,10 +38,17 @@
           type="title"
           name="title"
           placeholder="Title"
+          required
         />
 
         <label for="price">Price</label>
-        <input class="form-control" type="price" name="price" placeholder="0" />
+        <input
+          class="form-control"
+          type="price"
+          name="price"
+          placeholder="0"
+          required
+        />
 
         <label for="condtion">Condition</label>
         <select
@@ -57,7 +64,15 @@
         <label for="niche">Type</label>
         <select class="form-control" type="niche" name="niche">
           <option>Shoes</option>
-          <option>Tv</option>
+          <option>Autmobile</option>
+          <option>Accessory</option>
+          <option>Furniture</option>
+          <option>Mobile Phones</option>
+          <option>Clothing</option>
+          <option>Electronics</option>
+          <option>Home and Appliances</option>
+          <option>Gifts</option>
+          <option>Music</option>
         </select>
 
         <label for="description">Description</label>
@@ -66,41 +81,67 @@
           cols="50"
           rows="10"
           name="description"
+          required
         ></textarea>
 
-      <div class="upload-image">
+        <div class="upload-image">
           <div class="form-control image-box">
-            <input type="file" id="file-1" accept="image/*" name="photo1" />
+            <input
+              type="file"
+              id="file-1"
+              accept="image/*"
+              name="photo1"
+              required
+            />
             <label for="file-1" id="file-1-preview">
               <img src="https://bit.ly/3ubuq5o" alt="" />
             </label>
           </div>
 
           <div class="form-control image-box">
-            <input type="file" id="file-2" accept="image/*" name="photo2" />
+            <input
+              type="file"
+              id="file-2"
+              accept="image/*"
+              name="photo2"
+              required
+            />
             <label for="file-2" id="file-2-preview">
               <img src="https://bit.ly/3ubuq5o" alt="" />
             </label>
           </div>
 
           <div class="form-control image-box">
-            <input type="file" id="file-3" accept="image/*" name="photo3" />
+            <input
+              type="file"
+              id="file-3"
+              accept="image/*"
+              name="photo3"
+              required
+            />
             <label for="file-3" id="file-3-preview">
               <img src="https://bit.ly/3ubuq5o" alt="" />
             </label>
           </div>
 
           <div class="form-control image-box">
-            <input type="file" id="file-4" accept="image/*" name="photo4" />
+            <input
+              type="file"
+              id="file-4"
+              accept="image/*"
+              name="photo4"
+              required
+            />
             <label for="file-4" id="file-4-preview">
               <img src="https://bit.ly/3ubuq5o" alt="" />
             </label>
           </div>
+        </div>
 
-          <button type="submit" id = "picsubmit" class="btn btn-primary btn-sm">Submit</button>
-
-  </form>
-
+        <button type="submit" id="picsubmit" class="btn btn-primary btn-sm">
+          Submit
+        </button>
+      </form>
     </div>
 
     <script>
@@ -120,8 +161,9 @@
       previewBeforeUpload("file-1");
       previewBeforeUpload("file-2");
       previewBeforeUpload("file-3");
+      previewBeforeUpload("file-4");
 
-
+      $(document).ready(function () {});
     </script>
   </body>
   <footer><%- include("partials/_footer") %></footer>

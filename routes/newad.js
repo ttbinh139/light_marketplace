@@ -14,14 +14,18 @@ const sellerHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
   router.post("/new", (req, res) => {
+    let files = [];
     if (!req.files) {
       return res.status(400).send("No files were uploaded!");
     }
-    const path = "/vagrant/light_marketplace/public/pictures";
+    const path = "/vagrant/light_marketplace/public/picture/pictures";
 
-    const file = req.files.filename;
-    for (let i = 0; i < file.length; i++) {
-      file[i].mv(path + file[i].name, (err) => {
+    const file = req.files;
+    let key = Object.keys(file);
+
+    for (let keys of key) {
+      file[keys].mv(path + file[keys].name, (err) => {
+        files.push(path + file[keys].name);
         if (err) {
           return res.status(500).send(err);
         }
@@ -33,15 +37,18 @@ module.exports = (db) => {
     const file4 = req.files.photo4;*/
 
     const listing = req.body;
-
+    let niche = sellerHelper.addNiche(listing.niche, db);
     Promise.all([
-      sellerHelper.addNewListing(req.session.userId, listing, db),
+      sellerHelper.addNewListing(req.session.userId, listing, niche, db),
       sellerHelper.getAddedListingId(db),
     ])
       .then((values) => {
         let listing_id = values[1];
         sellerHelper.addNewUsers_listing(listing_id, db);
-        sellerHelper.addNewPhotos(listing_id, path, db);
+        sellerHelper.addNewPhotos(listing_id, files, db);
+      })
+      .then((result) => {
+        sellerHelper.testHelper(db);
       })
       .then((result) => {
         return res.redirect("/");
