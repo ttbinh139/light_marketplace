@@ -3,7 +3,7 @@
 
 <head>
   <title>Messages</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,64 +23,66 @@
   <%- include("partials/_nav") %>
 </header>
 <body>
-  <% if (error) { %>
-    <div id="message-error">
-      <span><%= error %>. Click <a href="/">here</a> to go to homepage.</span>
-    </div>
-  <% } %>
-  <div class="chats">
-    <h2>Chats</h2>
-    <% if (messages) { %>
-      <% for(let i = 0; i < messages.length; i++) { %>
-        <div class="chats-name">
-          <% if (messages[i].sender_id === Number(userId)) { %>
-            <h4 class="chat-sender"><a href="/messages/<%=messages[i].id%>">To: <%= messages[i].receiver %></a></h4>
-          <% } %>
-          <% if(messages[i].receiver_id === Number(userId)) { %>
-            <h4 class="chat-receiver" ><a href="/messages/<%=messages[i].id%>">From: <%= messages[i].sender %></a></h4>
-          <% } %>
-        </div>
-      <% } %>
+  <div class="msg-container">
+    <% if (error) { %>
+      <div id="message-error">
+        <span><%= error %>. Click <a href="/">here</a> to go to homepage.</span>
+      </div>
     <% } %>
-  </div>
-  <% if (messageDetail) { %>
-  <div class="head-title">
-    <div class="row">
-        <div class="column right">
-          <h2>Title: <%= messageDetail.title%></h2>
-          <span>Price: <%=messageDetail.price %></span>
-          <!-- <span>Posted: <%= messageDetail.created %></span> -->
-          <span class="padding">Posted: 4 days ago</span>
-          <a href="/listings/:<%=messageDetail.listing_id%>">See detail</a>
-        </div>
+    <div class="chats">
+      <h2>Chats</h2>
+      <% if (messages) { %>
+        <% for(let i = 0; i < messages.length; i++) { %>
+          <div class="chats-name">
+            <% if (messages[i].sender_id === Number(userId)) { %>
+              <h4 class="chat-sender"><a href="/messages/<%=messages[i].id%>">To: <%= messages[i].receiver %></a></h4>
+            <% } %>
+            <% if(messages[i].receiver_id === Number(userId)) { %>
+              <h4 class="chat-receiver" ><a href="/messages/<%=messages[i].id%>">From: <%= messages[i].sender %></a></h4>
+            <% } %>
+          </div>
+        <% } %>
+      <% } %>
     </div>
-  </div>
-  <div class="chat-content">
-    <div class="content">
-      <div class="row" id="main-chat">
-          <% if (conversation) { %>
-            <% for (let i = 0; i < conversation.length; i++) { %>
-              <% if (conversation[i].owner_id === Number(userId)) { %>
-                <div class="chat-row">
-                  <div class="sent"><%= conversation[i].message%></div>
-                </div>
-              <% } else { %>
-                <div class="chat-row">
-                  <div class="received"><%= conversation[i].message%></div>
-                </div>
+    <% if (messageDetail) { %>
+    <div class="head-title">
+      <div class="row">
+          <div class="column right">
+            <h2>Title: <%= messageDetail.title%></h2>
+            <span>Price: <%=messageDetail.price %></span>
+            <!-- <span>Posted: <%= messageDetail.created %></span> -->
+            <span class="padding">Posted: 4 days ago</span>
+            <a href="/listings/:<%=messageDetail.listing_id%>">See detail</a>
+          </div>
+      </div>
+    </div>
+    <div class="chat-content">
+      <div class="content">
+        <div class="row" id="main-chat">
+            <% if (conversation) { %>
+              <% for (let i = 0; i < conversation.length; i++) { %>
+                <% if (conversation[i].owner_id === Number(userId)) { %>
+                  <div class="chat-row">
+                    <div class="sent"><%= conversation[i].message%></div>
+                  </div>
+                <% } else { %>
+                  <div class="chat-row">
+                    <div class="received"><%= conversation[i].message%></div>
+                  </div>
+                <% } %>
               <% } %>
             <% } %>
-          <% } %>
+        </div>
       </div>
+      <form id="reply-message-form" method="/messages/<%=conversation.message_id%>">
+        <div class="forms chat-send">
+          <input class="form-area" type="text" id="txt-reply-message" name="txtMessage">
+          <button type="submit" class="title button">Send&emsp;&nbsp;</label>
+        </div>
+      </form>
     </div>
-    <form id="reply-message-form" method="/messages/<%=conversation.message_id%>">
-      <div class="forms chat-send">
-        <input class="form-area" type="text" id="txt-reply-message" name="txtMessage">
-        <button type="submit" class="title button">Send&emsp;&nbsp;</label>
-      </div>
-    </form>
+    <% } %>
   </div>
-  <% } %>
 </body>
 <footer>
   <%- include("partials/_footer") %>

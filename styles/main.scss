@@ -57,6 +57,11 @@ img {
 }
 
 //messages
+
+.msg-container {
+  /* height: calc(100vh - 150px); */
+}
+
 .head-title {
   width: 80%;
   height: 100px;
@@ -102,7 +107,7 @@ img {
 
 .chats {
   width: 20%;
-  height: 1000px;
+  height: calc(100vh - 150px);
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
@@ -142,7 +147,6 @@ span.padding {
 
 .chat-content {
   width: 80%;
-  height: 900px;
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
@@ -183,11 +187,13 @@ span.padding {
 }
 
 #reply-message-form .form-area {
-  width: 800px;
+  width: 60vw;
+  padding: 6px 0px 6px 12px;
 }
 
 #new-message-form .form-area {
-  width: 800px;
+  width: 60vw;
+  padding: 6px 0px 6px 12px;
 }
 
 .content .column {
@@ -200,6 +206,8 @@ span.padding {
 #main-chat {
   display: flex;
   flex-direction: column;
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 .chat-row {
