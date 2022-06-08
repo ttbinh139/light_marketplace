@@ -58,28 +58,6 @@ module.exports = (db) => {
       });
   });
 
-  /*router.post("/upload", (req, res) => {
-    if (!req.files) {
-      return res.status(400).send("No files were uploaded!");
-    }
-
-    const file1 = req.files.photo1;
-    const file2 = req.files.photo2;
-    const file3 = req.files.photo3;
-    const file4 = req.files.photo4;
-
-    const path = "/vagrant/light_marketplace/public/pictures" + file1.name;
-    const allowedExtension = [".png", ".jpg", ".jpeg"];
-
-    file1.mv(path, (err) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.send({ status: "success", path: path });
-      return;
-    });
-  });*/
-
   router.get("/", (req, res) => {
     const templateVars = {
       userId: req.session.userId,

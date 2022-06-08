@@ -22,8 +22,6 @@ module.exports = (db) => {
       });
   });
 
-<<<<<<< HEAD
-=======
   router.get("/login/:userId", (req, res) => {
     console.log(req.params.userId);
     req.session.userId = req.params.userId;
@@ -34,6 +32,5 @@ module.exports = (db) => {
     req.session.userId = null;
     res.redirect("/");
   })
->>>>>>> master
   return router;
 };
