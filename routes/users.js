@@ -21,5 +21,16 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/login/:userId", (req, res) => {
+    console.log(req.params.userId);
+    req.session.userId = req.params.userId;
+    res.redirect("/");
+  });
+
+  router.get("/logout", (req, res) => {
+    req.session.userId = null;
+    res.redirect("/");
+  })
   return router;
 };

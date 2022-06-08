@@ -27,9 +27,10 @@
     <% if (messages) { %>
       <% for(let i = 0; i < messages.length; i++) { %>
         <div class="chats-name">
-          <% if (messages[i].sender_id === userId) { %>
+          <% if (messages[i].sender_id === Number(userId)) { %>
             <h4 class="chat-sender"><a href="/messages/<%=messages[i].id%>">To: <%= messages[i].sender %></a></h4>
-          <% } else if(messages[i].receiver_id === userId) { %>
+          <% } %>
+          <% if(messages[i].receiver_id === Number(userId)) { %>
             <h4 class="chat-receiver" ><a href="/messages/<%=messages[i].id%>">From: <%= messages[i].sender %></a></h4>
           <% } %>
         </div>
@@ -51,7 +52,7 @@
       <div class="row" id="main-chat">
           <% if (conversation) { %>
             <% for (let i = 0; i < conversation.length; i++) { %>
-              <% if (conversation[i].owner_id === userId) { %>
+              <% if (conversation[i].owner_id === conversation[i].sender_id) { %>
                 <div class="column">
                   <div class="sent"><%= conversation[i].message%></div>
                 </div>

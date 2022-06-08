@@ -12,9 +12,11 @@ const messageHelper = require('../lib/messageHelper')
 module.exports = (db) => {
   router.get("/", (req, res) => {
     // Get logged in user
-    let userId = 1;
+    let userId = req.session.userId;
+    console.log("Line 16: ",userId);
     messageHelper.getLastestMessageByUserId(userId, db)
       .then(data => {
+        console.log(data);
         console.log(data.id);
         res.redirect(`/messages/${Number(data.id)}`);
         //res.json(data);
@@ -28,11 +30,13 @@ module.exports = (db) => {
 
   router.get("/:message_id", (req, res) => {
     // Get logged in user
-    let userId = 2;
+    let userId = req.session.userId;
+    //console.log(userId);
     let message_id = req.params.message_id;
     // Get all messsages from user
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
+        console.log("Line 39:",data);
         let messageDetail = await messageHelper.getMessageById(message_id, db);
         let conversation = await messageHelper.getConversationByMessageId(message_id, db);
         //console.log("line 38:", messageDetail);
@@ -48,7 +52,8 @@ module.exports = (db) => {
   router.get("/new/:listingId", (req, res) => {
     let listingId = req.params.listingId;
     //console.log("Listing ID: ",listingId);
-    let userId = 1;
+    let userId = req.session.userId;
+    console.log(userId);
     // Get all messsages from user
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
@@ -65,7 +70,7 @@ module.exports = (db) => {
   });
 
   router.post("/new/:listingId", (req, res) => {
-    let user_id = 1;
+    let user_id = req.session.userId;
     let listing_id = req.params.listingId;
     let message = {
       sender_id: user_id,
@@ -90,7 +95,7 @@ module.exports = (db) => {
   });
 
   router.post("/:message_id", (req, res) => {
-    let user_id = 2;
+    let user_id = req.session.userId;
     let message_id = req.params.message_id;
     let conversation = {
       message_id: message_id,

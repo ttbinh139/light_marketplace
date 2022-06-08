@@ -33,6 +33,13 @@ app.use(
 
 app.use(express.static("public"));
 
+// Init cookie session
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+
 /**
  * Define routing
  */
