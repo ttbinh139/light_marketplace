@@ -5,6 +5,8 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
+const fileUpload = require("express-fileupload");
+const path = require("path");
 const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
@@ -41,7 +43,7 @@ app.use(
 );
 
 app.use(express.static("public"));
-
+app.use(fileUpload());
 /**
  * Define routing
  */
@@ -71,6 +73,11 @@ app.use("/messages", messagesRoutes(db));
 app.use("/newad", newadRoutes(db));
 app.use("/login", loginRoutes(db));
 app.use("/account", accountRoutes(db));
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
 
 // Home page
 // Warning: avoid creating more routes in this file!
