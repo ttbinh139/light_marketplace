@@ -70,10 +70,12 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         //appendNewMessage(response);
-        let htmlOutput = `<div class="column">
+        let htmlOutput = `<div class="chat-row">
                         <div class="sent">${response.message}</div>
+                        /* <div class="posted-time">${timeago.format(response.created_at)}</div> */
                       </div>`;
         $("#main-chat").append(htmlOutput);
+        $("#txt-reply-message").val('');
         console.log("Appended new message");
       },
     });

@@ -36,10 +36,10 @@ module.exports = (db) => {
     // Get all messsages from user
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
-        console.log("Line 39:",data);
+        //console.log("Line 39:",data);
         let messageDetail = await messageHelper.getMessageById(message_id, db);
         let conversation = await messageHelper.getConversationByMessageId(message_id, db);
-        //console.log("line 38:", messageDetail);
+        console.log("line 42:", messageDetail);
         //console.log("line 39: ",conversation);
         return res.render('messages', { userId: userId, messages: data, messageDetail: messageDetail, conversation:conversation });
       }).catch((err) => {

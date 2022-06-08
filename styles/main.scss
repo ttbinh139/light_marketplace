@@ -63,6 +63,7 @@ img {
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
+  border-width: 1px;
   float: right;
 }
 
@@ -100,7 +101,9 @@ img {
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
+  border-width: thin;
   float: left;
+  padding: 10px;
 }
 
 .chats h2 {
@@ -110,6 +113,7 @@ img {
   border: #3D405B;
   border-style: solid;
   border-width: 0 0 4px 0;
+  border-width: thin;
   margin: 0;
 }
 
@@ -118,6 +122,7 @@ img {
   border: #3D405B;
   border-radius: 10px;
   border-style: solid;
+  border-width: thin;
   margin: 15px 0;
 }
 
@@ -127,18 +132,21 @@ img {
   background-color: #FBEEDA;
   border: #3D405B;
   border-style: solid;
+  border-width: thin;
   float: left;
   position: relative;
+  padding: 20px;
 }
 
-.chat-content #message-form {
+.chat-content #reply-message-form {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   padding: 15px 0;
   border-top: #3D405B;
   border-style: solid;
-  border-width: 4px 0 0 0;
+  border-width: 1px 0 0 0;
+  margin-top: 10px;
 }
 
 .chat-content {
@@ -149,8 +157,8 @@ img {
   padding-left: 15px;
 }
 
-#message-form .form-area {
-  width: 500px;
+#reply-message-form .form-area {
+  width: 800px;
 }
 
 .content .column {
@@ -160,18 +168,31 @@ img {
 
 }
 
-.content .received {
-  padding: 0 15px;
-  border: #3D405B;
-  border-style: solid;
-  border-radius: 15px;
+#main-chat {
+  display: flex;
+  flex-direction: column;
 }
 
-.content .sent {
+.chat-row {
+  margin-top:5px;
+}
+
+.received {
   padding: 0 15px;
   border: #3D405B;
   border-style: solid;
   border-radius: 15px;
+  border-width: thin;
+  float:left;
+}
+
+.sent {
+  padding: 0 15px;
+  border: #3D405B;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: thin;
+  float:right;
 }
 
 /* Clear floats after the columns */
