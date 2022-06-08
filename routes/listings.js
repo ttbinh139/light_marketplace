@@ -6,13 +6,31 @@
  */
 
 const express = require('express');
-const { route } = require('express/lib/application');
 const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT *
-              FROM listings JOIN photos ON listings.id = listing_id;`)
+    const queryParams = []
+    let queryString = `SELECT * FROM listings JOIN photos ON listings.id = listing_id `
+
+
+    if (req.query.buying) {
+      queryParams.push(`%${req.query.buying}%`);
+      queryString += `WHERE title LIKE $${queryParams.length};`;
+    }
+
+    if (req.query.min) {
+      queryParams.push(req.query.min);
+      queryString += `AND price >= $${queryParams.length} `;
+    }
+
+    if (req.query.max) {
+      queryParams.push(req.query.max);
+      queryString += `AND price <= $${queryParams.length} `;
+    }
+
+
+    db.query(queryString, queryParams)
       .then((data) => {
         const templateVars = {
           "listings": data.rows,
