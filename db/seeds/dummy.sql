@@ -54,46 +54,46 @@ VALUES (10, 'Music');
 
 -- Listings table seeds here (Example)
 
-INSERT INTO listings (id, title, description, price, active, condition, user_id, niche_id) VALUES (1, 'Selling new shoes!', 'Selling pair of red shoes from Prada. Conditions are like brand new and size are 8 women. Email please!', '50', TRUE, TRUE, 1, 1);
+INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Selling new shoes!', 'Selling pair of red shoes from Prada. Conditions are like brand new and size are 8 women. Email please!', '50', TRUE, TRUE, 1, 1);
 
-INSERT INTO listings (id, title, description, price, active, condition, user_id, niche_id) VALUES (2, 'Selling mens watch!', 'Selling Tom Browne watch. Conditions are like brand new. Email please!', '500', TRUE, TRUE, 2, 3);
+INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Selling mens watch!', 'Selling Tom Browne watch. Conditions are like brand new. Email please!', '500', TRUE, TRUE, 2, 3);
 
-INSERT INTO listings (id, title, description, price, active, condition, user_id, niche_id)
-VALUES (3,'Selling women clothing!', 'Selling alot of women clothing! Have a LG pink shirt, a blouse and size 28 pants! 50 dollars each', '50', TRUE, FALSE, 3, 6);
+INSERT INTO listings (title, description, price, active, condition, user_id, niche_id)
+VALUES ('Selling women clothing!', 'Selling alot of women clothing! Have a LG pink shirt, a blouse and size 28 pants! 50 dollars each', '50', TRUE, FALSE, 3, 6);
 
-INSERT INTO listings (id, title, description, price, active, condition, user_id, niche_id) VALUES (4, 'Selling used couch!', 'Selling white couch. Used for 10 years. Email please!', '300', TRUE, FALSE, 4, 4);
+INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Selling used couch!', 'Selling white couch. Used for 10 years. Email please!', '300', TRUE, FALSE, 4, 4);
 
-INSERT INTO listings (id, title, description, price, active, condition, user_id, niche_id) VALUES (5, 'Selling Galaxy S20!', 'Selling a BNIB Galaxy S20!', '500', TRUE, TRUE, 5, 5);
+INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Selling Galaxy S20!', 'Selling a BNIB Galaxy S20!', '500', TRUE, TRUE, 5, 5);
 
 -- users_listing table seeds here (Example)
 
-INSERT INTO users_listings (id, listing_id) VALUES (1,1);
+INSERT INTO users_listings (listing_id) VALUES (1);
 
-INSERT INTO users_listings (id, listing_id) VALUES (2,2);
+INSERT INTO users_listings (listing_id) VALUES (2);
 
-INSERT INTO users_listings (id, listing_id) VALUES (3,3);
+INSERT INTO users_listings (listing_id) VALUES (3);
 
-INSERT INTO users_listings (id, listing_id) VALUES (4,4);
+INSERT INTO users_listings (listing_id) VALUES (4);
 
-INSERT INTO users_listings (id, listing_id) VALUES (5,5);
+INSERT INTO users_listings (listing_id) VALUES (5);
 
 
 -- photo table seeds here (Example)
 
-INSERT INTO photos (id, photo_1, photo_2,listing_id)
-VALUES (1,'https://i.ebayimg.com/images/g/g2IAAOSwo~FiJ3Kq/s-l1600.jpg','https://i.ebayimg.com/images/g/Jh8AAOSwFMtiJ3Kt/s-l1600.jpg',1);
+INSERT INTO photos (photo_1, photo_2,listing_id)
+VALUES ('https://i.ebayimg.com/images/g/g2IAAOSwo~FiJ3Kq/s-l1600.jpg','https://i.ebayimg.com/images/g/Jh8AAOSwFMtiJ3Kt/s-l1600.jpg',1);
 
-INSERT INTO photos (id, photo_1, photo_2, photo_3, listing_id)
-VALUES (2,'https://i.ebayimg.com/images/g/K5EAAOSwau1hFy8K/s-l1600.jpg','https://i.ebayimg.com/images/g/37wAAOSwH3xhFy8Z/s-l1600.jpg', 'https://i.ebayimg.com/images/g/gHkAAOSw0EVhFy8S/s-l1600.jpg', 2);
+INSERT INTO photos (photo_1, photo_2, photo_3, listing_id)
+VALUES ('https://i.ebayimg.com/images/g/K5EAAOSwau1hFy8K/s-l1600.jpg','https://i.ebayimg.com/images/g/37wAAOSwH3xhFy8Z/s-l1600.jpg', 'https://i.ebayimg.com/images/g/gHkAAOSw0EVhFy8S/s-l1600.jpg', 2);
 
-INSERT INTO photos (id, photo_1, photo_2, photo_3, listing_id)
-VALUES (3, 'https://i.ebayimg.com/images/g/Mo4AAOSwJ1dh35KL/s-l1600.jpg', 'https://i.ebayimg.com/images/g/GFAAAOSwjY1ijINc/s-l1600.jpg','https://i.ebayimg.com/images/g/UCUAAOSwaDtiecg3/s-l1600.jpg',3);
+INSERT INTO photos (photo_1, photo_2, photo_3, listing_id)
+VALUES ( 'https://i.ebayimg.com/images/g/Mo4AAOSwJ1dh35KL/s-l1600.jpg', 'https://i.ebayimg.com/images/g/GFAAAOSwjY1ijINc/s-l1600.jpg','https://i.ebayimg.com/images/g/UCUAAOSwaDtiecg3/s-l1600.jpg',3);
 
-INSERT INTO photos (id, photo_1, listing_id)
-VALUES (4,'https://i.ebayimg.com/images/g/5BgAAOSweh9ijq5I/s-l1600.jpg',4);
+INSERT INTO photos (photo_1, listing_id)
+VALUES ('https://i.ebayimg.com/images/g/5BgAAOSweh9ijq5I/s-l1600.jpg',4);
 
-INSERT INTO photos (id, photo_1, photo_2, photo_3, photo_4, listing_id)
-VALUES (5,'https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',5);
+INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
+VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',5);
 
 
 -- messages table seeds here (Example)

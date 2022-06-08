@@ -13,21 +13,21 @@ const sellerHelper = require("../lib/sellerHelper");
 module.exports = (db) => {
   router.post("/new", (req, res) => {
     const listing = req.body;
-    sellerHelper
-      .addNewListing(req.session.user_id, listing, db)
-      .then(async function (data) {
-        let listing_id = await sellerHelper.getAddedListingId(db);
+
+    Promise.all([
+      sellerHelper.addNewListing(req.session.user_id, listing, db),
+      sellerHelper.getAddedListingId(db),
+    ])
+      .then((values) => {
+        let listing_id = values[1];
         sellerHelper.addNewUsers_listing(listing_id, db);
-      })
-      .then(async function (data) {
-        sellerHelper.testHelper(db);
+        sellerHelper.addNewPhotos(listing_id, listing, db);
       })
       .then((result) => {
         return res.redirect("/");
       })
-      .catch((e) => {
-        res.send(e);
-        return res.redirect("/");
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
   });
 
