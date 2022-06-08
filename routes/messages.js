@@ -16,9 +16,11 @@ module.exports = (db) => {
     console.log("Line 16: ",userId);
     messageHelper.getLastestMessageByUserId(userId, db)
       .then(data => {
-        console.log(data);
-        console.log(data.id);
-        res.redirect(`/messages/${Number(data.id)}`);
+        if (data) {
+          res.redirect(`/messages/${Number(data.id)}`);
+        } else {
+          res.render("messages", {error:"You don't have any messages", messages: null, messageDetail:null, conversation:null})
+        }
         //res.json(data);
       })
       .catch(err => {
@@ -34,14 +36,28 @@ module.exports = (db) => {
     //console.log(userId);
     let message_id = req.params.message_id;
     // Get all messsages from user
+
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
-        //console.log("Line 39:",data);
-        let messageDetail = await messageHelper.getMessageById(message_id, db);
-        let conversation = await messageHelper.getConversationByMessageId(message_id, db);
-        console.log("line 42:", messageDetail);
-        //console.log("line 39: ",conversation);
-        return res.render('messages', { userId: userId, messages: data, messageDetail: messageDetail, conversation:conversation });
+        if (data) {
+          let messageDetail = await messageHelper.getMessageById(message_id, db);
+          if (messageDetail) {
+            if (messageDetail.sender_id != userId && messageDetail.receiver_id != userId) {
+              error = "You don't belongs to this conversation";
+              return res.render('messages', { userId: userId, messages: data, messageDetail: null, conversation:null, error:error });
+            }
+            let conversation = await messageHelper.getConversationByMessageId(message_id, db);
+            console.log("line 42:", messageDetail);
+            //console.log("line 39: ",conversation);
+            return res.render('messages', { userId: userId, messages: data, messageDetail: messageDetail, conversation:conversation, error:null });
+          } else {
+            error = "This conversation doesn't exist";
+            return res.render('messages', { userId: userId, messages: data, messageDetail: null, conversation:null, error:error });
+          }
+        } else {
+          error = "You don't have any messages";
+            return res.render('messages', { userId: userId, messages: data, messageDetail: null, conversation:null, error:error });
+        }
       }).catch((err) => {
         res
           .status(500)
@@ -53,7 +69,19 @@ module.exports = (db) => {
     let listingId = req.params.listingId;
     //console.log("Listing ID: ",listingId);
     let userId = req.session.userId;
-    console.log(userId);
+
+    // Check if the logged in user already sent message to this seller -> redirect to view message page.
+    messageHelper.checkUserSentMessageToListing(userId, listingId, db)
+      .then(data => {
+        console.log("Line 76",data);
+        if (data.rows.length > 0) {
+          return res.redirect(`/messages/${Number(data.rows[0].id)}`);
+        }
+      })
+      .catch(err => {
+
+      });
+
     // Get all messsages from user
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {

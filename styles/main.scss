@@ -67,6 +67,11 @@ img {
   float: right;
 }
 
+#message-error {
+  text-align: center;
+  padding: 10px;
+}
+
 .head-title{
   color: #e07a5f;
 }
@@ -104,6 +109,11 @@ img {
   border-width: thin;
   float: left;
   padding: 10px;
+}
+
+span.padding {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .chats h2 {
