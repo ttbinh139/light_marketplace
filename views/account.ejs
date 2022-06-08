@@ -23,16 +23,16 @@
   <header><%- include("partials/_nav") %></header>
   <body>
     <div class="accountbox">
-      <h2>Your Account</h2>
+      <h2><%=userId.name %> Account page</h2>
 
       <div class="account-summary">
-        <p><strong>Name:</strong></p>
-        <p><strong>Email:</strong></p>
-        <p><strong>Address:</strong></p>
+        <p><strong> Name : <%=userId.name %></strong></p>
+        <p><strong>Email : <%=userId.email %></strong></p>
+        <p><strong>Address : <%=userId.address %></strong></p>
       </div>
       <div class="account-information">
         <div class="my-listings">HELLO</div>
-
+        <div><%= listings.title %></div>
         <div class="my-favorites">HELLO</div>
 
         <div class="my-messages">HELLO</div>

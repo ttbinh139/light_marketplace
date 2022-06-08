@@ -11,7 +11,8 @@ module.exports = (db) => {
         if (!user) {
           return res.status(400).send("Email address does not exist."); // error if email dosent exist
         }
-        req.session.user_id = user;
+        req.session.userId = user;
+        console.log(user);
         return res.redirect("/");
       })
       .catch((e) => res.send(e));

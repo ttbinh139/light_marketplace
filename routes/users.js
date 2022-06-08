@@ -6,7 +6,9 @@
  */
 
 const express = require("express");
+const { renderSync } = require("sass");
 const router = express.Router();
+const sellerHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -18,9 +20,6 @@ module.exports = (db) => {
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
-  });
-  router.get("/account", (req, res) => {
-    res.render("account");
   });
 
   return router;

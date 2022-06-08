@@ -50,6 +50,8 @@ const listingsRoutes = require("./routes/listings");
 const messagesRoutes = require("./routes/messages");
 const newadRoutes = require("./routes/newad");
 const loginRoutes = require("./routes/login");
+const accountRoutes = require("./routes/account");
+
 //const widgetsRoutes = require("./routes/widgets");
 
 /**
@@ -68,6 +70,7 @@ app.use("/listings", listingsRoutes(db));
 app.use("/messages", messagesRoutes(db));
 app.use("/newad", newadRoutes(db));
 app.use("/login", loginRoutes(db));
+app.use("/account", accountRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -75,7 +78,7 @@ app.use("/login", loginRoutes(db));
 
 app.get("/", (req, res) => {
   const templateVars = {
-    user_id: req.session.user_id,
+    userId: req.session.userId,
   };
   res.render("index", templateVars);
 });

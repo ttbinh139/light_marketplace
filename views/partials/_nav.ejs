@@ -11,7 +11,7 @@
       <a class="button" href="/"><h1>Light Market</h1></a>
     </div>
 
-    <% if (!user_id) {%>
+    <% if (!userId) {%>
       <div class="column-right">
         <a class="button" href="/messages">Messages</a>
         <form id="form" class="user-posting" action="/login" method="POST">
@@ -22,7 +22,7 @@
     <%}else{%>
       <div class="column-right">
         <a class="button" href="/messages">Messages</a>
-      <a class="navbar nav-item navbar-light">Logged in as : <%=user_id.email%></a>
+      <a class="navbar nav-item navbar-light">Logged in as : <%=userId.email%></a>
           <%}%>
 
   </div>

@@ -15,7 +15,7 @@ module.exports = (db) => {
     const listing = req.body;
 
     Promise.all([
-      sellerHelper.addNewListing(req.session.user_id, listing, db),
+      sellerHelper.addNewListing(req.session.userId, listing, db),
       sellerHelper.getAddedListingId(db),
     ])
       .then((values) => {
@@ -33,7 +33,7 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
     const templateVars = {
-      user_id: req.session.user_id,
+      userId: req.session.userId,
     };
     return res.render("newad", templateVars);
   });
