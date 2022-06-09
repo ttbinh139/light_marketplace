@@ -69,17 +69,17 @@ INSERT INTO listings (title, description, price, active, condition, user_id, nic
 
 -- users_listing table seeds here (Example)
 
-INSERT INTO users_listings (listing_id) VALUES (1);
+INSERT INTO favorites (listing_id, user_id) VALUES (1, 1);
 
-INSERT INTO users_listings (listing_id) VALUES (2);
+INSERT INTO favorites (listing_id, user_id) VALUES (2, 1);
 
-INSERT INTO users_listings (listing_id) VALUES (3);
+INSERT INTO favorites (listing_id, user_id) VALUES (3, 1);
 
-INSERT INTO users_listings (listing_id) VALUES (4);
+INSERT INTO favorites (listing_id, user_id) VALUES (4, 1);
 
-INSERT INTO users_listings (listing_id) VALUES (5);
+INSERT INTO favorites (listing_id, user_id) VALUES (5, 1);
 
-INSERT INTO users_listings (listing_id) VALUES (6);
+INSERT INTO favorites (listing_id, user_id) VALUES (6, 1);
 
 
 -- photo table seeds here (Example)
@@ -101,7 +101,6 @@ VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://
 
 INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
 VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',6);
-
 
 
 -- messages table seeds here (Example)
@@ -143,6 +142,4 @@ INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALU
 INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (8, 'No of course not!', '2018-02-12T08:00:00.000Z', 8, 5);
 
 INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
-
--- favourites table seeds here (Example)
 

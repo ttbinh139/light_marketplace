@@ -52,13 +52,12 @@ div.my-listings {
 }
 div.my-favorites {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
-  align-items: center;
-  padding: 1.5em;
-  border: solid;
+  align-content: flex-start;
   height: 500px;
   width: 300px;
+  border: solid;
   border-radius: 25px;
   overflow-y: auto;
 }
@@ -66,7 +65,7 @@ div.my-messages {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   border: solid;
   height: 500px;
   width: 300px;
@@ -118,7 +117,26 @@ div.sold-item {
   max-width: 100px;
   max-height: 100px;
 }
+
+div.my-favorites section.favorites {
+  width: 100%;
+  margin-bottom: 0.1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.my-favorites button.removeFav {
+  margin: 0.5em;
+  box-shadow: 1px 1px #e07a5f;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  margin-top: -1em;
+}
+
 div.my-messages div.messages {
+  width: 100%;
+  margin-bottom: 0.1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,14 +165,12 @@ img.envelope:hover {
 h2.listing-title {
   width: 294px;
   height: 38px;
-  padding-bottom: 10px;
 }
 
 h2.message-title {
   width: 294px;
   height: 38px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
 }
 
 b.listing-title {

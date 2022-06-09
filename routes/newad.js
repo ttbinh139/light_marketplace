@@ -44,7 +44,7 @@ module.exports = (db) => {
     ])
       .then((values) => {
         let listing_id = values[1];
-        sellerHelper.addNewUsers_listing(listing_id, db);
+        sellerHelper.addNewFavorites(listing_id, req.session.userId["id"], db);
         sellerHelper.addNewPhotos(listing_id, files, db);
       })
       .then((result) => {

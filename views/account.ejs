@@ -97,18 +97,62 @@
           </section>
           <% }%>
         </div>
+
         <div class="my-favorites">
-          <h3>Favourites</h3>
-        </div>
+            <h2 class="listing-title">My Favorites</h2>
+            <% for(let i = 0; i < allFavorites.length; i++) { %>
+            <section class="favorites">
+              <div class="pic-box">
+                <img
+                  class="listings-image"
+                  src="<%=allFavorites[i].photo_1 %>"
+                  alt=""
+                />
+              </div>
+              <%if (allFavorites[i].active === false) {%>
+                <div class="sold-item">
+                  <img src="https://www.psdstamps.com/wp-content/uploads/2020/03/sold-stamp-png.png" id="sold-item" alt="">
+                </div><%}%>
+
+
+                <div class="title">
+                  <a href="/listings/<%=allFavorites[i].id%>">
+                    <b class="listing-title">
+                      <%=allFavorites[i].title %>
+                    </b>
+                    <br>
+                  </a>
+                </div>
+
+                <form
+                action="account/<%= allFavorites[i].id%>/removeFav"
+                method="POST"
+                id="removeFav"
+              >
+                <button
+                  class="removeFav"
+                  onclick="return confirm('Are you sure you want to remove the listing from your favorites?')"
+                >
+                  REMOVE
+                </button>
+              </form>
+                </section>
+
+                 <%}%>
+            </div>
+
 
         <div class="my-messages" >
           <h2 class="message-title">My Messages</h2>
 
           <%for (let x = 0; x < allMessage.length; x++) {%>
-            <div class="envelope-box">
-              <a href="/messages"> <img class= "envelope" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Envelope_font_awesome.svg/512px-Envelope_font_awesome.svg.png" alt=""> </a>
-            </div>
+
             <div class="messages">
+
+              <div class="envelope-box">
+                <a href="/messages"> <img class= "envelope" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Envelope_font_awesome.svg/512px-Envelope_font_awesome.svg.png" alt=""> </a>
+              </div>
+
               Message From:<b class="message-info"><%=allMessage[x].sender%></b><br>
               Receieved: <b class="message-info"><%=allMessage[x].created_time%></b> <br>
               Enquiring about: <b class="message-info"><%= allMessage[x].listing_id %></b> <br>

@@ -29,13 +29,33 @@ module.exports = (db) => {
       all_message[x].created_time = time_ago;
     }
 
+    const favorites = await sellerHelper.getFavorites(
+      req.session.userId["id"],
+      db
+    );
+
+    for (let x = 0; x < favorites.length; x++) {
+      let favPictures = await sellerHelper.getPictures(
+        favorites[x]["listing_id"],
+        db
+      );
+      let favTitles = await sellerHelper.getListings(
+        favorites[x]["listing_id"],
+        db
+      );
+      favorites[x]["photo_1"] = favPictures["photo_1"];
+      favorites[x]["price"] = favTitles[0]["price"];
+      favorites[x]["active"] = favTitles[0]["active"];
+      favorites[x]["title"] = favTitles[0]["title"];
+    }
+
     const templateVars = {
       userId: req.session.userId,
       allListings: value[0],
       allPictures: value[1],
       allMessage: all_message,
+      allFavorites: favorites,
     };
-
     return res.render("account", templateVars);
   });
 
@@ -48,6 +68,14 @@ module.exports = (db) => {
   router.post("/:listingid/delete", (req, res) => {
     let listingId = req.params.listingid;
     sellerHelper.deleteListing(listingId, db);
+    return res.redirect("/account");
+  });
+
+  router.post("/:listingid/removeFav", async (req, res) => {
+    let listingId = req.params.listingid;
+    let userId = req.session.userId["id"];
+    await sellerHelper.removeFav(userId, listingId, db);
+    await sellerHelper.testHelper(db);
     return res.redirect("/account");
   });
 
