@@ -42,6 +42,11 @@ app.use(
   })
 );
 
+app.use(function(req, res, next) {
+  res.locals.userId = req.session.userId;
+  next();
+});
+
 app.use(express.static("public"));
 app.use(fileUpload());
 
@@ -69,6 +74,7 @@ app.use("/api/messages", messagesRoutes(db)); */
 /**
  * ROUTING for normal requests
  */
+
 app.use("/users", usersRoutes(db));
 app.use("/listings", listingsRoutes(db));
 app.use("/messages", messagesRoutes(db));
