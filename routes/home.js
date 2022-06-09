@@ -7,17 +7,17 @@
 
 const express = require('express');
 const router  = express.Router();
+const buyerHelper = require("../lib/buyerHelper");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT *
-              FROM listings JOIN photos ON listings.id = listing_id;`)
+    let request = req;
+    buyerHelper
+    .getListings(request, db)
       .then((data) => {
         const templateVars = {
           "listings": data.rows,
         };
-        const listings = data.rows;
-        //res.json({ listings });
         res.render("home", templateVars)
       })
       .catch((err) => {

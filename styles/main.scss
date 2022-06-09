@@ -15,8 +15,8 @@ img {
   width: 85%;
   margin: 50px auto 50px auto;
   height: auto;
-  display: flex;;
-  align-items: stretch;
+  display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
 }
@@ -24,13 +24,19 @@ img {
 .item-row {
   display: flex;
   flex-direction: row;
-  width: 200px;
-  height: 300px;
+  min-width: 200px;
+  max-width: 200px;
+  max-height: 250px;
+  min-height: 250px;
+}
 
+.item-row img {
+  width: 100px;
 }
 
 .item-row a {
   margin: 0 10px;
+  width: 100%;
 }
 
 .item-column {
@@ -44,6 +50,7 @@ img {
   border-color: #3D405B;
   border-width: 2px;
   border-radius: 25px;
+  width: 100%;
 }
 
 .item-column img {
@@ -251,15 +258,20 @@ span.padding {
   text-align: center;
 }
 
+.listings h2 {
+  width: 100%;
+}
+
 .show-listings {
-  width: 90%;
+  margin-left: 10%;
+  width: 100%;
   min-width: 800px;
-  height: 800px;
+  height: fit-content;
 }
 .filters {
   width: 10%;
   min-width: 160px;
-  height: 800px;
+  height: 1000%;
   background-color: #FBEEDA;
   border: #3D405B;
   border-width: 4px;
@@ -312,7 +324,7 @@ span.padding {
 .id-body {
   width: 85%;
   height: auto;
-  margin: 0 auto 100px auto;
+  margin: 0 auto 10px auto;
   border-radius: 25px;
 }
 
@@ -333,7 +345,7 @@ span.padding {
   border-radius: 15px;
   width: 750px;
   height: 400px;
-  margin: 50px auto;
+  margin: 10px auto;
   padding: 15px;
   overflow: scroll;
 }
@@ -349,8 +361,19 @@ span.padding {
 
 .filters .button {
   color: #e07a5f;
+  padding-bottom: 10px;
+}
+
+.user-features {
+  width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .user-features .button {
   color: #e07a5f;
+  padding-right: 10px;
 }
+
+
