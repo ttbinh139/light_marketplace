@@ -25,13 +25,13 @@
   <h2>Listings</h2>
   <div class="filters">
     <h2>Filter</h2>
-    <form>
-      <label class="filter-label">Min Price</a><br>
-      <input class="form-area" type="text" name="min"><br>
-      <label class="filter-label">Max Price</a><br>
-      <input class="form-area" type="text" name="max"><br>
-      <label for="cars">Category:</label>
-        <select id="niche" name="category">
+    <form class="filter-form">
+      <label class="filter-label">Min Price</label>
+      <input class="form-area" type="text" name="min">
+      <label class="filter-label">Max Price</label>
+      <input class="form-area" type="text" name="max">
+      <label class="filter-label" for="cars">Category:</label>
+        <select class="form-select" name="category">
           <option value=""></option>
           <option value="1">Shoes</option>
           <option value="2">Auto</option>
@@ -44,8 +44,8 @@
           <option value="9">Gifts</option>
           <option value="10">Music</option>
         </select>
-        <label for="cars">Condition:</label>
-        <select id="condition" name="condition">
+        <label class="filter-label" for="cars">Condition:</label>
+        <select class="form-select" name="condition">
           <option value=""></option>
           <option value="1">New</option>
           <option value="0">Used</option>
