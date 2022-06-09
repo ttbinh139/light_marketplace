@@ -263,7 +263,6 @@ span.padding {
 }
 
 .show-listings {
-  margin-left: 10%;
   width: 100%;
   min-width: 800px;
   height: fit-content;
@@ -315,6 +314,10 @@ span.padding {
 
 
 //listingid
+
+.listing-id {
+  margin-bottom: 100px;
+}
 
 .listing-id h2 {
   color: #e07a5f;
