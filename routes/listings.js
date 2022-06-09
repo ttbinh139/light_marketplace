@@ -69,12 +69,25 @@ module.exports = (db) => {
 
   router.post("/:id", (req, res) => {
     const listingID = Number(Object.values(req.params))
-    console.log('listing id:', listingID)
     const userID = req.session.userId.id
-    console.log('id:', userID)
     const queryString = `INSERT INTO favourites
     (user_id, listing_id)
     values ($1, $2) RETURNING *;`
+    db.query(queryString, [userID, listingID])
+    .then((data) => {
+      const listings = data.rows
+      //res.json({ listings })
+      res.redirect("/account")
+    })
+
+  })
+
+  router.post("/delete/:id", (req, res) => {
+    const listingID = Number(Object.values(req.params))
+    const userID = req.session.userId.id
+    const queryString = `DELETE FROM favourites
+    WHERE user_id = $1
+    AND listing_id = $2;`
     db.query(queryString, [userID, listingID])
     .then((data) => {
       const listings = data.rows

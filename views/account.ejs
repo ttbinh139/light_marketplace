@@ -36,7 +36,11 @@
         <div class="my-favorites">
           <h3>Favourites</h3>
           <% for (let listing in info) { %>
-          <div id="single-favorite"><a href="/listings/<%= info[listing]['id'] %>"><%= info[listing]['title'] %></a></div>
+          <div id="single-favorite"><a href="/listings/<%= info[listing]['id'] %>"><%= info[listing]['title'] %></a>
+            <form method="POST" action="/listings/delete/<%= info[listing]['id'] %>">
+              <button type="submit" class="button">Delete</button>
+            </form>
+          </div>
           <% } %>
         </div>
         <div class="my-messages">HELLO</div>
