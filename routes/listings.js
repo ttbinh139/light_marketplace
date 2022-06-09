@@ -85,7 +85,8 @@ module.exports = (db) => {
         console.log("Line 76",data);
         if (data.rows.length > 0) {
           res.end('Listing Already Added To Favourites');
-        } else {    const queryString = `INSERT INTO favourites
+        } else {
+        const queryString = `INSERT INTO favourites
         (user_id, listing_id)
         values ($1, $2) RETURNING *;`
         db.query(queryString, [userID, listingID])
