@@ -61,6 +61,17 @@ nav {
   border-radius: 10px;
 }
 
+#login-form .form-area {
+  width: 125px;
+  height: 25px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
