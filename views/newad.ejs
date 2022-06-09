@@ -84,6 +84,10 @@
           required
         ></textarea>
 
+        <p class="note">
+          Note: You need to insert atleast one image of your product.
+        </p>
+
         <div class="upload-image">
           <div class="form-control image-box">
             <input
@@ -120,7 +124,12 @@
           </div>
         </div>
 
-        <button type="submit" id="picsubmit" class="btn btn-primary btn-sm">
+        <button
+          type="submit"
+          id="picsubmit"
+          class="btn btn-primary btn-sm"
+          onclick="return confirm('Is this finalized?')"
+        >
           Submit
         </button>
       </form>

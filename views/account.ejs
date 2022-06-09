@@ -26,9 +26,9 @@
       <h2><%=userId.name %> Account page</h2>
 
       <div class="account-summary">
-        <p><strong> Name : <%=userId.name %></strong></p>
-        <p><strong>Email : <%=userId.email %></strong></p>
-        <p><strong>Address : <%=userId.address %></strong></p>
+        <p><strong>Name : </strong> <%=userId.name %></p>
+        <p><strong>Email : </strong> <%=userId.email %></p>
+        <p><strong>Address : </strong> <%=userId.address %></p>
       </div>
 
       <div class="account-information">
@@ -37,7 +37,8 @@
           <% for(let i = 0; i < allListings.length; i++) { %>
           <section class="listings">
             <div class="title">
-              <%-allListings[i].title %> Price: <%= allListings[i].price %> $
+              <a href="/listings/<%= allListings[i].id%>"><b class="listing-title"><%-allListings[i].title %></b> <br></a>
+               Price: <%= allListings[i].price %> $
             </div>
 
             <div class="pic-box">
@@ -99,10 +100,23 @@
         <div class="my-favorites">
           <h3>Favourites</h3>
         </div>
-        <div class="my-messages">HELLO</div>
+
+        <div class="my-messages" >
+          <h2 class="message-title">My Messages</h2>
+
+          <%for (let x = 0; x < allMessage.length; x++) {%>
+            <div class="envelope-box">
+              <a href="/messages"> <img class= "envelope" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Envelope_font_awesome.svg/512px-Envelope_font_awesome.svg.png" alt=""> </a>
+            </div>
+            <div class="messages">
+              Message From:<b class="message-info"><%=allMessage[x].sender%></b><br>
+              Receieved: <b class="message-info"><%=allMessage[x].created_time%></b> <br>
+              Enquiring about: <b class="message-info"><%= allMessage[x].listing_id %></b> <br>
+            </div>
+            <% }%>
+        </div>
       </div>
     </div>
-
     </script>
   </body>
   <footer><%- include("partials/_footer") %></footer>

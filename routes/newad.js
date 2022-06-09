@@ -19,7 +19,7 @@ module.exports = (db) => {
       return res.status(400).send("No files were uploaded!");
     }
     const path = "/vagrant/light_marketplace/public/picture/";
-    const path1 = "../public/picture/";
+    const path1 = "/picture/";
     const file = req.files;
     let key = Object.keys(file);
 
