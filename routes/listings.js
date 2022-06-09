@@ -32,10 +32,14 @@ module.exports = (db) => {
 
     if (req.query.category) {
       queryParams.push(req.query.category);
-      //console.log('params', typeof queryParams)
-      console.log('params', queryParams)
       queryString += `AND niche_id = $${queryParams.length} `;
     }
+
+    if (req.query.condition) {
+      queryParams.push(req.query.condition);
+      queryString += `AND condition = $${queryParams.length} `;
+    }
+
 
 
     db.query(queryString, queryParams)
