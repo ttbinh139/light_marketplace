@@ -11,7 +11,7 @@ module.exports = (db) => {
     console.log('id,',typeof id)
     let queryString = `SELECT * FROM favourites JOIN listings ON favourites.listing_id = listings.id
     WHERE favourites.user_id = ${id}
-    ORDER BY favourites.id ASC;
+    ORDER BY favourites.id DESC;
   `;
   db.query(queryString)
   .then((data) => {

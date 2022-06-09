@@ -68,10 +68,10 @@ module.exports = (db) => {
   })
 
   router.post("/:id", (req, res) => {
-    const listingID = req.body.listing_id
-    console.log(listingID)
-    const userID = req.session.userID.id
-    console.log(userID)
+    const listingID = Number(Object.values(req.params))
+    console.log('listing id:', listingID)
+    const userID = req.session.userId.id
+    console.log('id:', userID)
     const queryString = `INSERT INTO favourites
     (user_id, listing_id)
     values ($1, $2) RETURNING *;`
@@ -79,7 +79,7 @@ module.exports = (db) => {
     .then((data) => {
       const listings = data.rows
       //res.json({ listings })
-      res.redirect("/listings")
+      res.redirect("/account")
     })
 
   })

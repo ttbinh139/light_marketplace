@@ -29,7 +29,7 @@
         </div>
         <div class="user-features">
           <a class="button">Message</a>
-          <form method="POST" action="/listings/:id">
+          <form method="POST" action="/listings/<%- listings[listing]['id']%>">
             <button type="submit" class="button">Favorite</button>
           </form>
           <span>Posted: <%= listings[listing]['created'] %></span>
