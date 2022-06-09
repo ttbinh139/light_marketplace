@@ -30,11 +30,47 @@
         <p><strong>Email : <%=userId.email %></strong></p>
         <p><strong>Address : <%=userId.address %></strong></p>
       </div>
-      <div class="account-information">
-        <div class="my-listings">HELLO</div>
-        <div><%= listings.title %></div>
-        <div class="my-favorites">HELLO</div>
 
+      <div class="account-information">
+        <div class="my-listings">
+          <h2 class="listing-title">My Listings</h2>
+          <% for(let i = 0; i < allListings.length; i++) { %>
+          <section class="listings">
+            <div class="title">
+              <%-allListings[i].title %> <%= allListings[i].price %>
+            </div>
+
+            <div class="pic-box">
+              <img
+                class="listings-image"
+                src="<%=allPictures[0].photo_1 %>"
+                alt=""
+              />
+            </div>
+            <section class="buttons">
+              <form
+                action="/edit/:<%= allListings[i].id%>"
+                method="GET"
+                id="edit"
+              >
+                <button class="edit-button">EDIT</button>
+                <input type="hidden" value="<%= allListings[i].id%>" />
+              </form>
+              <form action="account/delete" method="POST" id="delete">
+                <button class="delete-button">DELETE</button>
+                <input type="hidden" value="<%- allListings[i].id%>" />
+              </form>
+              <form action="account/sold" method="POST" id="sold">
+                <button class="sold-button">MARK AS SOLD</button>
+                <input type="hidden" value="<%- allListings[i].id%>" />
+              </form>
+            </section>
+          </section>
+          <% }%>
+        </div>
+        <div class="my-favorites">
+          <h3>Favourites</h3>
+        </div>
         <div class="my-messages">HELLO</div>
       </div>
     </div>

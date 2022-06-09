@@ -42,7 +42,7 @@ app.use(
   })
 );
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.userId = req.session.userId;
   next();
 });
@@ -59,7 +59,7 @@ const messagesRoutes = require("./routes/messages");
 const newadRoutes = require("./routes/newad");
 const loginRoutes = require("./routes/login");
 const accountRoutes = require("./routes/account");
-
+const editRoutes = require("./routes/edit");
 const homeRoutes = require("./routes/home");
 //const widgetsRoutes = require("./routes/widgets");
 
@@ -81,6 +81,7 @@ app.use("/messages", messagesRoutes(db));
 app.use("/newad", newadRoutes(db));
 app.use("/login", loginRoutes(db));
 app.use("/account", accountRoutes(db));
+app.use("/edit", editRoutes(db));
 app.use(
   fileUpload({
     createParentPath: true,
@@ -93,7 +94,6 @@ app.use("/home", homeRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-
   res.redirect("/home");
 });
 

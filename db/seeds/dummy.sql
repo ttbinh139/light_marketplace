@@ -65,6 +65,8 @@ INSERT INTO listings (title, description, price, active, condition, user_id, nic
 
 INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Selling Galaxy S20!', 'Selling a BNIB Galaxy S20!', '500', TRUE, TRUE, 5, 5);
 
+INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Buying Galaxy S20!', 'Selling a BNIB Galaxy S20!', '500', TRUE, TRUE, 1, 5);
+
 -- users_listing table seeds here (Example)
 
 INSERT INTO users_listings (listing_id) VALUES (1);
@@ -76,6 +78,8 @@ INSERT INTO users_listings (listing_id) VALUES (3);
 INSERT INTO users_listings (listing_id) VALUES (4);
 
 INSERT INTO users_listings (listing_id) VALUES (5);
+
+INSERT INTO users_listings (listing_id) VALUES (6);
 
 
 -- photo table seeds here (Example)
@@ -137,6 +141,8 @@ INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALU
 INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
 
 -- favourites table seeds here (Example)
+
+
 
 INSERT INTO favourites (id, user_id, listing_id) Values (1, 1, 2);
 
