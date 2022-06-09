@@ -12,7 +12,7 @@ const messageHelper = require('../lib/messageHelper')
 module.exports = (db) => {
   router.get("/", (req, res) => {
     // Get logged in user
-    let userId = req.session.userId;
+    let userId = req.session.userId.id;
     console.log("Line 16: ",userId);
     messageHelper.getLastestMessageByUserId(userId, db)
       .then(data => {
@@ -32,7 +32,7 @@ module.exports = (db) => {
 
   router.get("/:message_id", (req, res) => {
     // Get logged in user
-    let userId = req.session.userId;
+    let userId = req.session.userId.id;
     //console.log(userId);
     let message_id = req.params.message_id;
 
@@ -52,14 +52,14 @@ module.exports = (db) => {
             let conversation = await messageHelper.getConversationByMessageId(message_id, db);
             console.log("line 42:", messageDetail);
             //console.log("line 39: ",conversation);
-            return res.render('messages', { userId: userId, messages: data, messageDetail: messageDetail, conversation:conversation, error:null });
+            return res.render('messages', { userID: userId, messages: data, messageDetail: messageDetail, conversation:conversation, error:null });
           } else {
             error = "This conversation doesn't exist";
-            return res.render('messages', { userId: userId, messages: data, messageDetail: null, conversation:null, error:error });
+            return res.render('messages', { userID: userId, messages: data, messageDetail: null, conversation:null, error:error });
           }
         } else {
           error = "You don't have any messages";
-            return res.render('messages', { userId: userId, messages: data, messageDetail: null, conversation:null, error:error });
+            return res.render('messages', { userID: userId, messages: data, messageDetail: null, conversation:null, error:error });
         }
       }).catch((err) => {
         res
@@ -71,7 +71,7 @@ module.exports = (db) => {
   router.get("/new/:listingId", (req, res) => {
     let listingId = req.params.listingId;
     //console.log("Listing ID: ",listingId);
-    let userId = req.session.userId;
+    let userId = req.session.userId.id;
 
     // Check listing exist
 
@@ -92,10 +92,10 @@ module.exports = (db) => {
       .then(async function(data) {
         let listing = await messageHelper.getListingFromId(listingId, db);
         if (listing) {
-          return res.render("newmessage", {userId: userId, messages: data, listing:listing});
+          return res.render("newmessage", {userID: userId, messages: data, listing:listing});
         } else {
           let error = "Listing does not exist";
-          return res.render("newmessage", {userId: userId, messages: data, listing:null, error: error});
+          return res.render("newmessage", {userID: userId, messages: data, listing:null, error: error});
         }
 
         //return res.render('messages', { userId: userId, messages: data, conversation: messageDetail });
@@ -108,7 +108,7 @@ module.exports = (db) => {
   });
 
   router.post("/new/:listingId", (req, res) => {
-    let user_id = req.session.userId;
+    let userId = req.session.userId.id;
     let listing_id = req.params.listingId;
     let message = {
       sender_id: user_id,
@@ -133,7 +133,7 @@ module.exports = (db) => {
   });
 
   router.post("/:message_id", (req, res) => {
-    let user_id = req.session.userId;
+    let userId = req.session.userId.id;
     let message_id = req.params.message_id;
     let conversation = {
       message_id: message_id,

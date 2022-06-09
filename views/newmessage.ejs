@@ -35,10 +35,10 @@
       <% if (messages) { %>
         <% for(let i = 0; i < messages.length; i++) { %>
           <div class="chats-name">
-            <% if (messages[i].sender_id === Number(userId)) { %>
+            <% if (messages[i].sender_id === Number(userID)) { %>
               <h4 class="chat-sender"><a href="/messages/<%=messages[i].id%>">To: <%= messages[i].receiver %></a></h4>
             <% } %>
-            <% if(messages[i].receiver_id === Number(userId)) { %>
+            <% if(messages[i].receiver_id === Number(userID)) { %>
               <h4 class="chat-receiver" ><a href="/messages/<%=messages[i].id%>">From: <%= messages[i].sender %></a></h4>
             <% } %>
           </div>
