@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const listingHelper = require('../lib/sellerHelper');
+const buyerHelper = require('../lib/buyerHelper');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -27,9 +27,14 @@ module.exports = (db) => {
 
     if (req.query.max) {
       queryParams.push(req.query.max);
-      console.log('params', typeof queryParams)
-      console.log('params', queryParams)
       queryString += `AND price <= $${queryParams.length} `;
+    }
+
+    if (req.query.category) {
+      queryParams.push(req.query.category);
+      //console.log('params', typeof queryParams)
+      console.log('params', queryParams)
+      queryString += `AND niche_id = $${queryParams.length} `;
     }
 
 
@@ -70,15 +75,27 @@ module.exports = (db) => {
   router.post("/:id", (req, res) => {
     const listingID = Number(Object.values(req.params))
     const userID = req.session.userId.id
-    const queryString = `INSERT INTO favourites
-    (user_id, listing_id)
-    values ($1, $2) RETURNING *;`
-    db.query(queryString, [userID, listingID])
-    .then((data) => {
-      const listings = data.rows
-      //res.json({ listings })
-      res.redirect("/account")
-    })
+
+    buyerHelper.checkFavourites(userID, listingID, db)
+      .then(data => {
+        console.log("Line 76",data);
+        if (data.rows.length > 0) {
+          res.end('Listing Already Added To Favourites');
+        } else {    const queryString = `INSERT INTO favourites
+        (user_id, listing_id)
+        values ($1, $2) RETURNING *;`
+        db.query(queryString, [userID, listingID])
+        .then((data) => {
+          const listings = data.rows
+          //res.json({ listings })
+          res.redirect("/account")
+        })}
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+
+
 
   })
 
@@ -94,7 +111,9 @@ module.exports = (db) => {
       //res.json({ listings })
       res.redirect("/account")
     })
-
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
   })
   return router
 }

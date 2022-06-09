@@ -28,7 +28,7 @@
           <img src="<%= listings[listing]['photo_1'] %>">
         </div>
         <div class="user-features">
-          <a class="button">Message</a>
+          <a class="button" href="/messages/new/<%- listings[listing]['id']%>">Message</a>
           <form method="POST" action="/listings/<%- listings[listing]['id']%>">
             <button type="submit" class="button">Favorite</button>
           </form>
