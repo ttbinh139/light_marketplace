@@ -15,14 +15,18 @@ img {
   width: 85%;
   margin: 50px auto 50px auto;
   height: auto;
-  display: flex;
-  align-items: stretch
+  display: flex;;
+  align-items: stretch;
+  flex-wrap: wrap;
 
 }
 
 .item-row {
   display: flex;
   flex-direction: row;
+  width: 200px;
+  height: 300px;
+
 }
 
 .item-row a {
