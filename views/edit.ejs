@@ -28,7 +28,7 @@
       <form
         class="user-posting"
         id="newposting"
-        action="/newad/new"
+        action="/edit/:<%=id%>"
         method="POST"
         enctype="multipart/form-data"
       >
@@ -93,29 +93,23 @@
 
         <div class="upload-image">
           <div class="form-control image-box">
-            <input
-              type="file"
-              id="file-1"
-              accept="image/*"
-              name="photo1"
-              required
-            />
+            <input type="file" id="file-1" accept="image/*" name="photo1" />
             <label for="file-1" id="file-1-preview">
-              <img src="<%=pictures['photo_1']%>" alt="" />
+              <img
+                src="<%=pictures['photo_1']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
             </label>
           </div>
 
           <div class="form-control image-box">
-            <input
-              type="file"
-              id="file-2"
-              accept="image/*"
-              name="photo2"
-              required
-            />
+            <input type="file" id="file-2" accept="image/*" name="photo2" />
             <label for="file-2" id="file-2-preview">
               <%if (pictures["photo_2"] !== null) {%>
-              <img src="<%=pictures['photo_2']%>" alt="" />
+              <img
+                src="<%=pictures['photo_2']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
               <%}else {%>
               <img src="https://bit.ly/3ubuq5o" alt="" />
               <%}%>
@@ -126,7 +120,10 @@
             <input type="file" id="file-3" accept="image/*" name="photo3" />
             <label for="file-3" id="file-3-preview">
               <%if (pictures["photo_3"] !== null) {%>
-              <img src="<%=pictures['photo_3']%>" alt="" />
+              <img
+                src="<%=pictures['photo_3']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
               <%}else {%>
               <img src="https://bit.ly/3ubuq5o" alt="" />
               <%}%>
@@ -137,7 +134,10 @@
             <input type="file" id="file-4" accept="image/*" name="photo4" />
             <label for="file-4" id="file-4-preview">
               <%if (pictures["photo_4"] !== null) {%>
-              <img src="<%=pictures['photo_4']%>" alt="" />
+              <img
+                src="<%=pictures['photo_4']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
               <%}else {%>
               <img src="https://bit.ly/3ubuq5o" alt="" />
               <%}%>

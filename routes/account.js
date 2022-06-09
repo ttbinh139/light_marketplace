@@ -19,5 +19,18 @@ module.exports = (db) => {
     };
     return res.render("account", templateVars);
   });
+
+  router.post("/:listingid/sold", (req, res) => {
+    let listingId = req.params.listingid;
+    sellerHelper.markAsSold(listingId, db);
+    return res.redirect("/account");
+  });
+
+  router.post("/:listingid/delete", (req, res) => {
+    let listingId = req.params.listingid;
+    sellerHelper.deleteListing(listingId, db);
+    return res.redirect("/account");
+  });
+
   return router;
 };

@@ -99,6 +99,10 @@ VALUES ('https://i.ebayimg.com/images/g/5BgAAOSweh9ijq5I/s-l1600.jpg',4);
 INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
 VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',5);
 
+INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
+VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',6);
+
+
 
 -- messages table seeds here (Example)
 
@@ -142,34 +146,3 @@ INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALU
 
 -- favourites table seeds here (Example)
 
-
-
-INSERT INTO favourites (id, user_id, listing_id) Values (1, 1, 2);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (2, 1, 3);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (3, 1, 5);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (4, 2, 3);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (5, 2, 1);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (6, 2, 2);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (7, 3, 2);
-INSERT INTO favourites (id, user_id, listing_id) Values (8, 3, 5);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (9, 4, 5);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (10, 5, 1);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (11, 5, 2);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (12, 5, 3);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (13, 6, 5);
-INSERT INTO favourites (id, user_id, listing_id) Values (14, 8, 1);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (15, 8, 5);
-
-INSERT INTO favourites (id, user_id, listing_id) Values (16, 9, 1);

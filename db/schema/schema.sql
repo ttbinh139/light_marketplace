@@ -61,3 +61,4 @@ CREATE TABLE conversations (
   message_id INTEGER REFERENCES messages(id) ON DELETE CASCADE,
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
+

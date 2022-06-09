@@ -18,14 +18,14 @@ module.exports = (db) => {
     if (!req.files) {
       return res.status(400).send("No files were uploaded!");
     }
-    const path = "/vagrant/light_marketplace/public/picture/pictures";
-
+    const path = "/vagrant/light_marketplace/public/picture/";
+    const path1 = "../public/picture/";
     const file = req.files;
     let key = Object.keys(file);
 
     for (let keys of key) {
       file[keys].mv(path + file[keys].name, (err) => {
-        files.push(path + file[keys].name);
+        files.push(path1 + file[keys].name);
         if (err) {
           return res.status(500).send(err);
         }

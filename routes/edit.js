@@ -13,8 +13,43 @@ const path = require("path");
 const sellerHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
-  router.post("/", (req, res) => {
-    console.log(req.query);
+  router.post("/:listingid", async (req, res) => {
+    let listingId = req.params.listingid.charAt(1);
+    let files = [];
+    if (!req.files) {
+      return res.status(400).send("No files were uploaded!");
+    }
+    const path = "/vagrant/light_marketplace/public/picture/";
+    const path1 = "public/picture/";
+    const file = req.files;
+    let key = Object.keys(file);
+
+    for (let keys of key) {
+      files.push(path1 + file[keys].name);
+      file[keys].mv(path + file[keys].name, (err) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+      });
+    }
+    const listing = req.body;
+    let niche = sellerHelper.addNiche(listing["niche"], db);
+    await sellerHelper.editListing(
+      req.session.userId,
+      listing,
+      niche,
+      listingId,
+      db
+    );
+    await sellerHelper.editPhotos(listingId, files, db);
+    sellerHelper
+      .testHelper(db)
+      .then((result) => {
+        return res.redirect("/");
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
   router.get("/:listingid", async (req, res) => {
@@ -33,6 +68,7 @@ module.exports = (db) => {
       condition: info[0]["condition"],
       type: info[0]["niche_id"],
       description: info[0]["description"],
+      id: info[0]["id"],
       pictures: pictures,
     };
 
