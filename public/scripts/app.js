@@ -1,36 +1,23 @@
 // Client facing scripts here
 
-
-/* const loadConversation = function (message_id) {
-  console.log(message_id);
-  //Render listing detail
-
-  //Render conversation
-  let url = `http://localhost:8080/messages/conversation/${message_id}`;
-  $.ajax({
-    type: "GET",
-    url: url,
-    success: function (data) {
-      renderConversation(data);
+const renderConversation = function (response) {
+  console.log(response);
+  let userId = response.userId;
+  let conversations = response.conversations;
+  let htmlOutput = ""
+  for (let i = 0; i < conversations.length; i++) {
+    if (conversations[i].owner_id === Number(userId)) {
+      htmlOutput += `<div class="chat-row">
+                <div class="sent">${conversations[i].message}</div>
+              </div>`
+    } else {
+      htmlOutput += `<div class="chat-row">
+                <div class="received">${conversations[i].message}</div>
+              </div>`
     }
-  });
-}; */
-
-/* const renderConversation = function (data) {
-  console.log(data);
-  // Render Listing Info
-  let htmlOutput = `
-    <div class="row">
-        <div class="column right"><h2>Listing Info: <a href="/listings/:${data[0].listing_id}">${data[0].title}</a></h2></div>
-    </div>
-  `;
-  $(".head-title").empty();
-  $(".head-title").append(htmlOutput);
-  //return htmlOutput;
-  // Render Message Section
-
-  // Render Form
-}; */
+  }
+  return htmlOutput;
+};
 
 $(document).ready(function () {
   $("#new-message-form").submit(function (event) {
@@ -70,10 +57,16 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         //appendNewMessage(response);
-        let htmlOutput = `<div class="chat-row">
+        /* let htmlOutput = `<div class="chat-row">
                         <div class="sent">${response.message}</div>
-                      </div>`;
+                      </div>`; */
+        let htmlOutput = renderConversation(response);
+        console.log(htmlOutput);
+        $("#main-chat").empty();
         $("#main-chat").append(htmlOutput);
+
+        //$("#main-chat").append(htmlOutput);
+
         $("#txt-reply-message").val('');
         console.log("Appended new message");
       },
