@@ -151,6 +151,7 @@ INSERT INTO favourites (id, user_id, listing_id) Values (5, 2, 1);
 INSERT INTO favourites (id, user_id, listing_id) Values (6, 2, 2);
 
 INSERT INTO favourites (id, user_id, listing_id) Values (7, 3, 2);
+
 INSERT INTO favourites (id, user_id, listing_id) Values (8, 3, 5);
 
 INSERT INTO favourites (id, user_id, listing_id) Values (9, 4, 5);
@@ -162,6 +163,7 @@ INSERT INTO favourites (id, user_id, listing_id) Values (11, 5, 2);
 INSERT INTO favourites (id, user_id, listing_id) Values (12, 5, 3);
 
 INSERT INTO favourites (id, user_id, listing_id) Values (13, 6, 5);
+
 INSERT INTO favourites (id, user_id, listing_id) Values (14, 8, 1);
 
 INSERT INTO favourites (id, user_id, listing_id) Values (15, 8, 5);

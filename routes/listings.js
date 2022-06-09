@@ -68,27 +68,21 @@ module.exports = (db) => {
   })
 
   router.post("/:id", (req, res) => {
+    const listingID = req.body.listing_id
+    console.log(listingID)
+    const userID = req.session.userID.id
+    console.log(userID)
+    const queryString = `INSERT INTO favourites
+    (user_id, listing_id)
+    values ($1, $2) RETURNING *;`
+    db.query(queryString, [userID, listingID])
+    .then((data) => {
+      const listings = data.rows
+      //res.json({ listings })
+      res.redirect("/listings")
+    })
 
   })
   return router
 }
 
-
-
-// router.get("/:id", (req,res) => {
-
-//   db.query(`SELECT *
-//   FROM listings JOIN photos ON listings.id = listing_id
-//   WHERE id = ${req.params.id}`)
-//     .then((data) => {
-//       const templateVars = {
-//         "listings": data.rows,
-//       };
-//       const listings = data.rows;
-//       //res.json({ listings})
-//       res.render("listingid", templateVars)
-//     })
-// })
-
-// return router
-// }

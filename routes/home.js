@@ -14,7 +14,6 @@ module.exports = (db) => {
               FROM listings JOIN photos ON listings.id = listing_id;`)
       .then((data) => {
         const templateVars = {
-          userId: req.session.userId,
           "listings": data.rows,
         };
         const listings = data.rows;

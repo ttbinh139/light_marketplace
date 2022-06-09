@@ -31,11 +31,16 @@
         <p><strong>Address : <%=userId.address %></strong></p>
       </div>
       <div class="account-information">
-        <div class="my-listings">HELLO</div>
-        <div><%= listings.title %></div>
-        <div class="my-favorites">HELLO</div>
 
+        <div class="my-listings">HELLO</div>
+        <div class="my-favorites">
+          <h3>Favourites</h3>
+          <% for (let listing in info) { %>
+          <div id="single-favorite"><a href="/listings/<%= info[listing]['id'] %>"><%= info[listing]['title'] %></a></div>
+          <% } %>
+        </div>
         <div class="my-messages">HELLO</div>
+
       </div>
     </div>
   </body>
