@@ -184,46 +184,48 @@ INSERT INTO photos (photo_1, listing_id)
 VALUES ('https://images.craigslist.org/00l0l_cb0nr4hE5kMz_0kH0eY_600x450.jpg',8);
 
 INSERT INTO photos (photo_1, listing_id)
-VALUES ('https://images.craigslist.org/00t0t_j4M81uxMtW1z_0ak07K_600x450.jpg',9);
-
-INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00P0P_dkfh1eCknWiz_07K0ak_600x450.jpg', 'https://images.craigslist.org/00H0H_jaY7kIvK76az_07K0ak_600x450.jpg', 10);
-
-INSERT INTO photos (photo_1, photo_2, photo_3, listing_id)
-VALUES ('https://images.craigslist.org/00x0x_3lbg5sSh2kpz_0t20CI_600x450.jpg', 'https://images.craigslist.org/00G0G_3DaJZp1Wnpmz_0t20CI_600x450.jpg', 'https://images.craigslist.org/00m0m_EGUB9VVzAFz_0t20CI_600x450.jpg', 11);
-
-INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00101_jNx9x4gJNhnz_0t20CI_600x450.jpg', 'https://images.craigslist.org/00F0F_41bvDwXaQczz_0t20CI_600x450.jpg', 12);
-
-INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00U0U_1JHjx0hbU16z_0c606t_600x450.jpg','https://images.craigslist.org/00707_biLrTLjYmw9z_0CI0t2_600x450.jpg' ,13);
+VALUES ('https://images.craigslist.org/00a0a_gBDM13wTjhUz_0CI0t2_600x450.jpg',9);
 
 INSERT INTO photos (photo_1, listing_id)
-VALUES ('https://images.craigslist.org/00i0i_8Hypr5RAoQk_600x450.jpg',14);
+VALUES ('https://images.craigslist.org/00t0t_j4M81uxMtW1z_0ak07K_600x450.jpg',10);
 
 INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00V0V_cOkcfChSRJWz_0t20CI_600x450.jpg','https://images.craigslist.org/00909_2ey5mMgMNivz_0t20CI_600x450.jpg', 15);
-
-INSERT INTO photos (photo_1, listing_id)
-VALUES ('https://images.craigslist.org/00404_hcq2GwDjyL8z_0uY0hq_600x450.jpg',16);
-
-INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00b0b_92baBI7JWmVz_09m09m_600x450.jpg', 'https://images.craigslist.org/00606_8x6oJAXEBWQz_09m09m_600x450.jpg',17);
+VALUES ('https://images.craigslist.org/00P0P_dkfh1eCknWiz_07K0ak_600x450.jpg', 'https://images.craigslist.org/00H0H_jaY7kIvK76az_07K0ak_600x450.jpg', 11);
 
 INSERT INTO photos (photo_1, photo_2, photo_3, listing_id)
-VALUES ('https://images.craigslist.org/00303_kUIDftZQo1qz_09G09G_600x450.jpg', 'https://images.craigslist.org/00f0f_eXBplnNzj2Wz_0bo09G_600x450.jpg', 'https://images.craigslist.org/01515_eZpk7aYMM1Az_06o09B_600x450.jpg', 18);
+VALUES ('https://images.craigslist.org/00x0x_3lbg5sSh2kpz_0t20CI_600x450.jpg', 'https://images.craigslist.org/00G0G_3DaJZp1Wnpmz_0t20CI_600x450.jpg', 'https://images.craigslist.org/00m0m_EGUB9VVzAFz_0t20CI_600x450.jpg', 12);
+
+INSERT INTO photos (photo_1, photo_2, listing_id)
+VALUES ('https://images.craigslist.org/00101_jNx9x4gJNhnz_0t20CI_600x450.jpg', 'https://images.craigslist.org/00F0F_41bvDwXaQczz_0t20CI_600x450.jpg', 13);
+
+INSERT INTO photos (photo_1, photo_2, listing_id)
+VALUES ('https://images.craigslist.org/00U0U_1JHjx0hbU16z_0c606t_600x450.jpg','https://images.craigslist.org/00707_biLrTLjYmw9z_0CI0t2_600x450.jpg' ,14);
+
+INSERT INTO photos (photo_1, listing_id)
+VALUES ('https://images.craigslist.org/00i0i_8Hypr5RAoQk_600x450.jpg',15);
+
+INSERT INTO photos (photo_1, photo_2, listing_id)
+VALUES ('https://images.craigslist.org/00V0V_cOkcfChSRJWz_0t20CI_600x450.jpg','https://images.craigslist.org/00909_2ey5mMgMNivz_0t20CI_600x450.jpg', 16);
+
+INSERT INTO photos (photo_1, listing_id)
+VALUES ('https://images.craigslist.org/00404_hcq2GwDjyL8z_0uY0hq_600x450.jpg',17);
+
+INSERT INTO photos (photo_1, photo_2, listing_id)
+VALUES ('https://images.craigslist.org/00b0b_92baBI7JWmVz_09m09m_600x450.jpg', 'https://images.craigslist.org/00606_8x6oJAXEBWQz_09m09m_600x450.jpg',18);
+
+INSERT INTO photos (photo_1, photo_2, photo_3, listing_id)
+VALUES ('https://images.craigslist.org/00303_kUIDftZQo1qz_09G09G_600x450.jpg', 'https://images.craigslist.org/00f0f_eXBplnNzj2Wz_0bo09G_600x450.jpg', 'https://images.craigslist.org/01515_eZpk7aYMM1Az_06o09B_600x450.jpg', 19);
 
 INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
-VALUES ('https://images.craigslist.org/01111_1Zlq0M629afz_0gw09R_600x450.jpg','https://images.craigslist.org/00v0v_hCb3BJQhzUfz_0gv08V_600x450.jpg','https://images.craigslist.org/01010_3JETAmdc26Kz_0gw08X_600x450.jpg','https://images.craigslist.org/00J0J_hfVLHUXWyHxz_0gw090_600x450.jpg',19);
+VALUES ('https://images.craigslist.org/01111_1Zlq0M629afz_0gw09R_600x450.jpg','https://images.craigslist.org/00v0v_hCb3BJQhzUfz_0gv08V_600x450.jpg','https://images.craigslist.org/01010_3JETAmdc26Kz_0gw08X_600x450.jpg','https://images.craigslist.org/00J0J_hfVLHUXWyHxz_0gw090_600x450.jpg',20);
 
 INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00m0m_cvzCOUr7SeEz_0x40Dl_600x450.jpg','https://images.craigslist.org/00000_7oAlRL7KUVCz_0ve0FE_600x450.jpg',20);
+VALUES ('https://images.craigslist.org/00m0m_cvzCOUr7SeEz_0x40Dl_600x450.jpg','https://images.craigslist.org/00000_7oAlRL7KUVCz_0ve0FE_600x450.jpg',21);
 
 INSERT INTO photos (photo_1, photo_2, listing_id)
-VALUES ('https://images.craigslist.org/00l0l_cQuew8gu0Hsz_0t20CI_600x450.jpg','https://images.craigslist.org/00H0H_1T23CQfgsrYz_0t20CI_600x450.jpg',21);
+VALUES ('https://images.craigslist.org/00l0l_cQuew8gu0Hsz_0t20CI_600x450.jpg','https://images.craigslist.org/00H0H_1T23CQfgsrYz_0t20CI_600x450.jpg',22);
 
-INSERT INTO photos (photo_1, photo_2, photo_3, listing_id)
-VALUES ('https://images.craigslist.org/00o0o_4K2cBt3R9Siz_0er0jm_600x450.jpg','https://images.craigslist.org/00Y0Y_hRLJq7bfLsgz_0fd0jm_600x450.jpg','https://images.craigslist.org/01212_2zMFtUNjlEIz_0dI0jm_600x450.jpg',22);
+
 
 -- messages table seeds here (Example)
 
