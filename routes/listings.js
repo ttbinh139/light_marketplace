@@ -26,7 +26,7 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req, res) => {
-    let listingID = Object.values(req.params);
+    let listingID = Number(Object.values(req.params));
     buyerHelper.getListingID(listingID, db).then((data) => {
       const templateVars = {
         listings: data.rows,
