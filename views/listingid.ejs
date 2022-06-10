@@ -66,9 +66,18 @@
         </div>
         <div class="user-features">
           <a class="button" href="/messages/new/<%- listings[listing]['id']%>">Message</a>
-          <form method="POST" action="/listings/<%- listings[listing]['id']%>">
-            <button type="submit" class="button">Favorite</button>
-          </form>
+          <% if (!userId) { %>
+            <button type="submit" class="button" onclick="myFunction()">Favorite</button>
+            <script>
+              function myFunction() {
+                alert("Please Login to Favourite");
+              }
+              </script>
+          <% } else { %>
+            <form method="POST" action="/listings/<%- listings[listing]['id']%>">
+              <button type="submit" class="button" onclick="myFunction()">Favorite</button>
+            </form>
+            <% } %>
         </div>
         <div class="listing-description">
           <span><%= listings[listing]['description'] %></span>
