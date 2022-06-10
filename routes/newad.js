@@ -13,7 +13,7 @@ const path = require("path");
 const sellerHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
-  router.post("/new", (req, res) => {
+  router.post("/new", async (req, res) => {
     let files = [];
     if (!req.files) {
       return res.status(400).send("No files were uploaded!");
@@ -38,15 +38,12 @@ module.exports = (db) => {
 
     const listing = req.body;
     let niche = sellerHelper.addNiche(listing.niche, db);
-    Promise.all([
-      sellerHelper.addNewListing(req.session.userId, listing, niche, db),
-      sellerHelper.getAddedListingId(db),
-    ])
-      .then((values) => {
-        let listing_id = values[1];
-        sellerHelper.addNewFavorites(listing_id, req.session.userId["id"], db);
-        sellerHelper.addNewPhotos(listing_id, files, db);
-      })
+
+    await sellerHelper.addNewListing(req.session.userId, listing, niche, db);
+    let listing_id = await sellerHelper.getAddedListingId(db);
+    await sellerHelper
+      .addNewPhotos(listing_id, files, db)
+
       .then((result) => {
         sellerHelper.testHelper(db);
       })

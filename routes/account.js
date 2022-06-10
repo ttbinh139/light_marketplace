@@ -7,13 +7,12 @@ const messageHelper = require("../lib/messageHelper");
 module.exports = (db) => {
   router.get("/", async (req, res) => {
     const listings = await sellerHelper.getListingsInfo(req.session.userId, db);
-    console.log(listings);
-
     let allPictures = [];
     for (listing of listings) {
       const val = await sellerHelper.getPictures(listing["id"], db);
       allPictures.push(val);
     }
+    await sellerHelper.testHelper(db);
     let value = [listings, allPictures];
 
     let all_message = await messageHelper.getAllMessagesByUserId(
