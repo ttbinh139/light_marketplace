@@ -46,10 +46,12 @@
       <% } %>
     </div>
     <% if (listing !== null) { %>
-    <h2 id="message-title">Send New Message</h2>
-
-      <span>To receipient : <%=listing.name %></span>
-      <span> About item: <a href="/listings/:<%=listing.id%>"><%=listing.title%></a></span>
+      <div class="msg-title">
+        <h2 id="message-title">Send New Message</h2>
+        <span class="listing-detail">To : <%=listing.name %></span>
+        <span class="listing-detail"> Item: $<%=listing.price%> - <%=listing.title%>&emsp;&nbsp;<a href="/listings/:<%=listing.id%>">See detail</a></span>
+        <span class="listing-detail"> Posted: <%=listing.created %></span>
+      </div>
 
     <div class="chat-content">
       <div class="content">

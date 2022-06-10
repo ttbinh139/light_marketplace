@@ -7,8 +7,6 @@ const messageHelper = require("../lib/messageHelper");
 module.exports = (db) => {
   router.get("/", async (req, res) => {
     const listings = await sellerHelper.getListingsInfo(req.session.userId, db);
-    console.log(listings);
-
     let allPictures = [];
     for (listing of listings) {
       const val = await sellerHelper.getPictures(listing["id"], db);
@@ -58,6 +56,8 @@ module.exports = (db) => {
       allMessage: all_message,
       allFavourites: favourites,
     };
+
+    console.log(templateVars);
 
     res.render("account", templateVars);
   });

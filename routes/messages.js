@@ -52,6 +52,7 @@ module.exports = (db) => {
             let conversation = await messageHelper.getConversationByMessageId(message_id, db);
             console.log("line 42:", messageDetail);
             //console.log("line 39: ",conversation);
+            messageDetail.created = messageDetail.created.toDateString();
             return res.render('messages', { userID: userId, messages: data, messageDetail: messageDetail, conversation:conversation, error:null });
           } else {
             error = "This conversation doesn't exist";
@@ -73,8 +74,6 @@ module.exports = (db) => {
     //console.log("Listing ID: ",listingId);
     let userId = req.session.userId.id;
 
-    // Check listing exist
-
     // Check if the logged in user already sent message to this seller -> redirect to view message page.
     messageHelper.checkUserSentMessageToListing(userId, listingId, db)
       .then(data => {
@@ -91,8 +90,12 @@ module.exports = (db) => {
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
         let listing = await messageHelper.getListingFromId(listingId, db);
-        console.log("line 94:",listing);
+        if (listing.user_id === userId) {
+          let error = "You're onwer of this listing. Can't sent message to yourself";
+          return res.render("newmessage", {userID: userId, messages: data, listing:null, error: error});
+        }
         if (listing) {
+          listing.created = listing.created.toDateString();
           return res.render("newmessage", {userID: userId, messages: data, listing:listing, error: null});
         } else {
           let error = "Listing does not exist";

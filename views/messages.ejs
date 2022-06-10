@@ -50,9 +50,9 @@
           <div class="column right">
             <h2>Title: <%= messageDetail.title%></h2>
             <span>Price: <%=messageDetail.price %></span>
-            <!-- <span>Posted: <%= messageDetail.created %></span> -->
-            <span class="padding">Posted: 4 days ago</span>
-            <a href="/listings/<%=messageDetail.listing_id%>">See detail</a>
+            <span>Posted: <%= messageDetail.created %></span>
+            <!-- <span class="padding">Posted: 4 days ago</span> -->
+            <a href="/listings/:<%=messageDetail.listing_id%>">See detail</a>
           </div>
       </div>
     </div>
