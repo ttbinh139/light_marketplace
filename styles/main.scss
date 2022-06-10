@@ -244,6 +244,15 @@ span.padding {
   float:right;
 }
 
+.msg-title {
+  padding-bottom: 10px;
+}
+
+.listing-detail{
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
 /* Clear floats after the columns */
 .content .row:after {
   content: "";
