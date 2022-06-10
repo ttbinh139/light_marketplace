@@ -50,7 +50,7 @@ div.my-listings {
   border-radius: 25px;
   overflow-y: auto;
 }
-div.my-favorites {
+div.my-favourites {
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -63,7 +63,7 @@ div.my-favorites {
 }
 div.my-messages {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   align-items: flex-start;
   border: solid;
@@ -118,7 +118,7 @@ div.sold-item {
   max-height: 100px;
 }
 
-div.my-favorites section.favorites {
+div.my-favourites section.favourites {
   width: 100%;
   margin-bottom: 0.1em;
   display: flex;
@@ -126,7 +126,7 @@ div.my-favorites section.favorites {
   align-items: center;
 }
 
-div.my-favorites button.removeFav {
+div.my-favourites button.removeFav {
   margin: 0.5em;
   box-shadow: 1px 1px #e07a5f;
   border-radius: 10px;

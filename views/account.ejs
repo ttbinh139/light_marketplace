@@ -98,40 +98,40 @@
           <% }%>
         </div>
 
-        <div class="my-favorites">
-            <h2 class="listing-title">My Favorites</h2>
-            <% for(let i = 0; i < allFavorites.length; i++) { %>
-            <section class="favorites">
+        <div class="my-favourites">
+            <h2 class="listing-title">My Favourites</h2>
+            <% for(let i = 0; i < allFavourites.length; i++) { %>
+            <section class="favourites">
               <div class="pic-box">
                 <img
                   class="listings-image"
-                  src="<%=allFavorites[i].photo_1 %>"
+                  src="<%=allFavourites[i].photo_1 %>"
                   alt=""
                 />
               </div>
-              <%if (allFavorites[i].active === false) {%>
+              <%if (allFavourites[i].active === false) {%>
                 <div class="sold-item">
                   <img src="https://www.psdstamps.com/wp-content/uploads/2020/03/sold-stamp-png.png" id="sold-item" alt="">
                 </div><%}%>
 
 
                 <div class="title">
-                  <a href="/listings/<%=allFavorites[i].id%>">
+                  <a href="/listings/<%=allFavourites[i].id%>">
                     <b class="listing-title">
-                      <%=allFavorites[i].title %>
+                      <%=allFavourites[i].title %>
                     </b>
                     <br>
                   </a>
                 </div>
 
                 <form
-                action="account/<%= allFavorites[i].id%>/removeFav"
+                action="account/<%= allFavourites[i].id%>/removeFav"
                 method="POST"
                 id="removeFav"
               >
                 <button
                   class="removeFav"
-                  onclick="return confirm('Are you sure you want to remove the listing from your favorites?')"
+                  onclick="return confirm('Are you sure you want to remove the listing from your favourites?')"
                 >
                   REMOVE
                 </button>
