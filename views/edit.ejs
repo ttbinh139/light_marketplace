@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>newad</title>
+    <title>editad</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -16,19 +16,19 @@
     <link rel="stylesheet" href="../styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="../styles/footer.css" type="text/css" />
     <link rel="stylesheet" href="../styles/forms.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/newad.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/edit.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <header><%- include("partials/_nav") %></header>
   <body>
-    <h2>Create New Ad</h2>
+    <h2>Edit Ad</h2>
     <div id="forms">
       <form
         class="user-posting"
         id="newposting"
-        action="/newad/new"
+        action="/edit/:<%=id%>"
         method="POST"
         enctype="multipart/form-data"
       >
@@ -37,7 +37,7 @@
           class="form-control"
           type="title"
           name="title"
-          placeholder="Title"
+          value="<%= title%>"
           required
         />
 
@@ -46,7 +46,7 @@
           class="form-control"
           type="price"
           name="price"
-          placeholder="0"
+          value="<%= price%>"
           required
         />
 
@@ -55,14 +55,19 @@
           class="form-control"
           type="condition"
           name="condition"
-          placeholder="New"
+          placeholder="<%= condition%>"
         >
           <option>New</option>
           <option>Used</option>
         </select>
 
         <label for="niche">Type</label>
-        <select class="form-control" type="niche" name="niche">
+        <select
+          class="form-control"
+          type="niche"
+          name="niche"
+          placeholder="<%= type%>"
+        >
           <option>Shoes</option>
           <option>Autmobile</option>
           <option>Accessory</option>
@@ -82,44 +87,60 @@
           rows="10"
           name="description"
           required
-        ></textarea>
-
-        <p class="note">
-          Note: You need to insert atleast one image of your product.
-        </p>
+        >
+<%= description%></textarea
+        >
 
         <div class="upload-image">
           <div class="form-control image-box">
-            <input
-              type="file"
-              id="file-1"
-              accept="image/*"
-              name="photo1"
-              required
-            />
+            <input type="file" id="file-1" accept="image/*" name="photo1" />
             <label for="file-1" id="file-1-preview">
-              <img src="https://bit.ly/3ubuq5o" alt="" />
+              <img
+                src="<%=pictures['photo_1']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
             </label>
           </div>
 
           <div class="form-control image-box">
             <input type="file" id="file-2" accept="image/*" name="photo2" />
             <label for="file-2" id="file-2-preview">
+              <%if (pictures["photo_2"] !== null) {%>
+              <img
+                src="<%=pictures['photo_2']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
+              <%}else {%>
               <img src="https://bit.ly/3ubuq5o" alt="" />
+              <%}%>
             </label>
           </div>
 
           <div class="form-control image-box">
             <input type="file" id="file-3" accept="image/*" name="photo3" />
             <label for="file-3" id="file-3-preview">
+              <%if (pictures["photo_3"] !== null) {%>
+              <img
+                src="<%=pictures['photo_3']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
+              <%}else {%>
               <img src="https://bit.ly/3ubuq5o" alt="" />
+              <%}%>
             </label>
           </div>
 
           <div class="form-control image-box">
             <input type="file" id="file-4" accept="image/*" name="photo4" />
             <label for="file-4" id="file-4-preview">
+              <%if (pictures["photo_4"] !== null) {%>
+              <img
+                src="<%=pictures['photo_4']%>"
+                alt="https://bit.ly/3ubuq5o"
+              />
+              <%}else {%>
               <img src="https://bit.ly/3ubuq5o" alt="" />
+              <%}%>
             </label>
           </div>
         </div>
@@ -128,7 +149,7 @@
           type="submit"
           id="picsubmit"
           class="btn btn-primary btn-sm"
-          onclick="return confirm('Is this finalized?')"
+          onclick="return confirm('Is this confirmed?')"
         >
           Submit
         </button>

@@ -26,11 +26,141 @@
       <h2><%=userId.name %> Account page</h2>
 
       <div class="account-summary">
-        <p><strong> Name : <%=userId.name %></strong></p>
-        <p><strong>Email : <%=userId.email %></strong></p>
-        <p><strong>Address : <%=userId.address %></strong></p>
+        <p><strong>Name : </strong> <%=userId.name %></p>
+        <p><strong>Email : </strong> <%=userId.email %></p>
+        <p><strong>Address : </strong> <%=userId.address %></p>
       </div>
+
       <div class="account-information">
+<<<<<<< HEAD
+        <div class="my-listings">
+          <h2 class="listing-title">My Listings</h2>
+          <% for(let i = 0; i < allListings.length; i++) { %>
+          <section class="listings">
+            <div class="title">
+              <a href="/listings/<%= allListings[i].id%>"><b class="listing-title"><%-allListings[i].title %></b> <br></a>
+               Price: <%= allListings[i].price %> $
+            </div>
+
+            <div class="pic-box">
+              <img
+                class="listings-image"
+                src="<%=allPictures[i].photo_1 %>"
+                alt=""
+              />
+            </div>
+
+            <%if (allListings[i].active === false) {%>
+              <div class="sold-item"> <img src="https://www.psdstamps.com/wp-content/uploads/2020/03/sold-stamp-png.png" id="sold-item" alt=""></div>
+               <%}%>
+
+            <section class="buttons">
+              <%if (allListings[i].active === true) {%>
+              <form
+                action="/edit/:<%= allListings[i].id%>"
+                method="GET"
+                id="edit"
+              >
+                <button class="edit-button">EDIT</button>
+                <input type="hidden" value="<%= allListings[i].id%>" />
+              </form>
+              <%}%>
+              <form
+                action="account/<%= allListings[i].id%>/delete"
+                method="POST"
+                id="delete"
+              >
+                <button
+                  class="delete-button"
+                  onclick="return confirm('Are you sure you want to delete the listing?')"
+                >
+                  DELETE
+                </button>
+                <input type="hidden" value="<%- allListings[i].id%>" />
+              </form>
+              <%if (allListings[i].active === true) {%>
+
+              <form
+                action="account/<%= allListings[i].id%>/sold"
+                method="POST"
+                id="sold"
+              >
+                <button
+                  class="sold-button"
+                  onclick="return confirm('Are you sure you want to list your listing as sold?')"
+                >
+                  MARK AS SOLD
+                </button>
+                <input type="hidden" value="<%- allListings[i].id%>" />
+                <%}%>
+              </form>
+            </section>
+          </section>
+          <% }%>
+        </div>
+
+        <div class="my-favorites">
+            <h2 class="listing-title">My Favorites</h2>
+            <% for(let i = 0; i < allFavorites.length; i++) { %>
+            <section class="favorites">
+              <div class="pic-box">
+                <img
+                  class="listings-image"
+                  src="<%=allFavorites[i].photo_1 %>"
+                  alt=""
+                />
+              </div>
+              <%if (allFavorites[i].active === false) {%>
+                <div class="sold-item">
+                  <img src="https://www.psdstamps.com/wp-content/uploads/2020/03/sold-stamp-png.png" id="sold-item" alt="">
+                </div><%}%>
+
+
+                <div class="title">
+                  <a href="/listings/<%=allFavorites[i].id%>">
+                    <b class="listing-title">
+                      <%=allFavorites[i].title %>
+                    </b>
+                    <br>
+                  </a>
+                </div>
+
+                <form
+                action="account/<%= allFavorites[i].id%>/removeFav"
+                method="POST"
+                id="removeFav"
+              >
+                <button
+                  class="removeFav"
+                  onclick="return confirm('Are you sure you want to remove the listing from your favorites?')"
+                >
+                  REMOVE
+                </button>
+              </form>
+                </section>
+
+                 <%}%>
+            </div>
+
+
+        <div class="my-messages" >
+          <h2 class="message-title">My Messages</h2>
+
+          <%for (let x = 0; x < allMessage.length; x++) {%>
+
+            <div class="messages">
+
+              <div class="envelope-box">
+                <a href="/messages"> <img class= "envelope" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Envelope_font_awesome.svg/512px-Envelope_font_awesome.svg.png" alt=""> </a>
+              </div>
+
+              Message From:<b class="message-info"><%=allMessage[x].sender%></b><br>
+              Receieved: <b class="message-info"><%=allMessage[x].created_time%></b> <br>
+              Enquiring about: <b class="message-info"><%= allMessage[x].listing_id %></b> <br>
+            </div>
+            <% }%>
+        </div>
+=======
 
         <div class="my-listings">HELLO</div>
         <div class="my-favorites">
@@ -45,8 +175,10 @@
         </div>
         <div class="my-messages">HELLO</div>
 
+>>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
       </div>
     </div>
+    </script>
   </body>
   <footer><%- include("partials/_footer") %></footer>
 </html>
