@@ -75,6 +75,7 @@ module.exports = (db) => {
   router.post("/:listingid/removeFav", async (req, res) => {
     let listingId = req.params.listingid;
     let userId = req.session.userId["id"];
+    console.log(listingId, userId);
     await sellerHelper.removeFav(userId, listingId, db);
     //await sellerHelper.testHelper(db);
     return res.redirect("/account");
