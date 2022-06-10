@@ -25,14 +25,68 @@
       <h2>$<%= listings[listing]['price'] %> - <%= listings[listing]['title'] %></h2>
       <div class="id-body">
         <div class="image-large">
-          <img src="<%= listings[listing]['photo_1'] %>">
+          <% if (listings[listing]['photo_1'] && !listings[listing]['photo_2'] && !listings[listing]['photo_3'] && !listings[listing]['photo_4']) { %>
+            <img class="mySlides" src="<%= listings[listing]['photo_1'] %>">
+          <% } else if (listings[listing]['photo_1'] && listings[listing]['photo_2'] && !listings[listing]['photo_3'] && !listings[listing]['photo_4']) { %>
+            <img class="mySlides" src="<%= listings[listing]['photo_1'] %>">
+            <img class="mySlides" src="<%= listings[listing]['photo_2'] %>">
+          <% } else if (listings[listing]['photo_1'] && listings[listing]['photo_2'] && listings[listing]['photo_3'] && !listings[listing]['photo_4']) { %>
+            <img class="mySlides" src="<%= listings[listing]['photo_1'] %>">
+            <img class="mySlides" src="<%= listings[listing]['photo_2'] %>">
+            <img class="mySlides" src="<%= listings[listing]['photo_3'] %>">
+          <% } else if (listings[listing]['photo_1'] && listings[listing]['photo_2'] && listings[listing]['photo_3'] && listings[listing]['photo_4']) { %>
+            <img class="mySlides" src="<%= listings[listing]['photo_1'] %>">
+            <img class="mySlides" src="<%= listings[listing]['photo_2'] %>">
+            <img class="mySlides" src="<%= listings[listing]['photo_3'] %>">
+            <img class="mySlides" src="<%= listings[listing]['photo_4'] %>">
+          <% } %>
+          <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+          <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+              showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              if (n > x.length) {slideIndex = 1}
+              if (n < 1) {slideIndex = x.length}
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+              }
+              x[slideIndex-1].style.display = "block";
+            }
+            </script>
+        </div>
+
         </div>
         <div class="user-features">
-          <a class="button">Message</a>
-          <form method="POST" action="/favorites">
-            <button type="submit" class="button">Favorite</button>
-          </form>
-          <span>Posted: <%= listings[listing]['created'] %></span>
+          <% if (!userId) { %>
+            <a class="button" onclick="messageFunction()">Message</a>
+            <script>
+                function messageFunction() {
+                  alert("Please Login to Send a Message");
+                }
+                </script>
+            <button type="submit" class="button" onclick="favFunction()">Favorite</button>
+            <script>
+              function favFunction() {
+                alert("Please Login to Favourite");
+              }
+              </script>
+          <% } else { %>
+            <!-- <a class="button" href="/messages/new/<%- listings[listing]['id']%>">Message</a> -->
+            <form method="GET" action="/messages">
+              <button type="submit" class="button">Message</button>
+            </form>
+            <form method="POST" action="/listings/<%- listings[listing]['id']%>">
+              <button type="submit" class="button">Favorite</button>
+            </form>
+            <% } %>
         </div>
         <div class="listing-description">
           <span><%= listings[listing]['description'] %></span>

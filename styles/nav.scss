@@ -5,6 +5,7 @@ nav {
   top: 0;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  position: fixed;
 }
 
 .column-left {
@@ -79,6 +80,11 @@ nav {
   clear: both;
 }
 
+<<<<<<< HEAD
 .navbar-light {
   color: #e07a5f;
+=======
+nav span {
+  color: white;
+>>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
 }

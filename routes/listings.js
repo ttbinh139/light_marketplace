@@ -7,6 +7,7 @@
 
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const listingHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
@@ -32,12 +33,24 @@ module.exports = (db) => {
     }
 
     db.query(queryString, queryParams)
+=======
+const buyerHelper = require("../lib/buyerHelper");
+
+module.exports = (db) => {
+  router.get("/", (req, res) => {
+    let request = req;
+    buyerHelper
+      .getListings(request, db)
+>>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
       .then((data) => {
         const templateVars = {
           listings: data.rows,
         };
+<<<<<<< HEAD
         const listings = data.rows;
         //res.json({ listings });
+=======
+>>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
         res.render("listings", templateVars);
       })
       .catch((err) => {
@@ -46,6 +59,7 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req, res) => {
+<<<<<<< HEAD
     let id = Object.values(req.params);
     const queryParams = [];
     let queryString = `SELECT *
@@ -53,6 +67,10 @@ module.exports = (db) => {
     WHERE listings.id = ${id};`;
 
     db.query(queryString, queryParams).then((data) => {
+=======
+    let listingID = Object.values(req.params);
+    buyerHelper.getListingID(listingID, db).then((data) => {
+>>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
       const templateVars = {
         listings: data.rows,
       };
@@ -62,6 +80,7 @@ module.exports = (db) => {
     });
   });
 
+<<<<<<< HEAD
   router.post("/:id", (req, res) => {});
   return router;
 };
@@ -83,3 +102,42 @@ module.exports = (db) => {
 
 // return router
 // })
+=======
+  router.post("/:id", (req, res) => {
+    const listingID = Number(Object.values(req.params));
+    const userID = req.session.userId.id;
+
+    buyerHelper
+      .checkFavourites(userID, listingID, db)
+      .then((data) => {
+        if (data.rows.length > 0) {
+          res.end("Listing Already Added To Favourites");
+        } else {
+          buyerHelper.insertFavourites(userID, listingID, db).then((data) => {
+            const listings = data.rows;
+            res.redirect("/account");
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.post("/delete/:id", (req, res) => {
+    const listingID = Number(Object.values(req.params));
+    const userID = req.session.userId.id;
+    const queryString = `DELETE FROM favourites
+    WHERE user_id = $1
+    AND listing_id = $2;`;
+    db.query(queryString, [userID, listingID])
+      .then((data) => {
+        res.redirect("/account");
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+  return router;
+};
+>>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9

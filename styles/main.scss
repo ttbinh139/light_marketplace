@@ -1,4 +1,7 @@
-
+body {
+  z-index: -1;
+  padding-top: 100px;
+}
 #coverimg {
   width: 85%;
   margin: 50px auto 0 auto;
@@ -16,17 +19,27 @@ img {
   margin: 50px auto 50px auto;
   height: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
 }
 
 .item-row {
   display: flex;
   flex-direction: row;
+  min-width: 200px;
+  max-width: 200px;
+  max-height: 250px;
+  min-height: 250px;
+}
+
+.item-row img {
+  width: 100px;
 }
 
 .item-row a {
   margin: 0 10px;
+  width: 100%;
 }
 
 .item-column {
@@ -40,6 +53,7 @@ img {
   border-color: #3D405B;
   border-width: 2px;
   border-radius: 25px;
+  width: 100%;
 }
 
 .item-column img {
@@ -59,9 +73,6 @@ img {
 
 //messages
 
-.msg-container {
-  /* height: calc(100vh - 150px); */
-}
 
 .head-title {
   width: 80%;
@@ -247,17 +258,19 @@ span.padding {
   text-align: center;
 }
 
+.listings h2 {
+  width: 100%;
+}
+
 .show-listings {
-  width: 80%;
-  height: 800px;
-  border: #3D405B;
-  border-width: 4px;
-  border-style: solid;
-  float: right;
+  width: 100%;
+  min-width: 800px;
+  height: fit-content;
 }
 .filters {
-  width: 20%;
-  height: 800px;
+  width: 10%;
+  min-width: 160px;
+  height: 1000%;
   background-color: #FBEEDA;
   border: #3D405B;
   border-width: 4px;
@@ -279,8 +292,32 @@ span.padding {
   flex-direction: column;
 }
 
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+
+.form-select {
+  height: 25px;
+  border-radius: 10px;
+}
+
+.filter-label {
+  padding-top: 10px;
+}
+
+.filter-form .button {
+  padding-top: 10px;
+}
+
+
 
 //listingid
+
+.listing-id {
+  margin-bottom: 100px;
+}
 
 .listing-id h2 {
   color: #e07a5f;
@@ -290,13 +327,18 @@ span.padding {
 .id-body {
   width: 85%;
   height: auto;
-  margin: 0 auto 100px auto;
+  margin: 0 auto 10px auto;
   border-radius: 25px;
 }
 
 .image-large {
   width: 750px;
   margin: 0 auto;
+}
+
+.image-large img {
+  width: 750px;
+  height: 750px;
 }
 
 .listing-description {
@@ -306,7 +348,7 @@ span.padding {
   border-radius: 15px;
   width: 750px;
   height: 400px;
-  margin: 50px auto;
+  margin: 10px auto;
   padding: 15px;
   overflow: scroll;
 }
@@ -320,17 +362,21 @@ span.padding {
   scrollbar-width: none;
 }
 
-.filters form {
-  padding-top: 10px;
-}
-
-.filters .form-area {
-  margin-bottom: 10px;
-}
 .filters .button {
   color: #e07a5f;
+  padding-bottom: 10px;
+}
+
+.user-features {
+  width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .user-features .button {
   color: #e07a5f;
+  padding-right: 10px;
 }
+
+
