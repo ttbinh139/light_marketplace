@@ -32,7 +32,6 @@
       </div>
 
       <div class="account-information">
-<<<<<<< HEAD
         <div class="my-listings">
           <h2 class="listing-title">My Listings</h2>
           <% for(let i = 0; i < allListings.length; i++) { %>
@@ -160,22 +159,6 @@
             </div>
             <% }%>
         </div>
-=======
-
-        <div class="my-listings">HELLO</div>
-        <div class="my-favorites">
-          <h3>Favourites</h3>
-          <% for (let listing in info) { %>
-          <div id="single-favorite"><a href="/listings/<%= info[listing]['id'] %>"><%= info[listing]['title'] %></a>
-            <form method="POST" action="/listings/delete/<%= info[listing]['id'] %>">
-              <button type="submit" class="button">Delete</button>
-            </form>
-          </div>
-          <% } %>
-        </div>
-        <div class="my-messages">HELLO</div>
-
->>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
       </div>
     </div>
     </script>
