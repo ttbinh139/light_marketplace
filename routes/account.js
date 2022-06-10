@@ -12,7 +12,6 @@ module.exports = (db) => {
       const val = await sellerHelper.getPictures(listing["id"], db);
       allPictures.push(val);
     }
-    await sellerHelper.testHelper(db);
     let value = [listings, allPictures];
 
     let all_message = await messageHelper.getAllMessagesByUserId(
@@ -57,6 +56,8 @@ module.exports = (db) => {
       allMessage: all_message,
       allFavourites: favourites,
     };
+
+    console.log(templateVars);
 
     res.render("account", templateVars);
   });
