@@ -52,6 +52,7 @@ module.exports = (db) => {
             let conversation = await messageHelper.getConversationByMessageId(message_id, db);
             console.log("line 42:", messageDetail);
             //console.log("line 39: ",conversation);
+            messageDetail.created = messageDetail.created.toDateString();
             return res.render('messages', { userID: userId, messages: data, messageDetail: messageDetail, conversation:conversation, error:null });
           } else {
             error = "This conversation doesn't exist";
@@ -93,6 +94,7 @@ module.exports = (db) => {
         let listing = await messageHelper.getListingFromId(listingId, db);
         console.log("line 94:",listing);
         if (listing) {
+          listing.created = listing.created.toDateString();
           return res.render("newmessage", {userID: userId, messages: data, listing:listing, error: null});
         } else {
           let error = "Listing does not exist";

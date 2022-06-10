@@ -5,15 +5,28 @@
         <a class="button" for="login" href="/listings">Buying</a><br>
         <input class="form-area" type="text" name="buying"><br>
       </form>
-      <a class="button" href="/newad">|&nbsp; Selling</a>
+      <% if (!userId) {%>
+      <a class="button" onclick="sellFunction()">|&nbsp; Selling</a>
+      <script>
+        function sellFunction() {
+          alert("Please Login to Post Ad");
+        }
+        </script>
+      <%}else{%>
+        <a class="button" href="/newad">|&nbsp; Selling</a>
+        <%}%>
     </div>
     <div class="column-mid">
       <a class="button" href="/"><h1>Light Market</h1></a>
     </div>
-
     <% if (!userId) {%>
       <div class="column-right">
-        <a class="button" href="/messages">Messages&nbsp;|</a>
+        <a class="button" onclick="messageFunction()">Messages&nbsp;|</a>
+        <script>
+          function messageFunction() {
+            alert("Please Login to Access Your Messages");
+          }
+          </script>
         <form id="form" class="user-posting" action="/login" method="POST">
           <button class="button" type="submit">Login</button><br />
           <input class="form-area" type="text" id="email" name="email" /><br />
