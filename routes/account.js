@@ -57,8 +57,6 @@ module.exports = (db) => {
       allFavourites: favourites,
     };
 
-    console.log(templateVars);
-
     res.render("account", templateVars);
   });
 

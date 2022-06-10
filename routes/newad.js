@@ -24,12 +24,12 @@ module.exports = (db) => {
     let key = Object.keys(file);
 
     for (let keys of key) {
-      file[keys].mv(path + file[keys].name, (err) => {
-        files.push(path1 + file[keys].name);
+      await file[keys].mv(path + file[keys].name, (err) => {
         if (err) {
           return res.status(500).send(err);
         }
       });
+      files.push(path1 + file[keys].name);
     }
     /*const file1 = req.files.photo1;
     const file2 = req.files.photo2;
