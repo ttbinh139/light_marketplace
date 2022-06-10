@@ -1,5 +1,9 @@
 // Client facing scripts here
-
+/**
+ * Rendering a conversation
+ * @param {*} response
+ * @returns HTML output that represent a conversation in client side.
+ */
 const renderConversation = function (response) {
   console.log(response);
   let userId = response.userId;
@@ -20,6 +24,10 @@ const renderConversation = function (response) {
 };
 
 $(document).ready(function () {
+  /**
+   * Handle new message form submit
+   * Redirect to view message after submit successfully
+   */
   $("#new-message-form").submit(function (event) {
     event.preventDefault();
 
@@ -42,6 +50,10 @@ $(document).ready(function () {
     });
   });
 
+  /**
+   * Handle reply message form submit
+   * Re-rendering all conversation after submit successfully
+   */
   $("#reply-message-form").submit(function(event) {
     event.preventDefault();
 

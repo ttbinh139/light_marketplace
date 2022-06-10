@@ -9,11 +9,21 @@ const express = require('express');
 const router = express.Router();
 const messageHelper = require('../lib/messageHelper')
 
+
 module.exports = (db) => {
+  /**
+ * Method: GET
+ * Handle the message route
+ * @param {*} db
+ * @returns
+ * Checking if user have messages, return to view his latest messages pages. If not, so error.
+ */
   router.get("/", (req, res) => {
     // Get logged in user
     let userId = req.session.userId.id;
-    console.log("Line 16: ",userId);
+    //console.log("Line 16: ",userId);
+
+    // Calling messageHelper to get laastest message from logged user
     messageHelper.getLastestMessageByUserId(userId, db)
       .then(data => {
         if (data) {
@@ -30,6 +40,10 @@ module.exports = (db) => {
       });
   });
 
+  /**
+   * View specific message
+   * Need to check message exist and belongs to logged user. if no, so appropriate error.
+   */
   router.get("/:message_id", (req, res) => {
     // Get logged in user
     let userId = req.session.userId.id;
@@ -39,7 +53,6 @@ module.exports = (db) => {
     // Check message exist
 
     // Get all messsages from user
-
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
         if (data) {
@@ -50,7 +63,7 @@ module.exports = (db) => {
               return res.render('messages', { userId: userId, messages: data, messageDetail: null, conversation:null, error:error });
             }
             let conversation = await messageHelper.getConversationByMessageId(message_id, db);
-            console.log("line 42:", messageDetail);
+            //console.log("line 42:", messageDetail);
             //console.log("line 39: ",conversation);
             messageDetail.created = messageDetail.created.toDateString();
             return res.render('messages', { userID: userId, messages: data, messageDetail: messageDetail, conversation:conversation, error:null });
@@ -69,6 +82,9 @@ module.exports = (db) => {
       });
   })
 
+  /**
+   * Create new message to buyer
+   */
   router.get("/new/:listingId", (req, res) => {
     let listingId = req.params.listingId;
     //console.log("Listing ID: ",listingId);
@@ -111,6 +127,10 @@ module.exports = (db) => {
 
   });
 
+  /**
+   * Method: POST
+   * Handle form submitted when user create new messages
+   */
   router.post("/new/:listingId", (req, res) => {
     let userId = req.session.userId.id;
     let listing_id = req.params.listingId;
@@ -136,6 +156,11 @@ module.exports = (db) => {
       })
   });
 
+  /**
+   * Method: POST
+   * Handle reply messages
+   * Return Object with all conversation belongs to this message to render at client side.
+   */
   router.post("/:message_id", (req, res) => {
     let userId = req.session.userId.id;
     let message_id = req.params.message_id;
@@ -164,6 +189,10 @@ module.exports = (db) => {
       })
   });
 
+  /**
+   * Method: GET
+   * Return all conversations by message id to render in client side.
+   */
   router.get("/conversation/:message_id", (req, res) => {
     let message_id = req.params.message_id;
     messageHelper.getConversationByMessageId(message_id, db)
