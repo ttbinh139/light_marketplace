@@ -1,3 +1,4 @@
+<!-- Listings HTML  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,12 +58,14 @@
   <div class="show-listings">
 
     <div class="grid-container">
+      <!-- Loops through listings to show data  -->
       <% for (let listing in listings) { %>
       <div class="item-row">
         <a class="button" href="/listings/<%- listings[listing]['id']%>">
         <div class="item-column">
           <img src="<%= listings[listing]['photo_1'] %>">
           <div class="listing-info">
+            <!-- Checks if listing is sold -->
             <% if (!listings[listing]['active']) { %>
               <span>Sold</span>
             <% } else { %>

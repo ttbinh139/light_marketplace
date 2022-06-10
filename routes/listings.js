@@ -10,6 +10,7 @@ const router = express.Router();
 const buyerHelper = require("../lib/buyerHelper");
 
 module.exports = (db) => {
+  //Main request for the listings page
   router.get("/", (req, res) => {
     let request = req;
     buyerHelper
@@ -25,6 +26,7 @@ module.exports = (db) => {
       });
   });
 
+  //Main request for the individual listings pages
   router.get("/:id", (req, res) => {
     let listingID = Number(Object.values(req.params));
     buyerHelper.getListingID(listingID, db).then((data) => {
@@ -37,6 +39,7 @@ module.exports = (db) => {
     });
   });
 
+  //Main post for adding to favourites while checking if user already added the favourite.
   router.post("/:id", (req, res) => {
     const listingID = Number(Object.values(req.params));
     const userID = req.session.userId.id;
@@ -52,21 +55,6 @@ module.exports = (db) => {
             res.redirect("/account");
           });
         }
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-
-  router.post("/delete/:id", (req, res) => {
-    const listingID = Number(Object.values(req.params));
-    const userID = req.session.userId.id;
-    const queryString = `DELETE FROM favourites
-    WHERE user_id = $1
-    AND listing_id = $2;`;
-    db.query(queryString, [userID, listingID])
-      .then((data) => {
-        res.redirect("/account");
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });

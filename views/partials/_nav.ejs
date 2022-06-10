@@ -1,3 +1,4 @@
+<!-- Navbar HTML -->
 <nav>
   <div class="row">
     <div class="column-left">
@@ -5,6 +6,7 @@
         <a class="button" for="login" href="/listings">Buying</a><br>
         <input class="form-area" type="text" name="buying"><br>
       </form>
+      <!-- Checks if user is logged in for functionallity -->
       <% if (!userId) {%>
       <a class="button" onclick="sellFunction()">|&nbsp; Selling</a>
       <script>
@@ -19,6 +21,7 @@
     <div class="column-mid">
       <a class="button" href="/"><h1>Light Market</h1></a>
     </div>
+    <!-- Checks if user is logged in for functionallity -->
     <% if (!userId) {%>
       <div class="column-right">
         <a class="button" onclick="messageFunction()">Messages&nbsp;|</a>
