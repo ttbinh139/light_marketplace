@@ -7,6 +7,8 @@ const messageHelper = require("../lib/messageHelper");
 module.exports = (db) => {
   router.get("/", async (req, res) => {
     const listings = await sellerHelper.getListingsInfo(req.session.userId, db);
+    console.log(listings);
+
     let allPictures = [];
     for (listing of listings) {
       const val = await sellerHelper.getPictures(listing["id"], db);
@@ -29,24 +31,24 @@ module.exports = (db) => {
       all_message[x].created_time = time_ago;
     }
 
-    const favorites = await sellerHelper.getFavorites(
+    const favourites = await sellerHelper.getFavourites(
       req.session.userId["id"],
       db
     );
 
-    for (let x = 0; x < favorites.length; x++) {
+    for (let x = 0; x < favourites.length; x++) {
       let favPictures = await sellerHelper.getPictures(
-        favorites[x]["listing_id"],
+        favourites[x]["listing_id"],
         db
       );
       let favTitles = await sellerHelper.getListings(
-        favorites[x]["listing_id"],
+        favourites[x]["listing_id"],
         db
       );
-      favorites[x]["photo_1"] = favPictures["photo_1"];
-      favorites[x]["price"] = favTitles[0]["price"];
-      favorites[x]["active"] = favTitles[0]["active"];
-      favorites[x]["title"] = favTitles[0]["title"];
+      favourites[x]["photo_1"] = favPictures["photo_1"];
+      favourites[x]["price"] = favTitles[0]["price"];
+      favourites[x]["active"] = favTitles[0]["active"];
+      favourites[x]["title"] = favTitles[0]["title"];
     }
 
     const templateVars = {
@@ -54,12 +56,11 @@ module.exports = (db) => {
       allListings: value[0],
       allPictures: value[1],
       allMessage: all_message,
-      allFavorites: favorites,
+      allFavourites: favourites,
     };
 
-    res.render("account", templateVars)
-  })
-
+    res.render("account", templateVars);
+  });
 
   router.post("/:listingid/sold", (req, res) => {
     let listingId = req.params.listingid;
@@ -77,9 +78,9 @@ module.exports = (db) => {
     let listingId = req.params.listingid;
     let userId = req.session.userId["id"];
     await sellerHelper.removeFav(userId, listingId, db);
-    await sellerHelper.testHelper(db);
+    //await sellerHelper.testHelper(db);
     return res.redirect("/account");
   });
 
   return router;
-}
+};

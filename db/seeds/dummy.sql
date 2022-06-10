@@ -110,57 +110,6 @@ INSERT INTO listings (title, description, price, active, condition, user_id, nic
 
 
 
-INSERT INTO listings (title, description, price, active, condition, user_id, niche_id) VALUES ('Buying Galaxy S20!', 'Selling a BNIB Galaxy S20!', '500', TRUE, TRUE, 1, 5);
-
--- users_listing table seeds here (Example)
-
-INSERT INTO favorites (listing_id, user_id) VALUES (1, 1);
-
-INSERT INTO favorites (listing_id, user_id) VALUES (2, 1);
-
-INSERT INTO favorites (listing_id, user_id) VALUES (3, 1);
-
-INSERT INTO favorites (listing_id, user_id) VALUES (4, 1);
-
-INSERT INTO favorites (listing_id, user_id) VALUES (5, 1);
-
-INSERT INTO favorites (listing_id, user_id) VALUES (6, 1);
-
-INSERT INTO users_listings (listing_id) VALUES (6);
-
-INSERT INTO users_listings (listing_id) VALUES (7);
-
-INSERT INTO users_listings (listing_id) VALUES (8);
-
-INSERT INTO users_listings (listing_id) VALUES (9);
-
-INSERT INTO users_listings (listing_id) VALUES (10);
-
-INSERT INTO users_listings (listing_id) VALUES (11);
-
-INSERT INTO users_listings (listing_id) VALUES (12);
-
-INSERT INTO users_listings (listing_id) VALUES (13);
-
-INSERT INTO users_listings (listing_id) VALUES (14);
-
-INSERT INTO users_listings (listing_id) VALUES (15);
-
-INSERT INTO users_listings (listing_id) VALUES (16);
-
-INSERT INTO users_listings (listing_id) VALUES (17);
-
-INSERT INTO users_listings (listing_id) VALUES (18);
-
-INSERT INTO users_listings (listing_id) VALUES (19);
-
-INSERT INTO users_listings (listing_id) VALUES (20);
-
-INSERT INTO users_listings (listing_id) VALUES (21);
-
-INSERT INTO users_listings (listing_id) VALUES (22);
-
-
 -- photo table seeds here (Example)
 
 INSERT INTO photos (photo_1, photo_2,listing_id)
@@ -233,74 +182,74 @@ VALUES ('https://images.craigslist.org/00l0l_cQuew8gu0Hsz_0t20CI_600x450.jpg','h
 
 -- messages table seeds here (Example)
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (1, '2018-02-12T08:00:00.000Z', 1, 6, 1);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (1, '2018-02-12T08:00:00.000Z', 1, 6, 1);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (2, '2018-02-12T08:00:00.000Z', 6, 1, 1);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (2, '2018-02-12T08:00:00.000Z', 6, 1, 1);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (3, '2018-02-12T08:00:00.000Z', 2, 7, 2);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (3, '2018-02-12T08:00:00.000Z', 2, 7, 2);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (4, '2018-02-12T08:00:00.000Z', 3, 8, 3);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (4, '2018-02-12T08:00:00.000Z', 3, 8, 3);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (5, '2018-02-12T08:00:00.000Z', 8, 3, 3);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (5, '2018-02-12T08:00:00.000Z', 8, 3, 3);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (6, '2018-02-12T08:00:00.000Z', 4, 9, 4);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (6, '2018-02-12T08:00:00.000Z', 4, 9, 4);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (7, '2018-02-12T08:00:00.000Z', 5, 10, 5);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (7, '2018-02-12T08:00:00.000Z', 5, 10, 5);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (8, '2018-02-12T08:00:00.000Z', 10, 5, 5);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (8, '2018-02-12T08:00:00.000Z', 10, 5, 5);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (9, '2018-02-12T08:00:00.000Z', 5, 10, 5);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (9, '2018-02-12T08:00:00.000Z', 5, 10, 5);
 
 -- conversation table seeds here (Example)
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (1, 'Hey can you accept lower prices?', '2018-02-12T08:00:00.000Z', 1, 6);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (1, 'Hey can you accept lower prices?', '2018-02-12T08:00:00.000Z', 1, 6);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (2, 'Sure how much were you thinking?', '2018-02-12T08:00:00.000Z', 2, 1);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (2, 'Sure how much were you thinking?', '2018-02-12T08:00:00.000Z', 2, 1);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (3, 'Hey is this real?', '2018-02-12T08:00:00.000Z', 3, 7);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (3, 'Hey is this real?', '2018-02-12T08:00:00.000Z', 3, 7);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (4, 'Can you go lower on the pink shirt?', '2018-02-12T08:00:00.000Z', 4, 8);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (4, 'Can you go lower on the pink shirt?', '2018-02-12T08:00:00.000Z', 4, 8);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (5, 'No... this is lowest I can go :(', '2018-02-12T08:00:00.000Z', 5, 3);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (5, 'No... this is lowest I can go :(', '2018-02-12T08:00:00.000Z', 5, 3);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (6, 'Thats so expensive.', '2018-02-12T08:00:00.000Z', 6, 9);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (6, 'Thats so expensive.', '2018-02-12T08:00:00.000Z', 6, 9);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (7, 'Is there any scratches?', '2018-02-12T08:00:00.000Z', 7, 10);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (7, 'Is there any scratches?', '2018-02-12T08:00:00.000Z', 7, 10);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (8, 'No of course not!', '2018-02-12T08:00:00.000Z', 8, 5);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (8, 'No of course not!', '2018-02-12T08:00:00.000Z', 8, 5);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
 
 -- favourites table seeds here (Example)
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (1, 1, 2);
+INSERT INTO favourites (user_id, listing_id) Values (1, 2);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (2, 1, 3);
+INSERT INTO favourites (user_id, listing_id) Values (1, 3);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (3, 1, 5);
+INSERT INTO favourites (user_id, listing_id) Values (1, 5);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (4, 2, 3);
+INSERT INTO favourites (user_id, listing_id) Values (2, 3);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (5, 2, 1);
+INSERT INTO favourites (user_id, listing_id) Values (2, 1);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (6, 2, 2);
+INSERT INTO favourites (user_id, listing_id) Values (2, 2);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (7, 3, 2);
+INSERT INTO favourites (user_id, listing_id) Values (3, 2);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (8, 3, 5);
+INSERT INTO favourites (user_id, listing_id) Values (3, 5);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (9, 4, 5);
+INSERT INTO favourites (user_id, listing_id) Values (4, 5);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (10, 5, 1);
+INSERT INTO favourites (user_id, listing_id) Values ( 5, 1);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (11, 5, 2);
+INSERT INTO favourites (user_id, listing_id) Values ( 5, 2);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (12, 5, 3);
+INSERT INTO favourites (user_id, listing_id) Values ( 5, 3);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (13, 6, 5);
+INSERT INTO favourites (user_id, listing_id) Values ( 6, 5);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (14, 8, 1);
+INSERT INTO favourites (user_id, listing_id) Values ( 8, 1);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (15, 8, 5);
+INSERT INTO favourites (user_id, listing_id) Values ( 8, 5);
 
--- INSERT INTO favourites (id, user_id, listing_id) Values (16, 9, 1);
+INSERT INTO favourites (user_id, listing_id) Values ( 9, 1);
