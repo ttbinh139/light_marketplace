@@ -22,7 +22,11 @@
   </header>
     <body class="listing-id">
       <% for (let listing in listings) { %>
-      <h2>$<%= listings[listing]['price'] %> - <%= listings[listing]['title'] %></h2>
+        <% if (!listings[listing]['active']) { %>
+      <h2>Sold - <%= listings[listing]['title'] %></h2>
+      <% } else { %>
+        <h2>$<%= listings[listing]['price'] %> - <%= listings[listing]['title'] %></h2>
+      <% } %>
       <div class="id-body">
         <div class="image-large">
           <% if (listings[listing]['photo_1'] && !listings[listing]['photo_2'] && !listings[listing]['photo_3'] && !listings[listing]['photo_4']) { %>
@@ -79,8 +83,7 @@
               }
               </script>
           <% } else { %>
-            <!-- <a class="button" href="/messages/new/<%- listings[listing]['id']%>">Message</a> -->
-            <form method="POST" action="/messages/new/<%- listings[listing]['id']%>">
+            <form method="GET" action="/messages/new/<%- listings[listing]['id']%>">
               <button type="submit" class="button">Message</button>
             </form>
             <form method="POST" action="/listings/<%- listings[listing]['id']%>">

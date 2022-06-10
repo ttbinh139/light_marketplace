@@ -182,43 +182,43 @@ VALUES ('https://images.craigslist.org/00l0l_cQuew8gu0Hsz_0t20CI_600x450.jpg','h
 
 -- messages table seeds here (Example)
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (1, '2018-02-12T08:00:00.000Z', 1, 6, 1);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (1, '2018-02-12T08:00:00.000Z', 1, 6, 1);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (2, '2018-02-12T08:00:00.000Z', 6, 1, 1);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (2, '2018-02-12T08:00:00.000Z', 6, 1, 1);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (3, '2018-02-12T08:00:00.000Z', 2, 7, 2);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (3, '2018-02-12T08:00:00.000Z', 2, 7, 2);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (4, '2018-02-12T08:00:00.000Z', 3, 8, 3);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (4, '2018-02-12T08:00:00.000Z', 3, 8, 3);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (5, '2018-02-12T08:00:00.000Z', 8, 3, 3);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (5, '2018-02-12T08:00:00.000Z', 8, 3, 3);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (6, '2018-02-12T08:00:00.000Z', 4, 9, 4);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (6, '2018-02-12T08:00:00.000Z', 4, 9, 4);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (7, '2018-02-12T08:00:00.000Z', 5, 10, 5);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (7, '2018-02-12T08:00:00.000Z', 5, 10, 5);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (8, '2018-02-12T08:00:00.000Z', 10, 5, 5);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (8, '2018-02-12T08:00:00.000Z', 10, 5, 5);
 
-INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (9, '2018-02-12T08:00:00.000Z', 5, 10, 5);
+-- INSERT INTO messages (id, created_time, receiver_id, sender_id, listing_id) VALUES (9, '2018-02-12T08:00:00.000Z', 5, 10, 5);
 
 -- conversation table seeds here (Example)
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (1, 'Hey can you accept lower prices?', '2018-02-12T08:00:00.000Z', 1, 6);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (1, 'Hey can you accept lower prices?', '2018-02-12T08:00:00.000Z', 1, 6);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (2, 'Sure how much were you thinking?', '2018-02-12T08:00:00.000Z', 2, 1);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (2, 'Sure how much were you thinking?', '2018-02-12T08:00:00.000Z', 2, 1);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (3, 'Hey is this real?', '2018-02-12T08:00:00.000Z', 3, 7);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (3, 'Hey is this real?', '2018-02-12T08:00:00.000Z', 3, 7);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (4, 'Can you go lower on the pink shirt?', '2018-02-12T08:00:00.000Z', 4, 8);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (4, 'Can you go lower on the pink shirt?', '2018-02-12T08:00:00.000Z', 4, 8);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (5, 'No... this is lowest I can go :(', '2018-02-12T08:00:00.000Z', 5, 3);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (5, 'No... this is lowest I can go :(', '2018-02-12T08:00:00.000Z', 5, 3);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (6, 'Thats so expensive.', '2018-02-12T08:00:00.000Z', 6, 9);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (6, 'Thats so expensive.', '2018-02-12T08:00:00.000Z', 6, 9);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (7, 'Is there any scratches?', '2018-02-12T08:00:00.000Z', 7, 10);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (7, 'Is there any scratches?', '2018-02-12T08:00:00.000Z', 7, 10);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (8, 'No of course not!', '2018-02-12T08:00:00.000Z', 8, 5);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (8, 'No of course not!', '2018-02-12T08:00:00.000Z', 8, 5);
 
-INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
+-- INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
 
 -- favourites table seeds here (Example)
 

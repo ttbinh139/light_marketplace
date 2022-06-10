@@ -30,7 +30,7 @@
       <input class="form-area" type="text" name="min">
       <label class="filter-label">Max Price</label>
       <input class="form-area" type="text" name="max">
-      <label class="filter-label" for="cars">Category:</label>
+      <label class="filter-label" for="cars">Type:</label>
         <select class="form-select" name="category">
           <option value=""></option>
           <option value="1">Shoes</option>
@@ -63,7 +63,11 @@
         <div class="item-column">
           <img src="<%= listings[listing]['photo_1'] %>">
           <div class="listing-info">
-            <span>$<%= listings[listing]['price'] %></span>
+            <% if (!listings[listing]['active']) { %>
+              <span>Sold</span>
+            <% } else { %>
+              <span>$<%= listings[listing]['price'] %></span>
+            <% } %>
             <span><%= listings[listing]['title'] %></span>
           </div>
         </div>

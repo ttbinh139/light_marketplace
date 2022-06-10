@@ -78,7 +78,7 @@ module.exports = (db) => {
     let listingId = req.params.listingid;
     let userId = req.session.userId["id"];
     await sellerHelper.removeFav(userId, listingId, db);
-    await sellerHelper.testHelper(db);
+    //await sellerHelper.testHelper(db);
     return res.redirect("/account");
   });
 
