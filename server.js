@@ -41,11 +41,12 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
-
-app.use(function (req, res, next) {
+// Handle get logged user from cookie
+app.use(function(req, res, next) {
   res.locals.userId = req.session.userId;
   next();
 });
+
 
 app.use(express.static("public"));
 app.use(fileUpload());

@@ -80,7 +80,7 @@
               </script>
           <% } else { %>
             <!-- <a class="button" href="/messages/new/<%- listings[listing]['id']%>">Message</a> -->
-            <form method="GET" action="/messages">
+            <form method="POST" action="/messages/new/<%- listings[listing]['id']%>">
               <button type="submit" class="button">Message</button>
             </form>
             <form method="POST" action="/listings/<%- listings[listing]['id']%>">
