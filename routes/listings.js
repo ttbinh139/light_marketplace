@@ -5,15 +5,14 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
-const listingHelper = require('../lib/sellerHelper');
+const express = require("express");
+const router = express.Router();
+const listingHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const queryParams = []
-    let queryString = `SELECT * FROM listings JOIN photos ON listings.id = listing_id `
-
+    const queryParams = [];
+    let queryString = `SELECT * FROM listings JOIN photos ON listings.id = listing_id `;
 
     if (req.query.buying) {
       queryParams.push(`%${req.query.buying}%`);
@@ -27,53 +26,45 @@ module.exports = (db) => {
 
     if (req.query.max) {
       queryParams.push(req.query.max);
-      console.log('params', typeof queryParams)
-      console.log('params', queryParams)
+      console.log("params", typeof queryParams);
+      console.log("params", queryParams);
       queryString += `AND price <= $${queryParams.length} `;
     }
-
 
     db.query(queryString, queryParams)
       .then((data) => {
         const templateVars = {
-          "listings": data.rows,
+          listings: data.rows,
         };
         const listings = data.rows;
         //res.json({ listings });
-        res.render("listings", templateVars)
+        res.render("listings", templateVars);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
 
-  router.get("/:id", (req,res) => {
-    let id = Object.values(req.params)
-    const queryParams = []
+  router.get("/:id", (req, res) => {
+    let id = Object.values(req.params);
+    const queryParams = [];
     let queryString = `SELECT *
     FROM listings JOIN photos ON listings.id = listing_id
-    WHERE listings.id = ${id};`
+    WHERE listings.id = ${id};`;
 
+    db.query(queryString, queryParams).then((data) => {
+      const templateVars = {
+        listings: data.rows,
+      };
+      const listings = data.rows;
+      //res.json({ listings})
+      res.render("listingid", templateVars);
+    });
+  });
 
-
-    db.query(queryString, queryParams)
-      .then((data) => {
-        const templateVars = {
-          "listings": data.rows,
-        };
-        const listings = data.rows;
-        //res.json({ listings})
-        res.render("listingid", templateVars)
-      })
-  })
-
-  router.post("/:id", (req, res) => {
-
-  })
-  return router
-}
-
-
+  router.post("/:id", (req, res) => {});
+  return router;
+};
 
 // router.get("/:id", (req,res) => {
 
@@ -91,4 +82,4 @@ module.exports = (db) => {
 // })
 
 // return router
-// }
+// })

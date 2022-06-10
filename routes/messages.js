@@ -91,8 +91,9 @@ module.exports = (db) => {
     messageHelper.getAllMessagesByUserId(userId, db)
       .then(async function(data) {
         let listing = await messageHelper.getListingFromId(listingId, db);
+        console.log("line 94:",listing);
         if (listing) {
-          return res.render("newmessage", {userID: userId, messages: data, listing:listing});
+          return res.render("newmessage", {userID: userId, messages: data, listing:listing, error: null});
         } else {
           let error = "Listing does not exist";
           return res.render("newmessage", {userID: userId, messages: data, listing:null, error: error});
@@ -111,7 +112,7 @@ module.exports = (db) => {
     let userId = req.session.userId.id;
     let listing_id = req.params.listingId;
     let message = {
-      sender_id: user_id,
+      sender_id: userId,
       listing_id: listing_id,
       created_time: new Date()
     };
@@ -138,13 +139,20 @@ module.exports = (db) => {
     let conversation = {
       message_id: message_id,
       message: req.body.txtMessage,
-      owner_id: user_id,
+      owner_id: userId,
       created_time: new Date()
     };
 
     messageHelper.insertNewConversation(conversation, db)
-      .then(data => {
-        res.status(201).send(data);
+      .then(async data => {
+        // Get all conversations by messageID
+        let conversations = await messageHelper.getConversationByMessageId(message_id, db);
+        let result = {
+          userId: userId,
+          conversations: conversations
+        }
+        res.status(201).send(result);
+        //res.status(201).send(data);
       })
       .catch(err => {
         res
