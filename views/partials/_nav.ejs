@@ -5,7 +5,7 @@
         <a class="button" for="login" href="/listings">Buying</a><br>
         <input class="form-area" type="text" name="buying"><br>
       </form>
-      <a class="button" href="/newad">Selling</a>
+      <a class="button" href="/newad">|&nbsp; Selling</a>
     </div>
     <div class="column-mid">
       <a class="button" href="/"><h1>Light Market</h1></a>
@@ -13,7 +13,7 @@
 
     <% if (!userId) {%>
       <div class="column-right">
-        <a class="button" href="/messages">Messages</a>
+        <a class="button" href="/messages">Messages&nbsp;|</a>
         <form id="form" class="user-posting" action="/login" method="POST">
           <button class="button" type="submit">Login</button><br />
           <input class="form-area" type="text" id="email" name="email" /><br />
@@ -21,8 +21,8 @@
       </div>
     <%}else{%>
       <div class="column-right">
-        <a class="button" href="/messages">Messages</a>
-      <a class="navbar nav-item navbar-light button" href="/account">Logged in as : <%=userId.email%></a>
+        <a class="button" href="/messages">Messages&nbsp;&nbsp;|</a>
+      <span>Logged in as :&nbsp;</span><a class="navbar nav-item navbar-light button" href="/account"> <%=userId.email%></a>
           <%}%>
 
   </div>
