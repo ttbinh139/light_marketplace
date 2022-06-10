@@ -9,6 +9,9 @@ const express = require('express');
 const router  = express.Router();
 const buyerHelper = require("../lib/buyerHelper");
 
+ /**
+   * View home page
+   **/
 module.exports = (db) => {
   router.get("/", (req, res) => {
     let request = req;

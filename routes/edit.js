@@ -13,9 +13,13 @@ const path = require("path");
 const sellerHelper = require("../lib/sellerHelper");
 
 module.exports = (db) => {
+  /**
+   * POST request to edit a listing
+   **/
   router.post("/:listingid", async (req, res) => {
     let listingId = req.params.listingid.charAt(1);
     let files = [];
+    // Upload and get the location of the images
     if (!req.files) {
       return res.status(400).send("No files were uploaded!");
     }
@@ -32,8 +36,11 @@ module.exports = (db) => {
         }
       });
     }
+    // Get updated listing info
+
     const listing = req.body;
     let niche = sellerHelper.addNiche(listing["niche"], db);
+    // Edit the listing that was updated
     await sellerHelper.editListing(
       req.session.userId,
       listing,
@@ -41,6 +48,7 @@ module.exports = (db) => {
       listingId,
       db
     );
+    // Edit the photo location that was updated
     await sellerHelper.editPhotos(listingId, files, db);
     sellerHelper
       .testHelper(db)
@@ -52,8 +60,12 @@ module.exports = (db) => {
       });
   });
 
+  /**
+   * GET request to edit page
+   **/
   router.get("/:listingid", async (req, res) => {
-    let listingId = req.params.listingid.charAt(1);
+    // Get all corresponding data related to the listing
+    let listingId = req.params.listingid.slice(1);
     const info = await sellerHelper.getListingsInfoEdit(listingId, db);
     const pictures = await sellerHelper.getPictures(listingId, db);
     const nicheType = sellerHelper.nicheIdToChar(info[0]["niche_id"]);
@@ -61,6 +73,7 @@ module.exports = (db) => {
     if (info[0]["condition"] === true) info[0]["condition"] = "New";
     if (info[0]["condition"] === false) info[0]["condition"] = "Used";
 
+    // Render all the data needed of the listing to edit the listing
     const templateVars = {
       userId: req.session.userId,
       title: info[0]["title"],

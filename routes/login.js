@@ -3,6 +3,10 @@ const { renderSync } = require("sass");
 const router = express.Router();
 const { login } = require("../lib/sellerHelper");
 
+
+/**
+* POST request to login
+**/
 module.exports = (db) => {
   router.post("/", (req, res) => {
     const { email } = req.body;
