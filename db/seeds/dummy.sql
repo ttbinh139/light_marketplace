@@ -178,10 +178,6 @@ VALUES ('https://i.ebayimg.com/images/g/5BgAAOSweh9ijq5I/s-l1600.jpg',4);
 INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
 VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',5);
 
-<<<<<<< HEAD
-INSERT INTO photos (photo_1, photo_2, photo_3, photo_4, listing_id)
-VALUES ('https://i.ebayimg.com/images/g/cOcAAOSwgHFh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png', 'https://i.ebayimg.com/images/g/MZQAAOSwordh~s28/s-l1600.png',6);
-=======
 INSERT INTO photos (photo_1, photo_2, listing_id)
 VALUES ('https://images.craigslist.org/00N0N_aX0LYTFcJXjz_0CI0t2_600x450.jpg', 'https://images.craigslist.org/00j0j_3D0y8FeOOknz_0CI0t2_600x450.jpg',6);
 
@@ -233,7 +229,6 @@ VALUES ('https://images.craigslist.org/00m0m_cvzCOUr7SeEz_0x40Dl_600x450.jpg','h
 INSERT INTO photos (photo_1, photo_2, listing_id)
 VALUES ('https://images.craigslist.org/00l0l_cQuew8gu0Hsz_0t20CI_600x450.jpg','https://images.craigslist.org/00H0H_1T23CQfgsrYz_0t20CI_600x450.jpg',22);
 
->>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
 
 
 -- messages table seeds here (Example)
@@ -276,8 +271,6 @@ INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALU
 
 INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALUES (9, 'No problem', '2018-02-12T08:00:00.000Z', 9, 10);
 
-<<<<<<< HEAD
-=======
 -- favourites table seeds here (Example)
 
 -- INSERT INTO favourites (id, user_id, listing_id) Values (1, 1, 2);
@@ -311,4 +304,3 @@ INSERT INTO conversations (id, message, created_time, message_id, owner_id) VALU
 -- INSERT INTO favourites (id, user_id, listing_id) Values (15, 8, 5);
 
 -- INSERT INTO favourites (id, user_id, listing_id) Values (16, 9, 1);
->>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9

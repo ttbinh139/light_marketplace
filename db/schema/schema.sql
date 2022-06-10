@@ -63,12 +63,3 @@ CREATE TABLE conversations (
   message_id INTEGER REFERENCES messages(id) ON DELETE CASCADE,
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
-<<<<<<< HEAD
-=======
-
-CREATE TABLE favourites (
-  id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) NOT NULL,
-  listing_id INTEGER REFERENCES listings(id) NOT NULL
-)
->>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
