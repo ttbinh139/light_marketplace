@@ -2,7 +2,6 @@ const express = require("express");
 const { renderSync } = require("sass");
 const router = express.Router();
 const sellerHelper = require("../lib/sellerHelper");
-<<<<<<< HEAD
 const messageHelper = require("../lib/messageHelper");
 
 module.exports = (db) => {
@@ -56,29 +55,11 @@ module.exports = (db) => {
       allPictures: value[1],
       allMessage: all_message,
       allFavorites: favorites,
-=======
-const buyerHelper = require("../lib/buyerHelper");
-const { database } = require("pg/lib/defaults");
-
-module.exports = (db) => {
-  router.get("/", (req, res) => {
-    const id = req.session.userId.id
-    console.log('id,',typeof id)
-    let queryString = `SELECT * FROM favourites JOIN listings ON favourites.listing_id = listings.id
-    WHERE favourites.user_id = ${id}
-    ORDER BY favourites.id DESC;
-  `;
-  db.query(queryString)
-  .then((data) => {
-    const templateVars = {
-      userId: req.session.userId,
-      "info": data.rows,
->>>>>>> f2f5597161318aae2f11bb2cd1c902b12d7570d9
     };
 
     res.render("account", templateVars)
   })
-  });
+
 
   router.post("/:listingid/sold", (req, res) => {
     let listingId = req.params.listingid;
@@ -101,4 +82,4 @@ module.exports = (db) => {
   });
 
   return router;
-};
+}
