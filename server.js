@@ -41,18 +41,8 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
-<<<<<<< HEAD
 
 app.use(function (req, res, next) {
-=======
-// Handle get logged user from cookie
-app.use(function(req, res, next) {
->>>>>>> master
-  res.locals.userId = req.session.userId;
-  next();
-});
-
-app.use(function(req, res, next) {
   res.locals.userId = req.session.userId;
   next();
 });
