@@ -84,6 +84,6 @@ Feel free to send pull requests and raise issues.
 
 ## Acknowledgements
 
-Binh Trinh - Messaging section and backend 
-Sang Lee - Profile, create/edit listings
-Kevin Holmes - Buying, filter, frontend
+- Binh Trinh : Messaging section and backend 
+- Sang Lee : Profile, create/edit listings
+- Kevin Holmes : Buying, filter, frontend
